@@ -1,0 +1,22 @@
+[
+  {
+    "symbol": "AAPL",
+    "signal": "BUY",
+    "timeframe": "1H",
+    "risk_pct": 1.2,
+    "entry_price": 234.070007,
+    "stop_loss": 231.261166916,
+    "target": 239.687687168,
+    "timestamp": "2025-09-14 16:01:22"
+  },
+  {
+    "symbol": "TSLA",
+    "signal": "SELL",
+    "timeframe": "1H",
+    "risk_pct": 3.4,
+    "entry_price": 425.85999,
+    "stop_loss": 440.33922966,
+    "target": 396.90151067999994,
+    "timestamp": "2025-09-18 15:57:29"
+  }
+]
