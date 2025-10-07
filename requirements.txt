@@ -1,10 +1,11 @@
-python-telegram-bot>=21.0
+python-telegram-bot>=21.0,<23.0
 pandas>=2.2.0
 requests==2.31.0
 feedparser>=6.0.11
-pytz==2024.1
+pytz==2024.2
 apscheduler==3.10.4
 tzlocal==5.2
-Flask
-gunicorn
-pyTelegramBotAPI
+Flask==3.0.3
+gunicorn==21.2.0
+pyTelegramBotAPI==4.14.0  # Pin; update to 4.29.1 if you need latest features
+twelve-data==1.0.0  # Add this for your API key usage

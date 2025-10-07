@@ -323,7 +323,14 @@ def main():
     return app.run()
 
 if __name__ == "__main__":
-    if os.environ.get("RENDER") or os.environ.get("PORT"):
+    # Check for webhook/production environment
+    is_production = (
+        os.environ.get("RENDER") or 
+        os.environ.get("PORT") or 
+        os.environ.get("PRODUCTION")
+    )
+    
+    if is_production:
         run_webhook()
     else:
         sys.exit(main())
