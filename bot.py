@@ -8,11 +8,12 @@ from datetime import datetime, time
 from pathlib import Path
 from typing import Optional, Dict, Any
 
-from telegram import Update, Bot
+from telegram import Update, Bot, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder, 
     CommandHandler, 
     MessageHandler, 
+    CallbackQueryHandler,
     ContextTypes, 
     filters
 )
@@ -27,7 +28,6 @@ from signals import (
     SignalChecker
 )
 
-# Configure logger for this module
 logger = logging.getLogger(__name__)
 
 class TradingBotError(Exception):
@@ -39,58 +39,213 @@ class ConfigurationError(TradingBotError):
     pass
 
 class MessageSender:
-    """Handles message sending with retry logic and error handling"""
+    """Handles message sending with ultra-optimized sticker performance"""
+    
+    # Online sticker file_ids (public stickers from Telegram)
+    # Replace these with your actual sticker file_ids after uploading once
+    ONLINE_STICKERS = {
+        'up': 'CAACAgUAAyEGAASye8atAAIBuGjX5C6xsQiwwpF3AoNsnzJSCxePAAMaAAJqd7lW0Asv9Lqx91Y2BA',
+        'down': 'CAACAgUAAyEGAASye8atAAIBvGjX5ICGjWmsw8JsGtiU_AaenDKbAAIFGgACane5VpvbrM_e5Ny8NgQ',
+        'win': 'CAACAgUAAyEGAASye8atAAIBumjX5EChnQ834Tpya6pNi51-x_iLAAICGgACane5VqlcfYk6QitHNgQ',
+        'mtg_up': 'CAACAgUAAyEGAASye8atAAIBzGjjpNOgS3fMC3zhW9CbDFp5EnM3AAIBHAACrIUgV0db1hepsiAxNgQ',
+        'mtg_down': 'CAACAgUAAyEGAASye8atAAIBzWjjpNVIFg5T39PlWno9lrwuHWbCAAICHAACrIUgVxtkeg98IYQtNgQ'
+    }
     
     def __init__(self, bot: Bot, config: Dict[str, Any]):
         self.bot = bot
         self.config = config
         self.channel_id = config.get('CHANNEL_ID')
-        self.max_retries = 3
-        self.retry_delay = 2.0
         
-    async def send_message_with_retry(self, chat_id: str, text: str, **kwargs) -> bool:
-        """Send message with retry logic and comprehensive error handling"""
-        for attempt in range(self.max_retries):
+        # Sticker paths for initial upload
+        self.sticker_paths = {
+            'up': r"E:\malek\Downloads\telegram_trading_bot_core\up.webp",
+            'down': r"E:\malek\Downloads\telegram_trading_bot_core\down.webp", 
+            'win': r"E:\malek\Downloads\telegram_trading_bot_core\win.webp",
+            'mtg_up': r"E:\malek\Downloads\telegram_trading_bot_core\MTGUp.webp",
+            'mtg_down': r"E:\malek\Downloads\telegram_trading_bot_core\MTGDown.webp"
+        }
+        
+        # Load and warm up stickers
+        self._init_stickers()
+        
+    def _init_stickers(self):
+        """Initialize and warm up stickers synchronously at startup"""
+        cache_file = Path(__file__).parent / 'data' / 'sticker_cache.json'
+        
+        # Load cached file_ids
+        if cache_file.exists():
             try:
-                await self.bot.send_message(chat_id=chat_id, text=text, **kwargs)
+                with open(cache_file, 'r') as f:
+                    cached = json.load(f)
+                    self.ONLINE_STICKERS.update(cached)
+                    logger.info(f"Loaded {len(cached)} cached sticker file_ids")
+            except Exception as e:
+                logger.warning(f"Failed to load sticker cache: {e}")
+    
+    async def warm_up_stickers(self):
+        """Upload stickers once and cache their file_ids for instant future use"""
+        if not self.channel_id:
+            logger.warning("No channel_id configured, skipping sticker warmup")
+            return
+        
+        needs_upload = [name for name, file_id in self.ONLINE_STICKERS.items() if not file_id]
+        
+        if not needs_upload:
+            logger.info("All stickers already warmed up")
+            return
+        
+        logger.info(f"Warming up {len(needs_upload)} stickers...")
+        
+        for sticker_name in needs_upload:
+            if sticker_name not in self.sticker_paths:
+                continue
+                
+            sticker_path = self.sticker_paths[sticker_name]
+            if not os.path.exists(sticker_path):
+                logger.warning(f"Sticker file not found: {sticker_path}")
+                continue
+            
+            try:
+                with open(sticker_path, 'rb') as sticker_file:
+                    message = await self.bot.send_sticker(
+                        chat_id=self.channel_id,
+                        sticker=sticker_file
+                    )
+                    
+                    # Cache the file_id
+                    self.ONLINE_STICKERS[sticker_name] = message.sticker.file_id
+                    logger.info(f"Warmed up sticker: {sticker_name}")
+                    
+                    # Delete the warmup message to keep channel clean
+                    try:
+                        await message.delete()
+                    except:
+                        pass
+                    
+                    await asyncio.sleep(0.5)  # Rate limiting
+                    
+            except Exception as e:
+                logger.error(f"Failed to warm up sticker {sticker_name}: {e}")
+        
+        # Save to cache
+        self._save_sticker_cache()
+        logger.info("Sticker warmup complete")
+    
+    def _save_sticker_cache(self):
+        """Save sticker file_ids to cache"""
+        try:
+            cache_dir = Path(__file__).parent / 'data'
+            cache_dir.mkdir(exist_ok=True)
+            cache_file = cache_dir / 'sticker_cache.json'
+            
+            with open(cache_file, 'w') as f:
+                json.dump(self.ONLINE_STICKERS, f, indent=2)
+            logger.info("Sticker cache saved")
+        except Exception as e:
+            logger.error(f"Failed to save sticker cache: {e}")
+
+    async def send_sticker_ultra_fast(self, sticker_name: str) -> bool:
+        """Send sticker instantly using pre-cached file_id (typically <300ms)"""
+        if not self.channel_id:
+            return False
+        
+        file_id = self.ONLINE_STICKERS.get(sticker_name)
+        
+        if not file_id:
+            logger.warning(f"Sticker {sticker_name} not warmed up, attempting upload")
+            return await self._upload_and_cache_sticker(sticker_name)
+        
+        try:
+            # Direct send with cached file_id - this is INSTANT
+            await self.bot.send_sticker(
+                chat_id=self.channel_id,
+                sticker=file_id,
+                read_timeout=5,
+                write_timeout=5
+            )
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to send sticker {sticker_name}: {e}")
+            # Invalidate cache and try upload
+            self.ONLINE_STICKERS[sticker_name] = None
+            return await self._upload_and_cache_sticker(sticker_name)
+    
+    async def _upload_and_cache_sticker(self, sticker_name: str) -> bool:
+        """Fallback: upload sticker and cache file_id"""
+        if sticker_name not in self.sticker_paths:
+            return False
+        
+        sticker_path = self.sticker_paths[sticker_name]
+        if not os.path.exists(sticker_path):
+            logger.error(f"Sticker file not found: {sticker_path}")
+            return False
+        
+        try:
+            with open(sticker_path, 'rb') as sticker_file:
+                message = await self.bot.send_sticker(
+                    chat_id=self.channel_id,
+                    sticker=sticker_file,
+                    read_timeout=10,
+                    write_timeout=10
+                )
+                
+                # Cache for next time
+                self.ONLINE_STICKERS[sticker_name] = message.sticker.file_id
+                self._save_sticker_cache()
+                logger.info(f"Uploaded and cached sticker: {sticker_name}")
                 return True
                 
-            except TimedOut:
-                logger.warning(f"Telegram timeout (attempt {attempt + 1}/{self.max_retries})")
-                if attempt < self.max_retries - 1:
-                    await asyncio.sleep(self.retry_delay * (attempt + 1))
-                    continue
-                    
-            except NetworkError as e:
-                logger.warning(f"Network error (attempt {attempt + 1}/{self.max_retries}): {e}")
-                if attempt < self.max_retries - 1:
-                    await asyncio.sleep(self.retry_delay * (attempt + 1))
-                    continue
-                    
-            except TelegramError as e:
-                if "chat not found" in str(e).lower():
-                    logger.error(f"Chat not found: {chat_id}. Check CHANNEL_ID configuration.")
-                    return False
-                elif "bot was blocked" in str(e).lower():
-                    logger.error(f"Bot was blocked by user/chat: {chat_id}")
-                    return False
-                else:
-                    logger.error(f"Telegram API error: {e}")
-                    if attempt < self.max_retries - 1:
-                        await asyncio.sleep(self.retry_delay * (attempt + 1))
-                        continue
-                        
+        except Exception as e:
+            logger.error(f"Failed to upload sticker {sticker_name}: {e}")
+            return False
+
+    async def send_message_with_retry(self, chat_id: str, text: str, **kwargs) -> bool:
+        """Send message with retry logic"""
+        for attempt in range(2):
+            try:
+                await self.bot.send_message(
+                    chat_id=chat_id, 
+                    text=text,
+                    read_timeout=8,
+                    write_timeout=8,
+                    **kwargs
+                )
+                return True
+                
             except Exception as e:
-                logger.error(f"Unexpected error sending message: {e}")
-                if attempt < self.max_retries - 1:
-                    await asyncio.sleep(self.retry_delay * (attempt + 1))
+                if attempt < 1:
+                    await asyncio.sleep(0.5)
                     continue
+                logger.error(f"Failed to send message: {e}")
                     
-        logger.error(f"Failed to send message after {self.max_retries} attempts")
+        return False
+
+    async def send_photo_with_retry(self, chat_id: str, photo, caption: str = None, **kwargs) -> bool:
+        """Send photo with retry logic"""
+        for attempt in range(2):
+            try:
+                await self.bot.send_photo(
+                    chat_id=chat_id, 
+                    photo=photo, 
+                    caption=caption,
+                    parse_mode='HTML',
+                    read_timeout=15,
+                    write_timeout=15,
+                    **kwargs
+                )
+                return True
+                
+            except Exception as e:
+                if attempt < 1:
+                    await asyncio.sleep(1.0)
+                    continue
+                logger.error(f"Failed to send photo: {e}")
+                    
         return False
 
 class TimerManager:
-    """Manages the morning report timer with enhanced reliability"""
+    """Manages the morning report timer"""
     
     def __init__(self, bot_instance):
         self.bot = bot_instance
@@ -105,44 +260,35 @@ class TimerManager:
     def start_timer(self, event_loop: asyncio.AbstractEventLoop):
         """Start the morning timer thread"""
         if self.timer_running:
-            logger.warning("Timer already running")
             return
             
         self.main_loop = event_loop
         self.timer_running = True
         self.timer_thread = threading.Thread(target=self._timer_loop, daemon=True)
         self.timer_thread.start()
-        logger.info(f"Morning timer started for {self.morning_time}")
     
     def stop_timer(self):
         """Stop the morning timer"""
         self.timer_running = False
         if self.timer_thread and self.timer_thread.is_alive():
             self.timer_thread.join(timeout=5.0)
-            if self.timer_thread.is_alive():
-                logger.warning("Timer thread did not stop gracefully")
-        logger.info("Morning timer stopped")
     
     def set_morning_time(self, time_str: str) -> bool:
         """Set new morning time with validation"""
         try:
             parsed_time = self._parse_time(time_str)
             self.morning_time = time_str
-            logger.info(f"Morning time updated to {time_str}")
             return True
-        except ValueError as e:
-            logger.error(f"Invalid time format: {e}")
+        except ValueError:
             return False
     
     def toggle_test_mode(self) -> bool:
         """Toggle test mode (reports every 2 minutes)"""
         self.test_mode = not self.test_mode
-        mode_text = "enabled" if self.test_mode else "disabled"
-        logger.info(f"Test mode {mode_text}")
         return self.test_mode
     
     def get_status(self) -> Dict[str, Any]:
-        """Get comprehensive timer status"""
+        """Get timer status"""
         return {
             'running': self.timer_running,
             'test_mode': self.test_mode,
@@ -152,19 +298,14 @@ class TimerManager:
         }
     
     def _timer_loop(self):
-        """Main timer loop with enhanced error handling"""
-        consecutive_errors = 0
-        max_consecutive_errors = 5
-        
+        """Main timer loop"""
         while self.timer_running:
             try:
                 current_time = datetime.now()
                 
                 if self.test_mode:
-                    # Test mode: send report every 2 minutes
                     sleep_seconds = 120
                 else:
-                    # Normal mode: calculate sleep time until morning report
                     target_time = self._parse_time(self.morning_time)
                     next_trigger = current_time.replace(
                         hour=target_time.hour,
@@ -173,44 +314,26 @@ class TimerManager:
                         microsecond=0
                     )
                     
-                    # If past today's time, schedule for tomorrow
                     if current_time >= next_trigger:
                         next_trigger = next_trigger.replace(day=next_trigger.day + 1)
                     
                     sleep_seconds = (next_trigger - current_time).total_seconds()
                 
-                # Sleep with interruption checking
                 if sleep_seconds > 0:
-                    sleep_interval = min(sleep_seconds, 60)  # Check every minute
+                    sleep_interval = min(sleep_seconds, 60)
                     end_time = current_time.timestamp() + sleep_seconds
                     
                     while datetime.now().timestamp() < end_time and self.timer_running:
                         threading.Event().wait(min(sleep_interval, end_time - datetime.now().timestamp()))
                 
-                # Send report if it's time
                 if self.timer_running and self._should_send_report():
-                    await_result = self._schedule_morning_report()
-                    if await_result:
-                        consecutive_errors = 0
-                    else:
-                        consecutive_errors += 1
+                    self._schedule_morning_report()
                 
-                # Prevent immediate re-triggering
                 if self.timer_running:
-                    threading.Event().wait(120)  # Wait 2 minutes
+                    threading.Event().wait(120)
                 
-            except Exception as e:
-                consecutive_errors += 1
-                logger.error(f"Error in timer loop (error #{consecutive_errors}): {e}")
-                
-                if consecutive_errors >= max_consecutive_errors:
-                    logger.critical(f"Too many consecutive timer errors ({consecutive_errors}), stopping timer")
-                    self.timer_running = False
-                    break
-                
-                # Exponential backoff for errors
-                error_sleep = min(60 * (2 ** consecutive_errors), 300)  # Max 5 minutes
-                threading.Event().wait(error_sleep)
+            except Exception:
+                threading.Event().wait(60)
     
     def _should_send_report(self) -> bool:
         """Determine if it's time to send the morning report"""
@@ -226,13 +349,11 @@ class TimerManager:
             microsecond=0
         )
         
-        # Check if within 2 minutes of target time
         return abs((current_time - target_time_today).total_seconds()) < 120
     
     def _schedule_morning_report(self) -> bool:
         """Schedule morning report in the main event loop"""
         if not self.main_loop or self.main_loop.is_closed():
-            logger.error("Main event loop not available")
             return False
         
         try:
@@ -240,42 +361,33 @@ class TimerManager:
                 self.bot.send_morning_report(),
                 self.main_loop
             )
-            future.result(timeout=60)  # Wait up to 60 seconds
+            future.result(timeout=60)
             return True
-        except Exception as e:
-            logger.error(f"Failed to schedule morning report: {e}")
+        except Exception:
             return False
     
     def _parse_time(self, time_str: str) -> time:
-        """Parse time string with comprehensive validation"""
-        if not isinstance(time_str, str):
-            raise ValueError("Time must be a string")
-        
-        time_str = time_str.strip()
-        if ':' not in time_str:
-            raise ValueError("Time must be in HH:MM format")
+        """Parse time string"""
+        if not isinstance(time_str, str) or ':' not in time_str:
+            raise ValueError("Invalid time format")
         
         try:
             parts = time_str.split(':')
             if len(parts) != 2:
-                raise ValueError("Time must be in HH:MM format")
+                raise ValueError("Invalid time format")
             
             hour, minute = int(parts[0]), int(parts[1])
             
-            if not (0 <= hour <= 23):
-                raise ValueError("Hour must be between 0 and 23")
-            if not (0 <= minute <= 59):
-                raise ValueError("Minute must be between 0 and 59")
+            if not (0 <= hour <= 23) or not (0 <= minute <= 59):
+                raise ValueError("Invalid time values")
             
             return time(hour, minute)
             
-        except (ValueError, TypeError) as e:
-            if "invalid literal" in str(e):
-                raise ValueError("Time must contain valid numbers")
-            raise e
+        except (ValueError, TypeError):
+            raise ValueError("Invalid time format")
 
 class FileManager:
-    """Handles file operations with atomic writes and error recovery"""
+    """Handles file operations"""
     
     def __init__(self, data_dir: str = 'data'):
         self.data_dir = Path(data_dir)
@@ -286,31 +398,17 @@ class FileManager:
         filepath = self.data_dir / filename
         
         if not filepath.exists():
-            logger.debug(f"File {filename} does not exist, returning default")
             return default if default is not None else []
         
         try:
             with open(filepath, 'r', encoding='utf-8') as f:
                 content = f.read().strip()
                 if not content:
-                    logger.warning(f"File {filename} is empty")
                     return default if default is not None else []
                 
                 return json.loads(content)
                 
-        except json.JSONDecodeError as e:
-            logger.error(f"Invalid JSON in {filename}: {e}")
-            # Try to create backup
-            backup_path = filepath.with_suffix('.json.backup')
-            try:
-                filepath.rename(backup_path)
-                logger.info(f"Corrupted file backed up to {backup_path}")
-            except Exception:
-                pass
-            return default if default is not None else []
-            
-        except Exception as e:
-            logger.error(f"Error reading {filename}: {e}")
+        except Exception:
             return default if default is not None else []
     
     def save_json_file(self, filename: str, data) -> bool:
@@ -319,24 +417,19 @@ class FileManager:
         temp_filepath = filepath.with_suffix('.json.tmp')
         
         try:
-            # Write to temporary file first
             with open(temp_filepath, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
             
-            # Atomic move
-            if os.name == 'nt':  # Windows
+            if os.name == 'nt':
                 if filepath.exists():
                     filepath.unlink()
                 temp_filepath.rename(filepath)
-            else:  # Unix-like systems
+            else:
                 temp_filepath.rename(filepath)
             
-            logger.debug(f"Successfully saved {filename}")
             return True
             
-        except Exception as e:
-            logger.error(f"Error saving {filename}: {e}")
-            # Cleanup temp file
+        except Exception:
             if temp_filepath.exists():
                 try:
                     temp_filepath.unlink()
@@ -345,7 +438,7 @@ class FileManager:
             return False
 
 class TradingBot:
-    """Production-ready trading bot with comprehensive error handling and monitoring"""
+    """Production-ready trading bot with ultra-fast sticker sending"""
     
     def __init__(self, config: Dict[str, Any]):
         self.config = self._validate_config(config)
@@ -366,32 +459,30 @@ class TradingBot:
         self.timer_manager = TimerManager(self)
         self.signal_checker = SignalChecker(self.config, self)
         
+        # Store user states for photo upload
+        self.user_states = {}
+        
         # Register command handlers
         self._register_handlers()
         
         # Setup graceful shutdown
         self._setup_shutdown_handlers()
-        
-        logger.info("TradingBot initialized successfully")
     
     def _validate_config(self, config: Dict[str, Any]) -> Dict[str, Any]:
-        """Validate configuration with comprehensive checks"""
+        """Validate configuration"""
         if not isinstance(config, dict):
             raise ConfigurationError("Configuration must be a dictionary")
         
-        # Check required keys
         required_keys = ['TELEGRAM_TOKEN', 'CHANNEL_ID', 'TWELVE_DATA_API_KEY']
         missing_keys = [key for key in required_keys if not config.get(key)]
         
         if missing_keys:
             raise ConfigurationError(f"Missing required configuration: {', '.join(missing_keys)}")
         
-        # Validate token format
         token = config['TELEGRAM_TOKEN']
         if not isinstance(token, str) or ':' not in token or len(token) < 20:
             raise ConfigurationError("Invalid TELEGRAM_TOKEN format")
         
-        # Set defaults for optional values
         defaults = {
             'ADMIN_IDS': [],
             'MORNING_TIME': '09:00',
@@ -399,8 +490,8 @@ class TradingBot:
             'CHECK_INTERVAL_SECONDS': 300,
             'SHORT_WINDOW': 5,
             'LONG_WINDOW': 20,
-            'MAX_RETRIES': 3,
-            'MESSAGE_TIMEOUT': 10
+            'MAX_RETRIES': 2,
+            'MESSAGE_TIMEOUT': 8
         }
         
         for key, default_value in defaults.items():
@@ -409,16 +500,14 @@ class TradingBot:
         return config
     
     def _init_telegram_app(self):
-        """Initialize Telegram application with proper configuration"""
+        """Initialize Telegram application"""
         try:
             self.app = ApplicationBuilder() \
                 .token(self.config['TELEGRAM_TOKEN']) \
-                .connect_timeout(30) \
-                .read_timeout(30) \
-                .write_timeout(30) \
+                .connect_timeout(20) \
+                .read_timeout(20) \
+                .write_timeout(20) \
                 .build()
-            
-            logger.info("Telegram application initialized")
             
         except Exception as e:
             raise ConfigurationError(f"Failed to initialize Telegram application: {e}")
@@ -426,80 +515,77 @@ class TradingBot:
     def _register_handlers(self):
         """Register all command and message handlers"""
         handlers = [
-            # Basic commands
             ('start', self.start_cmd),
             ('help', self.help_cmd),
-            
-            # Symbol management
             ('addsymbol', self.addsymbol_cmd),
             ('removesymbol', self.removesymbol_cmd),
             ('symbols', self.listsymbols_cmd),
             ('listsymbols', self.listsymbols_cmd),
-            
-            # Alerts
             ('setalert', self.setalert_cmd),
-            
-            # Market data
             ('news', self.news_cmd),
             ('summary', self.summary_cmd),
             ('check', self.check_cmd),
             ('price', self.price_cmd),
-            
-            # Manual signals
-            ('manual', self.manual_cmd),
-            ('cancel', self.cancel_manual_cmd),
+            ('custom_signal', self.custom_signal_cmd),
+            ('cancel', self.cancel_custom_cmd),
             ('history', self.history_cmd),
-            
-            # Timer commands
             ('morningreport', self.morningreport_cmd),
             ('setmorningtime', self.setmorningtime_cmd),
             ('testtimer', self.testtimer_cmd),
             ('timerstatus', self.timerstatus_cmd),
+            ('warmup_stickers', self.warmup_stickers_cmd),
         ]
         
-        # Register command handlers
         for command, handler in handlers:
             self.app.add_handler(CommandHandler(command, handler))
         
-        # Register message handler for manual signal input
+        self.app.add_handler(CallbackQueryHandler(self.handle_callback_query))
+        
         self.app.add_handler(
             MessageHandler(filters.TEXT & ~filters.COMMAND, self.handle_text_input)
         )
         
-        logger.info(f"Registered {len(handlers)} command handlers")
+        self.app.add_handler(
+            MessageHandler(filters.PHOTO, self.handle_photo_upload)
+        )
     
     def _setup_shutdown_handlers(self):
         """Setup graceful shutdown signal handlers"""
         def signal_handler(signum, frame):
-            logger.info(f"Received signal {signum}, initiating shutdown...")
             self.stop()
         
         signal.signal(signal.SIGINT, signal_handler)
         signal.signal(signal.SIGTERM, signal_handler)
     
-    def start(self):
-        """Start the bot with comprehensive initialization"""
+    async def _post_init(self):
+        """Post-initialization tasks (run after event loop starts)"""
         try:
-            logger.info("Starting TradingBot...")
-            
-            # Store main event loop
+            # Warm up stickers for instant sending
+            await self.message_sender.warm_up_stickers()
+            logger.info("Bot initialization complete")
+        except Exception as e:
+            logger.error(f"Error during post-init: {e}")
+    
+    def start(self):
+        """Start the bot"""
+        try:
             self.main_loop = asyncio.get_event_loop()
             
-            # Start timer
+            # Schedule post-init tasks
+            self.main_loop.create_task(self._post_init())
+            
             self.timer_manager.start_timer(self.main_loop)
             
-            # Start polling
-            logger.info("Starting Telegram polling...")
             self.app.run_polling(
                 poll_interval=1.0,
                 timeout=30,
-                bootstrap_retries=5,
+                bootstrap_retries=3,
                 allowed_updates=None,
                 drop_pending_updates=True
             )
             
         except KeyboardInterrupt:
-            logger.info("Bot interrupted by user")
+            pass
         except Exception as e:
             logger.error(f"Error starting bot: {e}")
             raise
@@ -508,28 +594,21 @@ class TradingBot:
     
     def stop(self):
         """Stop all bot components gracefully"""
-        logger.info("Stopping TradingBot...")
-        
         try:
-            # Stop timer
             if self.timer_manager:
                 self.timer_manager.stop_timer()
             
-            # Stop signal checker
             if self.signal_checker and hasattr(self.signal_checker, 'stop'):
                 self.signal_checker.stop()
             
-            # Stop Telegram application
             if self.app:
                 self.app.stop_running()
             
-            logger.info("TradingBot stopped successfully")
-            
-        except Exception as e:
-            logger.error(f"Error during shutdown: {e}")
+        except Exception:
+            pass
     
     def _is_admin(self, user_id: int) -> bool:
-        """Check if user is an admin with type safety"""
+        """Check if user is an admin"""
         try:
             admin_ids = self.config.get('ADMIN_IDS', [])
             return int(user_id) in [int(admin_id) for admin_id in admin_ids]
@@ -537,10 +616,9 @@ class TradingBot:
             return False
     
     async def post_message(self, text: str, **kwargs) -> bool:
-        """Post message to configured channel with error handling"""
+        """Post message to configured channel"""
         channel_id = self.config.get('CHANNEL_ID')
         if not channel_id:
-            logger.warning('CHANNEL_ID not configured, cannot post message')
             return False
         
         return await self.message_sender.send_message_with_retry(
@@ -553,7 +631,6 @@ class TradingBot:
     def post_message_from_thread(self, text: str) -> bool:
         """Post message from another thread safely"""
         if not self.main_loop or self.main_loop.is_closed():
-            logger.error("Main event loop not available for cross-thread communication")
             return False
         
         try:
@@ -561,38 +638,62 @@ class TradingBot:
                 self.post_message(text),
                 self.main_loop
             )
-            return future.result(timeout=self.config.get('MESSAGE_TIMEOUT', 10))
-        except Exception as e:
-            logger.error(f"Failed to post message from thread: {e}")
+            return future.result(timeout=self.config.get('MESSAGE_TIMEOUT', 8))
+        except Exception:
             return False
+
+    def post_message_to_channel(self, message: str) -> bool:
+        """Post message to public channel - sync wrapper"""
+        return self.post_message_from_thread(message)
+    
+    def send_sticker_to_channel_instant(self, sticker_name: str) -> bool:
+        """Send sticker to channel INSTANTLY - optimized for <500ms delivery"""
+        if not self.main_loop or self.main_loop.is_closed():
+            return False
+        
+        try:
+            # Ultra-fast non-blocking dispatch
+            future = asyncio.run_coroutine_threadsafe(
+                self.message_sender.send_sticker_ultra_fast(sticker_name),
+                self.main_loop
+            )
+            # Minimal timeout for instant sends
+            return future.result(timeout=1.5)
+        except Exception as e:
+            logger.error(f"Failed to send sticker instantly: {e}")
+            return False
+
+    async def _send_photo_async(self, photo, caption: str = None) -> bool:
+        """Async photo sending method"""
+        channel_id = self.config.get('CHANNEL_ID')
+        if not channel_id:
+            return False
+        
+        return await self.message_sender.send_photo_with_retry(
+            chat_id=channel_id,
+            photo=photo,
+            caption=caption
+        )
     
     async def send_morning_report(self):
-        """Generate and send comprehensive morning report"""
+        """Generate and send morning report"""
         try:
-            logger.info("Generating morning report...")
-            
             symbols = self.file_manager.load_json_file('symbols.json', [])
             if not symbols:
-                logger.info("No symbols in watchlist for morning report")
                 return
             
-            # Create report header
             current_date = datetime.now().strftime('%B %d, %Y')
             report_text = f"🌅 <b>Good Morning! Daily Market Report</b>\n📅 {current_date}\n\n"
             
-            # Process symbols (limit to 5 for rate limiting)
             processed_count = 0
             for symbol in symbols[:5]:
                 try:
-                    # Rate limiting delay
                     if processed_count > 0:
-                        await asyncio.sleep(1.2)  # Slightly more than 1 second
+                        await asyncio.sleep(1.2)
                     
-                    # Get signal and summary data
                     signal_data = generate_signal(symbol)
                     summary_data = fetch_summary(symbol)
                     
-                    # Format symbol report
                     change_emoji = "🔺" if summary_data['price_change'] > 0 else "🔻" if summary_data['price_change'] < 0 else "➡️"
                     signal_emoji = {"BUY": "🟢", "SELL": "🔴", "HOLD": "🟡"}.get(signal_data['signal'], "🟡")
                     
@@ -604,27 +705,122 @@ class TradingBot:
                     
                     processed_count += 1
                     
-                except Exception as e:
-                    logger.warning(f"Failed to get data for {symbol}: {e}")
+                except Exception:
                     report_text += f"❌ <b>{symbol}</b> — Data unavailable\n\n"
             
             report_text += "📈 <i>Have a profitable trading day!</i>\n"
             report_text += "📡 <i>Data from Twelve Data API</i>"
             
-            # Send report
-            success = await self.post_message(report_text)
-            if success:
-                logger.info("Morning report sent successfully")
-            else:
-                logger.error("Failed to send morning report")
+            await self.post_message(report_text)
             
-        except Exception as e:
-            logger.error(f"Error generating morning report: {e}")
+        except Exception:
+            pass
     
-    # Command handlers with enhanced error handling
+    def _get_custom_signal_keyboard(self, user_id: str) -> Optional[InlineKeyboardMarkup]:
+        """Generate keyboard for custom signal creation"""
+        if not hasattr(self.signal_checker, 'custom_handler'):
+            return None
+        
+        step = self.signal_checker.custom_handler.get_user_current_step(user_id)
+        
+        if step == 3:  # Direction selection
+            keyboard = [
+                [InlineKeyboardButton("🔼 UP", callback_data="direction_UP")],
+                [InlineKeyboardButton("🔽 DOWN", callback_data="direction_DOWN")]
+            ]
+            return InlineKeyboardMarkup(keyboard)
+        
+        elif step == 4:  # First Result selection
+            keyboard = [
+                [InlineKeyboardButton("🎉 WIN", callback_data="first_result_WIN")],
+                [InlineKeyboardButton("💔 LOSS", callback_data="first_result_LOSS")]
+            ]
+            return InlineKeyboardMarkup(keyboard)
+        
+        elif step == 5:  # MTG Direction selection
+            keyboard = [
+                [InlineKeyboardButton("🔼 MTG UP", callback_data="mtg_direction_MTGUP")],
+                [InlineKeyboardButton("🔽 MTG DOWN", callback_data="mtg_direction_MTGDOWN")]
+            ]
+            return InlineKeyboardMarkup(keyboard)
+        
+        elif step == 6:  # Final Result selection
+            keyboard = [
+                [InlineKeyboardButton("🎉 WIN", callback_data="final_result_WIN")],
+                [InlineKeyboardButton("💔 LOSS", callback_data="final_result_LOSS")]
+            ]
+            return InlineKeyboardMarkup(keyboard)
+        
+        elif step == 7:  # Final action
+            keyboard = [
+                [InlineKeyboardButton("📸 Upload Screenshot", callback_data="final_action_SCREENSHOT")],
+                [InlineKeyboardButton("🆕 New Signal", callback_data="final_action_NEW_SIGNAL")]
+            ]
+            return InlineKeyboardMarkup(keyboard)
+        
+        return None
     
+    async def handle_photo_upload(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle photo uploads for screenshot functionality - OPTIMIZED for instant posting"""
+        try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+            
+            user_id = str(user.id)
+            
+            if user_id not in self.user_states or self.user_states[user_id] != 'waiting_for_screenshot':
+                await update.message.reply_text(
+                    "📸 I received your photo, but you're not currently in screenshot upload mode. "
+                    "Use /custom_signal and select 'Upload Screenshot' when prompted."
+                )
+                return
+            
+            photo = update.message.photo[-1]
+            photo_file = await photo.get_file()
+            
+            self.user_states[user_id] = None
+            
+            caption = "📸 <b>Trading Signal Screenshot</b>\n\n"
+            caption += f"📊 Uploaded by admin\n"
+            caption += f"⏰ {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+            
+            # INSTANT confirmation to user - don't wait for channel upload
+            await update.message.reply_text(
+                "📤 Uploading screenshot to channel... ⚡",
+            )
+            
+            channel_id = self.config.get('CHANNEL_ID')
+            if channel_id:
+                # Send photo asynchronously 
+                success = await self.message_sender.send_photo_with_retry(
+                    chat_id=channel_id,
+                    photo=photo_file.file_id,
+                    caption=caption
+                )
+                
+                if success:
+                    await update.message.reply_text(
+                        "✅ Screenshot uploaded successfully to the channel! ⚡\n\n"
+                        "What would you like to do next?",
+                        reply_markup=InlineKeyboardMarkup([
+                            [InlineKeyboardButton("🆕 New Signal", callback_data="final_action_NEW_SIGNAL")]
+                        ])
+                    )
+                else:
+                    await update.message.reply_text("❌ Failed to upload screenshot to channel.")
+            else:
+                await update.message.reply_text("❌ Channel not configured.")
+                
+        except Exception:
+            user_id = str(update.effective_user.id)
+            if user_id in self.user_states:
+                self.user_states[user_id] = None
+            await update.message.reply_text("❌ Error processing your screenshot. Please try again.")
+
     async def handle_text_input(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Handle text input during manual signal process"""
+        """Handle text input during custom signal process"""
         try:
             user = update.effective_user
             if not self._is_admin(user.id):
@@ -633,37 +829,115 @@ class TradingBot:
             user_id = str(user.id)
             message_text = update.message.text.strip()
             
-            # Check for active manual signal process
-            if (hasattr(self.signal_checker, 'manual_handler') and 
-                hasattr(self.signal_checker.manual_handler, 'pending_signals') and
-                user_id in self.signal_checker.manual_handler.pending_signals):
+            if (hasattr(self.signal_checker, 'custom_handler') and 
+                self.signal_checker.custom_handler.is_user_in_process(user_id)):
                 
-                # Process input
-                response = self.signal_checker.handle_manual_input(user_id, message_text)
-                await update.message.reply_text(response, parse_mode='HTML')
+                response = self.signal_checker.custom_handler.process_input(user_id, message_text)
+                keyboard = self._get_custom_signal_keyboard(user_id)
                 
-                # If signal completed, also send to channel
-                if "MANUAL SIGNAL CREATED" in response:
-                    await self.post_message(response)
-                    
-        except Exception as e:
-            logger.error(f"Error handling text input: {e}")
+                await update.message.reply_text(
+                    response, 
+                    parse_mode='HTML',
+                    reply_markup=keyboard
+                )
+                
+        except Exception:
             await update.message.reply_text("❌ An error occurred processing your message.")
+
+    async def handle_callback_query(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle callback queries from inline keyboards"""
+        try:
+            query = update.callback_query
+            user_id = str(query.from_user.id)
+            callback_data = query.data
+            
+            if not self._is_admin(query.from_user.id):
+                await query.answer("❌ Unauthorized access.")
+                return
+            
+            await query.answer()
+            
+            if not (hasattr(self.signal_checker, 'custom_handler') and 
+                    self.signal_checker.custom_handler.is_user_in_process(user_id)):
+                await query.edit_message_text("❌ No active custom signal process. Use /custom_signal to start.")
+                return
+            
+            # Process callback data
+            if callback_data.startswith("direction_"):
+                direction = callback_data.replace("direction_", "")
+                response = self.signal_checker.custom_handler.process_input(user_id, callback_data=direction)
+                
+            elif callback_data.startswith("first_result_"):
+                result = callback_data.replace("first_result_", "")
+                response = self.signal_checker.custom_handler.process_input(user_id, callback_data=result)
+                
+            elif callback_data.startswith("mtg_direction_"):
+                mtg_direction = callback_data.replace("mtg_direction_", "")
+                response = self.signal_checker.custom_handler.process_input(user_id, callback_data=mtg_direction)
+                
+            elif callback_data.startswith("final_result_"):
+                final_result = callback_data.replace("final_result_", "")
+                response = self.signal_checker.custom_handler.process_input(user_id, callback_data=final_result)
+                
+            elif callback_data.startswith("final_action_"):
+                action = callback_data.replace("final_action_", "")
+                
+                if action == "SCREENSHOT":
+                    self.user_states[user_id] = 'waiting_for_screenshot'
+                    
+                    await query.edit_message_text(
+                        "📸 <b>Upload Screenshot</b>\n\n"
+                        "Please send your screenshot now. You can:\n"
+                        "• Take a photo with your camera\n"
+                        "• Choose from your gallery\n"
+                        "• Send any image file\n\n"
+                        "The screenshot will be posted to the trading channel with your signal information.",
+                        parse_mode='HTML'
+                    )
+                    return
+                    
+                else:
+                    response = self.signal_checker.custom_handler.process_input(user_id, callback_data=action)
+                
+            else:
+                await query.edit_message_text("❌ Unknown action. Please try again.")
+                return
+            
+            # Get keyboard for next step
+            keyboard = self._get_custom_signal_keyboard(user_id)
+            
+            # Update the message
+            await query.edit_message_text(
+                response,
+                parse_mode='HTML',
+                reply_markup=keyboard
+            )
+            
+        except Exception:
+            try:
+                await query.edit_message_text("❌ An error occurred processing your action. Please try /custom_signal to restart.")
+            except Exception:
+                try:
+                    await query.message.reply_text("❌ An error occurred. Please use /custom_signal to start over.")
+                except Exception:
+                    pass
+
+    # Command handlers
     
     async def start_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Enhanced start command with comprehensive information"""
+        """Enhanced start command"""
         welcome_text = """👋 <b>Welcome to TradePulse Bot!</b>
 Your AI-powered trading assistant for signals and market analysis.
 
 🚀 <b>Quick Start:</b>
 • <code>/help</code> - See all commands
-• <code>/manual</code> - Create trading signal
+• <code>/custom_signal</code> - Create trading signal
 • <code>/check AAPL</code> - Analyze a stock
 • <code>/addsymbol TSLA</code> - Add to watchlist
 
 💡 <b>Key Features:</b>
-✅ Manual signal creation with R/R ratios
-✅ Signal history tracking
+✅ Custom signal creation with step-by-step process
+✅ Signal history tracking with results
 ✅ Enhanced market analysis
 ✅ Automated morning reports
 ✅ Price alerts and notifications
@@ -674,561 +948,441 @@ Your AI-powered trading assistant for signals and market analysis.
 • Multi-source news aggregation
 • Company fundamentals and metrics
 
-<i>Ready to start trading smarter! 🎯</i>
-
-Use /help for complete command reference."""
+<i>Ready to start trading smarter! 🎯</i>"""
         
         await update.message.reply_text(welcome_text, parse_mode='HTML')
-    
+
     async def help_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Enhanced help command with categorized commands"""
-        help_text = """🤖 <b>TradePulse Bot - Command Reference</b>
+        """Show help with all available commands"""
+        help_text = """🤖 <b>TradePulse Bot Commands</b>
 
-<b>📊 Trading Signals:</b>
-• <code>/check SYMBOL</code> - Get trading signal analysis
-• <code>/manual</code> - Create custom trading signal
-• <code>/cancel</code> - Cancel manual signal process
-• <code>/history [limit]</code> - View recent manual signals
+📊 <b>Market Data (Posted to Channel):</b>
+• /check SYMBOL - Get trading signal
+• /price SYMBOL - Get current price
+• /summary SYMBOL - Get detailed summary  
+• /news SYMBOL - Get latest news
 
-<b>📈 Market Data:</b>
-• <code>/price SYMBOL</code> - Get current stock price
-• <code>/summary SYMBOL</code> - Detailed stock summary
-• <code>/news SYMBOL</code> - Latest news and updates
+🎯 <b>Custom Signals:</b>
+• /custom_signal - Create custom signal
+• /history [limit] - View signal history
+• /cancel - Cancel signal creation
 
-<b>⚙️ Watchlist Management:</b>
-• <code>/addsymbol SYMBOL</code> - Add stock to watchlist
-• <code>/removesymbol SYMBOL</code> - Remove from watchlist  
-• <code>/symbols</code> - View current watchlist
-• <code>/setalert SYMBOL %</code> - Set price change alert
+📋 <b>Watchlist Management:</b>
+• /addsymbol SYMBOL - Add to watchlist
+• /removesymbol SYMBOL - Remove from watchlist
+• /symbols - View watchlist
+• /setalert SYMBOL % - Set price alert
 
-<b>⏰ Reports & Automation:</b>
-• <code>/morningreport</code> - Generate daily report now
-• <code>/setmorningtime HH:MM</code> - Set report schedule
-• <code>/testtimer</code> - Toggle test mode (2-min reports)
-• <code>/timerstatus</code> - Check timer status
+⏰ <b>Reports & Automation:</b>
+• /morningreport - Send report now
+• /setmorningtime HH:MM - Set report time
+• /testtimer - Toggle test mode
+• /timerstatus - View timer status
 
-<b>📋 Manual Signal Workflow:</b>
-1. <code>/manual</code> → Start creation process
-2. Enter symbol (e.g., AAPL)
-3. Choose BUY/SELL direction
-4. Set timeframe (1H, 4H, 1D, 1W)
-5. Define risk percentage (1-10%)
+🔧 <b>Admin Commands:</b>
+• /warmup_stickers - Warm up stickers for instant sending
 
-Bot calculates stop-loss and target automatically with 1:2 R/R ratio.
+❓ Use /help to see this message again."""
 
-<b>💡 Pro Tips:</b>
-• All signals are saved for tracking
-• Morning reports sent to configured channel
-• Price alerts trigger on threshold breach
-• Use test mode to verify bot functionality
-
-<i>📡 Powered by Twelve Data API</i>"""
-        
         await update.message.reply_text(help_text, parse_mode='HTML')
-    
-    async def manual_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Start manual signal creation with validation"""
+
+    async def custom_signal_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /custom_signal command"""
         try:
             user = update.effective_user
             if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
                 return
             
             user_id = str(user.id)
-            response = self.signal_checker.handle_manual_command(user_id)
+            
+            if (hasattr(self.signal_checker, 'custom_handler') and 
+                self.signal_checker.custom_handler.is_user_in_process(user_id)):
+                await update.message.reply_text(
+                    "⚠️ You already have an active custom signal process. "
+                    "Use /cancel to cancel it first, or complete the current one."
+                )
+                return
+            
+            response = self.signal_checker.custom_handler.start_custom_signal(user_id)
             await update.message.reply_text(response, parse_mode='HTML')
             
-        except Exception as e:
-            logger.error(f"Error in manual command: {e}")
-            await update.message.reply_text('❌ Error starting manual signal process.')
-    
-    async def cancel_manual_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Cancel manual signal creation"""
+        except Exception:
+            await update.message.reply_text("❌ Error starting custom signal creation. Please try again.")
+
+    async def cancel_custom_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Handle /cancel command"""
         try:
             user = update.effective_user
             if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
                 return
             
             user_id = str(user.id)
-            response = self.signal_checker.handle_cancel_manual(user_id)
-            await update.message.reply_text(response)
+            response = self.signal_checker.custom_handler.cancel_signal(user_id)
+            await update.message.reply_text(response, parse_mode='HTML')
             
-        except Exception as e:
-            logger.error(f"Error in cancel command: {e}")
-            await update.message.reply_text('❌ Error cancelling signal process.')
-    
+        except Exception:
+            await update.message.reply_text("❌ Error cancelling custom signal.")
+
     async def history_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Show manual signals history with pagination"""
+        """Handle /history command"""
         try:
             user = update.effective_user
             if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
                 return
             
-            # Parse limit argument
             limit = 10
             if context.args:
                 try:
-                    limit = min(max(int(context.args[0]), 1), 50)  # Between 1 and 50
+                    limit = int(context.args[0])
+                    limit = max(1, min(limit, 50))
                 except ValueError:
-                    await update.message.reply_text('❌ Invalid limit. Use a number between 1-50.')
+                    await update.message.reply_text("❌ Invalid limit. Please use a number between 1 and 50.")
                     return
             
-            response = self.signal_checker.get_manual_signals_history(limit)
+            response = self.signal_checker.custom_handler.get_signal_history(limit)
             await update.message.reply_text(response, parse_mode='HTML')
             
-        except Exception as e:
-            logger.error(f"Error in history command: {e}")
-            await update.message.reply_text('❌ Error retrieving signal history.')
-    
-    async def price_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Get current stock price with enhanced formatting"""
-        try:
-            if not context.args:
-                await update.message.reply_text('Usage: /price SYMBOL\nExample: /price AAPL')
-                return
-            
-            symbol = context.args[0].upper().strip()
-            if not symbol.isalpha() or len(symbol) > 10:
-                await update.message.reply_text('❌ Invalid symbol format. Use stock symbols like AAPL, GOOGL.')
-                return
-            
-            loading_msg = await update.message.reply_text(f"💰 Fetching current price for {symbol}...")
-            
-            # Get current price
-            current_price = fetch_price(symbol)
-            
-            # Get company info for better display
-            try:
-                overview = fetch_company_overview(symbol)
-                company_name = overview.get('name', symbol)
-            except Exception:
-                company_name = symbol
-            
-            text = (f"💰 <b>{symbol}</b>\n"
-                   f"<i>{company_name}</i>\n\n"
-                   f"<b>${current_price:.2f}</b>\n\n"
-                   f"📡 <i>Data from Twelve Data API</i>")
-            
-            # Delete loading message and send result
-            await loading_msg.delete()
-            await update.message.reply_text(text, parse_mode="HTML")
-            
-            # Also send to channel
-            await self.post_message(text)
-            
-        except Exception as e:
-            error_text = f'❌ Failed to fetch price for {symbol}: {str(e)}'
-            logger.error(f"Price command error: {e}")
-            try:
-                await loading_msg.edit_text(error_text)
-            except:
-                await update.message.reply_text(error_text)
-    
-    async def check_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Get trading signal analysis with comprehensive error handling"""
+        except Exception:
+            await update.message.reply_text("❌ Error retrieving signal history.")
+
+    async def warmup_stickers_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Manually trigger sticker warmup"""
         try:
             user = update.effective_user
             if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
                 return
             
-            if not context.args:
-                await update.message.reply_text('Usage: /check SYMBOL\nExample: /check AAPL')
-                return
+            await update.message.reply_text("🔄 Warming up stickers for instant sending...")
+            await self.message_sender.warm_up_stickers()
+            await update.message.reply_text("✅ Sticker warmup complete! All stickers ready for instant delivery.")
             
-            symbol = context.args[0].upper().strip()
-            if not symbol.isalpha() or len(symbol) > 10:
-                await update.message.reply_text('❌ Invalid symbol format.')
-                return
-            
-            loading_msg = await update.message.reply_text(f"🔍 Analyzing {symbol}...")
-            
-            # Generate signal
-            signal_result = generate_signal(symbol)
-            
-            # Format message with enhanced styling
-            signal_emoji = {"BUY": "🟢", "SELL": "🔴", "HOLD": "🟡"}.get(signal_result['signal'], "🟡")
-            
-            text = (f"{signal_emoji} <b>{signal_result['symbol']}</b> — <b>{signal_result['signal']}</b>\n"
-                   f"💰 Price: ${signal_result['price']:.2f}\n"
-                   f"📈 Short SMA(5): ${signal_result['short_sma']:.2f}\n"
-                   f"📊 Long SMA(20): ${signal_result['long_sma']:.2f}\n\n"
-                   f"📡 <i>Data from Twelve Data API</i>")
-            
-            # Delete loading message and reply
-            await loading_msg.delete()
-            await update.message.reply_text(text, parse_mode="HTML")
-            
-            # Send to channel
-            await self.post_message(text)
-            
-        except Exception as e:
-            error_text = f"❌ Error analyzing {symbol}: {str(e)}"
-            logger.error(f"Check command error: {e}")
-            try:
-                await loading_msg.edit_text(error_text)
-            except:
-                await update.message.reply_text(error_text)
-    
-    async def summary_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Get comprehensive stock summary"""
-        try:
-            if not context.args:
-                await update.message.reply_text('Usage: /summary SYMBOL\nExample: /summary AAPL')
-                return
-            
-            symbol = context.args[0].upper().strip()
-            if not symbol.isalpha() or len(symbol) > 10:
-                await update.message.reply_text('❌ Invalid symbol format.')
-                return
-            
-            loading_msg = await update.message.reply_text(f"📊 Generating summary for {symbol}...")
-            
-            # Get summary data
-            summary_data = fetch_summary(symbol)
-            
-            # Format comprehensive summary
-            change_emoji = "🔺" if summary_data['price_change'] > 0 else "🔻" if summary_data['price_change'] < 0 else "➡️"
-            
-            text = f"""📊 <b>Daily Summary for {symbol}</b>
-<b>{summary_data['company_name']}</b>
+        except Exception:
+            await update.message.reply_text("❌ Error warming up stickers.")
 
-💰 <b>Price:</b> ${summary_data['current_price']:.2f} {change_emoji}
-📈 <b>Change:</b> ${summary_data['price_change']:+.2f} ({summary_data['price_change_pct']:+.2f}%)
-
-📊 <b>Day Range:</b> ${summary_data['day_low']:.2f} - ${summary_data['day_high']:.2f}
-📦 <b>Volume:</b> {summary_data['volume']:,} (Avg: {summary_data['avg_volume']:,})
-
-🏢 <b>Market Cap:</b> {summary_data['market_cap']}
-📋 <b>P/E Ratio:</b> {summary_data['pe_ratio']}
-
-📡 <i>Data from Twelve Data API</i>"""
-            
-            # Delete loading message and send result
-            await loading_msg.delete()
-            await update.message.reply_text(text, parse_mode="HTML")
-            
-            # Send to channel
-            await self.post_message(text)
-            
-        except Exception as e:
-            error_text = f'❌ Failed to fetch summary for {symbol}: {str(e)}'
-            logger.error(f"Summary command error: {e}")
-            try:
-                await loading_msg.edit_text(error_text)
-            except:
-                await update.message.reply_text(error_text)
-    
-    async def news_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Get latest news with multiple source fallback"""
-        try:
-            if not context.args:
-                await update.message.reply_text('Usage: /news SYMBOL\nExample: /news AAPL')
-                return
-            
-            symbol = context.args[0].upper().strip()
-            if not symbol.isalpha() or len(symbol) > 10:
-                await update.message.reply_text('❌ Invalid symbol format.')
-                return
-            
-            loading_msg = await update.message.reply_text(f"🔍 Fetching latest news for {symbol}...")
-            
-            # Get news items
-            news_items = fetch_news(symbol)
-            
-            if not news_items:
-                text = f"📰 <b>No recent news found for {symbol}</b>\n\nTry checking financial news websites directly or ensure the symbol is correct."
-            else:
-                # Get company name
-                try:
-                    overview = fetch_company_overview(symbol)
-                    company_name = overview.get('name', symbol)
-                except:
-                    company_name = symbol
-                
-                text = f"📰 <b>Latest news for {symbol}</b>\n<i>{company_name}</i>\n\n"
-                
-                # Add news items with source indicators
-                for i, item in enumerate(news_items[:4], 1):
-                    source_emoji = {
-                        'twelve_data': '🔥',
-                        'yahoo_rss': '📡',
-                        'fallback_yahoo': '💼',
-                        'fallback_quote': '📊',
-                        'fallback_marketwatch': '📈'
-                    }.get(item.get('source', ''), '📰')
-                    
-                    text += f"{source_emoji} <b>{item['title']}</b>\n{item['link']}\n\n"
-                
-                # Add source attribution
-                text += "📡 <i>News aggregated from multiple sources</i>"
-            
-            # Delete loading message and send result
-            await loading_msg.delete()
-            await update.message.reply_text(text, parse_mode="HTML", disable_web_page_preview=True)
-            
-            # Send to channel
-            await self.post_message(text, disable_web_page_preview=True)
-            
-        except Exception as e:
-            error_text = f'❌ Failed to fetch news for {symbol}: {str(e)}'
-            logger.error(f"News command error: {e}")
-            try:
-                await loading_msg.edit_text(error_text)
-            except:
-                await update.message.reply_text(error_text)
-    
     async def addsymbol_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Add symbol to watchlist with validation"""
+        """Add symbol to watchlist"""
         try:
-            user = update.effective_user
-            if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
-                return
-            
             if not context.args:
-                await update.message.reply_text('Usage: /addsymbol SYMBOL\nExample: /addsymbol AAPL')
+                await update.message.reply_text("Usage: /addsymbol SYMBOL\nExample: /addsymbol AAPL")
                 return
             
             symbol = context.args[0].upper().strip()
-            if not symbol.isalpha() or len(symbol) > 10:
-                await update.message.reply_text('❌ Invalid symbol format.')
-                return
-            
-            # Load current symbols
             symbols = self.file_manager.load_json_file('symbols.json', [])
             
             if symbol in symbols:
-                await update.message.reply_text(f'📊 {symbol} is already in the watchlist.')
+                await update.message.reply_text(f"📊 {symbol} is already in the watchlist.")
                 return
             
-            # Validate symbol by fetching price
-            validation_msg = await update.message.reply_text(f'🔍 Validating {symbol}...')
-            
-            try:
-                current_price = fetch_price(symbol)
-                await validation_msg.edit_text(f'✅ {symbol} is valid (${current_price:.2f})')
-            except Exception as e:
-                await validation_msg.edit_text(f'❌ Invalid symbol {symbol}: {str(e)}')
-                return
-            
-            # Add to symbols list
             symbols.append(symbol)
             
-            # Save with atomic write
             if self.file_manager.save_json_file('symbols.json', symbols):
-                await update.message.reply_text(f'✅ Added {symbol} to watchlist ({len(symbols)} symbols total).')
-                logger.info(f"Added {symbol} to watchlist")
+                await update.message.reply_text(f"✅ Added {symbol} to watchlist.")
             else:
-                await update.message.reply_text('❌ Failed to save symbol to watchlist.')
-            
-        except Exception as e:
-            logger.error(f"Add symbol command error: {e}")
-            await update.message.reply_text('❌ Error adding symbol to watchlist.')
-    
+                await update.message.reply_text(f"❌ Failed to add {symbol} to watchlist.")
+        
+        except Exception:
+            await update.message.reply_text("❌ Error adding symbol to watchlist.")
+
     async def removesymbol_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Remove symbol from watchlist"""
         try:
-            user = update.effective_user
-            if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
-                return
-            
             if not context.args:
-                await update.message.reply_text('Usage: /removesymbol SYMBOL\nExample: /removesymbol AAPL')
+                await update.message.reply_text("Usage: /removesymbol SYMBOL\nExample: /removesymbol AAPL")
                 return
             
             symbol = context.args[0].upper().strip()
-            
-            # Load current symbols
             symbols = self.file_manager.load_json_file('symbols.json', [])
             
             if symbol not in symbols:
-                await update.message.reply_text(f'📊 {symbol} is not in the watchlist.')
+                await update.message.reply_text(f"📊 {symbol} is not in the watchlist.")
                 return
             
-            # Remove symbol
             symbols.remove(symbol)
             
-            # Save updated list
             if self.file_manager.save_json_file('symbols.json', symbols):
-                await update.message.reply_text(f'✅ Removed {symbol} from watchlist ({len(symbols)} symbols remaining).')
-                logger.info(f"Removed {symbol} from watchlist")
+                await update.message.reply_text(f"✅ Removed {symbol} from watchlist.")
             else:
-                await update.message.reply_text('❌ Failed to update watchlist.')
-            
-        except Exception as e:
-            logger.error(f"Remove symbol command error: {e}")
-            await update.message.reply_text('❌ Error removing symbol from watchlist.')
-    
+                await update.message.reply_text(f"❌ Failed to remove {symbol} from watchlist.")
+        
+        except Exception:
+            await update.message.reply_text("❌ Error removing symbol from watchlist.")
+
     async def listsymbols_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """List all symbols in watchlist"""
         try:
             symbols = self.file_manager.load_json_file('symbols.json', [])
             
             if not symbols:
-                await update.message.reply_text('📊 Watchlist is empty.\nUse /addsymbol to add stocks.')
+                await update.message.reply_text("📊 No symbols in watchlist. Use /addsymbol to add some.")
                 return
             
-            # Create formatted list
-            text = f"📊 <b>Watchlist</b> ({len(symbols)} symbols):\n\n"
-            
-            # Group symbols in rows of 5 for better display
-            for i in range(0, len(symbols), 5):
-                row_symbols = symbols[i:i+5]
-                text += "• " + " • ".join(row_symbols) + "\n"
-            
-            text += f"\n💡 Use /check SYMBOL to analyze any stock\n📈 Use /addsymbol to add more symbols"
-            
-            await update.message.reply_text(text, parse_mode='HTML')
-            
-        except Exception as e:
-            logger.error(f"List symbols command error: {e}")
-            await update.message.reply_text('❌ Error retrieving watchlist.')
-    
+            symbol_list = ", ".join(symbols)
+            response = f"📊 <b>Current Watchlist ({len(symbols)} symbols):</b>\n\n{symbol_list}"
+            await update.message.reply_text(response, parse_mode='HTML')
+        
+        except Exception:
+            await update.message.reply_text("❌ Error retrieving symbol list.")
+
     async def setalert_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Set price change alert with validation"""
+        """Set price alert for symbol"""
         try:
-            user = update.effective_user
-            if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
+            if len(context.args) != 2:
+                await update.message.reply_text(
+                    "Usage: /setalert SYMBOL PERCENTAGE\n"
+                    "Example: /setalert AAPL 5.0\n"
+                    "(Alert when AAPL moves 5% or more)"
+                )
                 return
             
-            if len(context.args) < 2:
-                await update.message.reply_text('Usage: /setalert SYMBOL PERCENTAGE\nExample: /setalert AAPL 2.5')
+            symbol = context.args[0].upper().strip()
+            try:
+                threshold = float(context.args[1])
+            except ValueError:
+                await update.message.reply_text("❌ Invalid percentage. Please use a number.")
+                return
+            
+            if not (0.1 <= threshold <= 50):
+                await update.message.reply_text("❌ Percentage must be between 0.1 and 50.")
+                return
+            
+            alerts = self.file_manager.load_json_file('alerts.json', {})
+            alerts[symbol] = threshold
+            
+            if self.file_manager.save_json_file('alerts.json', alerts):
+                await update.message.reply_text(f"🚨 Alert set for {symbol} at {threshold}% movement.")
+            else:
+                await update.message.reply_text(f"❌ Failed to set alert for {symbol}.")
+        
+        except Exception:
+            await update.message.reply_text("❌ Error setting price alert.")
+
+    async def news_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Get news for symbol and post to channel"""
+        try:
+            if not context.args:
+                await update.message.reply_text("Usage: /news SYMBOL\nExample: /news AAPL")
                 return
             
             symbol = context.args[0].upper().strip()
             
-            try:
-                percentage = float(context.args[1])
-                if percentage <= 0 or percentage > 50:
-                    await update.message.reply_text('❌ Percentage must be between 0.1 and 50.')
-                    return
-            except ValueError:
-                await update.message.reply_text('❌ Invalid percentage value.')
+            # Notify user that news is being fetched
+            await update.message.reply_text(f"🔄 Fetching news for {symbol}...")
+            
+            news_items = fetch_news(symbol)
+            
+            if not news_items:
+                await update.message.reply_text(f"📰 No recent news found for {symbol}")
                 return
             
-            # Load current alerts
-            alerts = self.file_manager.load_json_file('alerts.json', {})
+            response = f"📰 <b>Latest News for {symbol}</b>\n"
+            response += f"👤 Requested by: {update.effective_user.first_name}\n\n"
             
-            # Set alert
-            alerts[symbol] = percentage
+            for i, item in enumerate(news_items[:5], 1):
+                title = item.get('title', 'No title')[:100]
+                link = item.get('link', '')
+                source = item.get('source', 'unknown')
+                
+                response += f"{i}. <a href='{link}'>{title}</a>\n"
+                response += f"   <i>Source: {source}</i>\n\n"
             
-            # Save alerts
-            if self.file_manager.save_json_file('alerts.json', alerts):
-                await update.message.reply_text(f'🚨 Set {percentage}% change alert for {symbol}.')
-                logger.info(f"Set alert for {symbol} at {percentage}%")
+            # Post to channel
+            success = await self.post_message(response)
+            
+            if success:
+                await update.message.reply_text(f"✅ News for {symbol} posted to channel!")
             else:
-                await update.message.reply_text('❌ Failed to save alert.')
-            
+                # Fallback: send to user if channel post fails
+                await update.message.reply_text(response, parse_mode='HTML', disable_web_page_preview=True)
+                await update.message.reply_text("⚠️ Could not post to channel, sent here instead.")
+        
         except Exception as e:
-            logger.error(f"Set alert command error: {e}")
-            await update.message.reply_text('❌ Error setting price alert.')
-    
-    # Timer-related commands
-    
+            error_msg = f"❌ Error fetching news for {symbol if 'symbol' in locals() else 'symbol'}: {str(e)}"
+            await update.message.reply_text(error_msg)
+
+    async def summary_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Get summary for symbol and post to channel"""
+        try:
+            if not context.args:
+                await update.message.reply_text("Usage: /summary SYMBOL\nExample: /summary AAPL")
+                return
+            
+            symbol = context.args[0].upper().strip()
+            
+            # Notify user that summary is being fetched
+            await update.message.reply_text(f"🔄 Fetching summary for {symbol}...")
+            
+            summary = fetch_summary(symbol)
+            
+            change_emoji = "🔺" if summary['price_change'] > 0 else "🔻" if summary['price_change'] < 0 else "➡️"
+            
+            response = f"📊 <b>{summary['company_name']} ({symbol})</b>\n"
+            response += f"👤 Requested by: {update.effective_user.first_name}\n\n"
+            response += f"💰 Current Price: ${summary['current_price']:.2f}\n"
+            response += f"{change_emoji} Change: ${summary['price_change']:+.2f} ({summary['price_change_pct']:+.2f}%)\n"
+            response += f"📈 Day High: ${summary['day_high']:.2f}\n"
+            response += f"📉 Day Low: ${summary['day_low']:.2f}\n"
+            response += f"📊 Volume: {summary['volume']:,}\n"
+            response += f"📊 Avg Volume: {summary['avg_volume']:,}\n"
+            response += f"🏢 Market Cap: {summary['market_cap']}\n"
+            response += f"📊 P/E Ratio: {summary['pe_ratio']}"
+            
+            # Post to channel
+            success = await self.post_message(response)
+            
+            if success:
+                await update.message.reply_text(f"✅ Summary for {symbol} posted to channel!")
+            else:
+                # Fallback: send to user if channel post fails
+                await update.message.reply_text(response, parse_mode='HTML')
+                await update.message.reply_text("⚠️ Could not post to channel, sent here instead.")
+        
+        except Exception as e:
+            error_msg = f"❌ Error fetching summary for {symbol if 'symbol' in locals() else 'symbol'}: {str(e)}"
+            await update.message.reply_text(error_msg)
+
+    async def check_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Get trading signal for symbol and post to channel"""
+        try:
+            if not context.args:
+                await update.message.reply_text("Usage: /check SYMBOL\nExample: /check AAPL")
+                return
+            
+            symbol = context.args[0].upper().strip()
+            
+            # Notify user that signal is being generated
+            await update.message.reply_text(f"🔄 Generating signal for {symbol}...")
+            
+            signal_data = generate_signal(symbol)
+            
+            signal_emoji = {"BUY": "🟢", "SELL": "🔴", "HOLD": "🟡"}.get(signal_data['signal'], "🟡")
+            
+            response = f"{signal_emoji} <b>{symbol} - {signal_data['signal']}</b>\n\n"
+            response += f"💰 Current Price: ${signal_data['price']:.2f}\n"
+            response += f"📊 Short SMA(5): ${signal_data['short_sma']:.2f}\n"
+            response += f"📊 Long SMA(20): ${signal_data['long_sma']:.2f}\n"
+            response += f"⏰ Generated: {datetime.now().strftime('%H:%M:%S')}\n"
+            response += f"👤 Requested by: {update.effective_user.first_name}"
+            
+            # Post to channel
+            success = await self.post_message(response)
+            
+            if success:
+                await update.message.reply_text(f"✅ Signal for {symbol} posted to channel!")
+            else:
+                # Fallback: send to user if channel post fails
+                await update.message.reply_text(response, parse_mode='HTML')
+                await update.message.reply_text("⚠️ Could not post to channel, sent here instead.")
+        
+        except Exception as e:
+            error_msg = f"❌ Error generating signal for {symbol if 'symbol' in locals() else 'symbol'}: {str(e)}"
+            await update.message.reply_text(error_msg)
+
+    async def price_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Get current price for symbol and post to channel"""
+        try:
+            if not context.args:
+                await update.message.reply_text("Usage: /price SYMBOL\nExample: /price AAPL")
+                return
+            
+            symbol = context.args[0].upper().strip()
+            
+            # Notify user that price is being fetched
+            await update.message.reply_text(f"🔄 Fetching price for {symbol}...")
+            
+            price = fetch_price(symbol)
+            
+            response = f"💰 <b>{symbol}</b>\n"
+            response += f"Current Price: ${price:.2f}\n"
+            response += f"👤 Requested by: {update.effective_user.first_name}"
+            
+            # Post to channel
+            success = await self.post_message(response)
+            
+            if success:
+                await update.message.reply_text(f"✅ Price for {symbol} posted to channel!")
+            else:
+                # Fallback: send to user if channel post fails
+                await update.message.reply_text(response, parse_mode='HTML')
+                await update.message.reply_text("⚠️ Could not post to channel, sent here instead.")
+        
+        except Exception as e:
+            error_msg = f"❌ Error fetching price for {symbol if 'symbol' in locals() else 'symbol'}: {str(e)}"
+            await update.message.reply_text(error_msg)
+
     async def morningreport_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Manually trigger morning report"""
+        """Send morning report immediately"""
         try:
             user = update.effective_user
             if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
                 return
             
-            await update.message.reply_text('📊 Generating morning report...')
+            await update.message.reply_text("📊 Generating morning report...")
             await self.send_morning_report()
-            await update.message.reply_text('✅ Morning report sent to channel!')
+            await update.message.reply_text("✅ Morning report sent!")
             
-        except Exception as e:
-            logger.error(f"Morning report command error: {e}")
-            await update.message.reply_text('❌ Error generating morning report.')
-    
+        except Exception:
+            await update.message.reply_text("❌ Error generating morning report.")
+
     async def setmorningtime_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Set morning report time"""
         try:
             user = update.effective_user
             if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
                 return
             
             if not context.args:
-                current_time = self.timer_manager.morning_time
-                await update.message.reply_text(f'⏰ Current morning time: {current_time}\n\nUsage: /setmorningtime HH:MM\nExample: /setmorningtime 08:30')
+                await update.message.reply_text("Usage: /setmorningtime HH:MM\nExample: /setmorningtime 09:30")
                 return
             
-            new_time = context.args[0].strip()
+            time_str = context.args[0].strip()
             
-            if self.timer_manager.set_morning_time(new_time):
-                await update.message.reply_text(f'✅ Morning report time set to {new_time}')
+            if self.timer_manager.set_morning_time(time_str):
+                await update.message.reply_text(f"✅ Morning report time set to {time_str}")
             else:
-                await update.message.reply_text('❌ Invalid time format. Use HH:MM (e.g., 08:30)')
+                await update.message.reply_text("❌ Invalid time format. Use HH:MM (24-hour format)")
             
-        except Exception as e:
-            logger.error(f"Set morning time command error: {e}")
-            await update.message.reply_text('❌ Error setting morning time.')
-    
+        except Exception:
+            await update.message.reply_text("❌ Error setting morning time.")
+
     async def testtimer_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Toggle test mode for timer"""
         try:
             user = update.effective_user
             if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
                 return
             
             test_mode = self.timer_manager.toggle_test_mode()
+            mode_text = "enabled (reports every 2 minutes)" if test_mode else "disabled"
+            await update.message.reply_text(f"🔧 Test mode {mode_text}")
             
-            if test_mode:
-                await update.message.reply_text('🧪 <b>TEST MODE ENABLED</b>\n\nMorning reports will now be sent every 2 minutes.\nUse /testtimer again to disable.', parse_mode='HTML')
-            else:
-                await update.message.reply_text('✅ <b>TEST MODE DISABLED</b>\n\nTimer back to normal schedule.', parse_mode='HTML')
-            
-        except Exception as e:
-            logger.error(f"Test timer command error: {e}")
-            await update.message.reply_text('❌ Error toggling test mode.')
-    
+        except Exception:
+            await update.message.reply_text("❌ Error toggling test mode.")
+
     async def timerstatus_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Check comprehensive timer status"""
+        """Get timer status"""
         try:
             user = update.effective_user
             if not self._is_admin(user.id):
-                await update.message.reply_text('❌ Unauthorized access.')
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
                 return
             
             status = self.timer_manager.get_status()
-            symbols_count = len(self.file_manager.load_json_file('symbols.json', []))
-            alerts_count = len(self.file_manager.load_json_file('alerts.json', {}))
             
-            status_text = f"""⏰ <b>Bot Status Report</b>
-
-🔄 <b>Timer Status:</b>
-• Running: {'✅ Yes' if status['running'] else '❌ No'}
-• Test Mode: {'✅ Enabled (2-min reports)' if status['test_mode'] else '❌ Disabled'}
-• Thread Active: {'✅ Yes' if status['thread_alive'] else '❌ No'}
-
-📅 <b>Schedule:</b>
-• Morning Time: {status['morning_time']}
-• Timezone Offset: +{status['timezone_offset']} hours
-
-📊 <b>Watchlist:</b>
-• Symbols: {symbols_count}
-• Price Alerts: {alerts_count}
-
-💬 <b>Channel:</b>
-• Target: {self.config.get('CHANNEL_ID', 'Not configured')}
-
-🔌 <b>API Status:</b>
-• Data Source: Twelve Data API
-• Manual Signals: {'✅ Active' if hasattr(self.signal_checker, 'manual_handler') else '❌ Inactive'}
-
-🤖 <b>Bot Health:</b>
-• Admin Users: {len(self.config.get('ADMIN_IDS', []))}
-• Event Loop: {'✅ Active' if self.main_loop and not self.main_loop.is_closed() else '❌ Inactive'}"""
-
-            await update.message.reply_text(status_text, parse_mode='HTML')
+            response = f"⏰ <b>Timer Status</b>\n\n"
+            response += f"Running: {'✅' if status['running'] else '❌'}\n"
+            response += f"Test Mode: {'✅' if status['test_mode'] else '❌'}\n"
+            response += f"Morning Time: {status['morning_time']}\n"
+            response += f"Timezone Offset: UTC{status['timezone_offset']:+d}\n"
+            response += f"Thread Alive: {'✅' if status['thread_alive'] else '❌'}"
             
-        except Exception as e:
-            logger.error(f"Timer status command error: {e}")
-            await update.message.reply_text('❌ Error retrieving status information.')
+            await update.message.reply_text(response, parse_mode='HTML')
+            
+        except Exception:
+            await update.message.reply_text("❌ Error getting timer status.")

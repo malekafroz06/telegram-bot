@@ -6,7 +6,7 @@ import sys
 import time
 from pathlib import Path
 from datetime import datetime
-import re  # <-- Added for EmojiFilter
+import re  # For EmojiFilter
 
 # Import bot module (will be provided by user)
 try:
@@ -16,11 +16,12 @@ except ImportError:
     sys.exit(1)
 
 # -------------------------------
-# Emoji Filter (for Windows)
+# Emoji Filter (for Windows compatibility)
 # -------------------------------
 class EmojiFilter(logging.Filter):
     """Filter to remove emojis from log records (for Windows console compatibility)."""
     def filter(self, record):
+        # Remove emojis and other non-ASCII characters
         record.msg = re.sub(r'[^\x00-\x7F]+', '', str(record.msg))
         return True
 
@@ -36,26 +37,37 @@ def setup_logging():
     
     # Setup handlers with UTF-8 encoding
     file_handler = logging.FileHandler(logs_dir / 'tradepulse.log', encoding='utf-8')
+    file_handler.setLevel(logging.INFO)
+    
     error_handler = logging.FileHandler(logs_dir / 'tradepulse_error.log', encoding='utf-8')
     error_handler.setLevel(logging.ERROR)
     
     # Console handler with UTF-8 for Windows compatibility
     console_handler = logging.StreamHandler(sys.stdout)
+    
+    # Handle Windows console encoding issues
     try:
         # Try to set UTF-8 encoding for console on Windows
         if hasattr(sys.stdout, 'reconfigure'):
             sys.stdout.reconfigure(encoding='utf-8')
-        console_handler.stream.encoding = 'utf-8'
+        elif hasattr(console_handler.stream, 'encoding'):
+            console_handler.stream.encoding = 'utf-8'
     except (AttributeError, OSError):
         # Fallback: strip emojis for Windows console compatibility
         console_handler.addFilter(EmojiFilter())
+        print("Note: Console emoji filtering enabled for compatibility")
+    
+    # Set formatters
+    formatter = logging.Formatter(log_format)
+    file_handler.setFormatter(formatter)
+    error_handler.setFormatter(formatter)
+    console_handler.setFormatter(formatter)
     
     handlers = [file_handler, error_handler, console_handler]
     
     # Configure root logger
     logging.basicConfig(
         level=logging.INFO,
-        format=log_format,
         handlers=handlers,
         force=True
     )
@@ -63,12 +75,9 @@ def setup_logging():
     # Reduce noise from external libraries
     logging.getLogger('urllib3').setLevel(logging.WARNING)
     logging.getLogger('requests').setLevel(logging.WARNING)
+    logging.getLogger('telegram').setLevel(logging.INFO)
     
     return logging.getLogger(__name__)
-
-# -------------------------------
-# Rest of your code (unchanged)
-# -------------------------------
 
 class ConfigurationManager:
     """Handles configuration loading and validation"""
@@ -95,6 +104,7 @@ class ConfigurationManager:
         self.logger = logging.getLogger(self.__class__.__name__)
     
     def load_config(self) -> dict:
+        """Load and validate configuration"""
         if not self.config_file.exists():
             self.logger.error(f"Configuration file {self.config_file} not found")
             self._create_sample_config()
@@ -111,12 +121,14 @@ class ConfigurationManager:
             self.logger.error(f"Error reading configuration file: {e}")
             raise SystemExit(1)
         
+        # Check for required keys
         missing_keys = [key for key in self.REQUIRED_KEYS if not config.get(key)]
         if missing_keys:
             self.logger.error(f"Missing required configuration keys: {', '.join(missing_keys)}")
             self._display_config_instructions()
             raise SystemExit(1)
         
+        # Check for placeholder values
         placeholder_keys = []
         for key in self.REQUIRED_KEYS:
             value = config.get(key, '')
@@ -128,22 +140,28 @@ class ConfigurationManager:
             self._display_config_instructions()
             raise SystemExit(1)
         
+        # Set default values
         for key, default_value in self.DEFAULT_VALUES.items():
             config.setdefault(key, default_value)
         
+        # Validate configuration
         self._validate_config(config)
         self.logger.info("Configuration loaded and validated successfully")
         return config
     
     def _validate_config(self, config: dict):
+        """Validate configuration values"""
+        # Validate Telegram token format
         token = config.get('TELEGRAM_TOKEN', '')
         if not token or ':' not in token or len(token) < 20:
             raise ValueError("Invalid TELEGRAM_TOKEN format")
         
+        # Validate channel ID
         channel_id = config.get('CHANNEL_ID', '')
         if not str(channel_id).startswith(('-', '@')) and not str(channel_id).isdigit():
             self.logger.warning("CHANNEL_ID should start with '-' for groups or '@' for channels")
         
+        # Validate numeric fields
         numeric_fields = {
             'CHECK_INTERVAL_SECONDS': (60, 3600),
             'SHORT_WINDOW': (1, 50),
@@ -164,9 +182,11 @@ class ConfigurationManager:
                 except (ValueError, TypeError) as e:
                     raise ValueError(f"Invalid {field}: {e}")
         
+        # Validate SMA windows
         if config.get('SHORT_WINDOW', 0) >= config.get('LONG_WINDOW', 0):
             raise ValueError("SHORT_WINDOW must be less than LONG_WINDOW")
         
+        # Validate admin IDs
         admin_ids = config.get('ADMIN_IDS', [])
         if not isinstance(admin_ids, list):
             raise ValueError("ADMIN_IDS must be a list")
@@ -176,6 +196,7 @@ class ConfigurationManager:
                 raise ValueError(f"Invalid admin ID: {admin_id}")
     
     def _create_sample_config(self):
+        """Create sample configuration file"""
         sample_config = {
             "TWELVE_DATA_API_KEY": "YOUR_TWELVE_DATA_API_KEY_HERE",
             "TELEGRAM_TOKEN": "YOUR_TELEGRAM_BOT_TOKEN_HERE", 
@@ -199,6 +220,7 @@ class ConfigurationManager:
             self.logger.error(f"Failed to create sample configuration: {e}")
     
     def _display_config_instructions(self):
+        """Display configuration setup instructions"""
         print("\n" + "="*60)
         print("📋 CONFIGURATION SETUP REQUIRED")
         print("="*60)
@@ -251,7 +273,7 @@ class DataDirectoryManager:
             # Create required files
             self._create_symbols_file()
             self._create_alerts_file()
-            self._create_manual_signals_file()
+            self._create_custom_signals_file()
             
         except Exception as e:
             self.logger.error(f"Failed to setup data directory: {e}")
@@ -280,16 +302,16 @@ class DataDirectoryManager:
             except Exception as e:
                 self.logger.error(f"Failed to create alerts file: {e}")
     
-    def _create_manual_signals_file(self):
-        """Create manual_signals.json if it doesn't exist"""
-        signals_file = self.data_dir / 'manual_signals.json'
+    def _create_custom_signals_file(self):
+        """Create custom_signals.json if it doesn't exist"""
+        signals_file = self.data_dir / 'custom_signals.json'
         if not signals_file.exists():
             try:
                 with open(signals_file, 'w', encoding='utf-8') as f:
                     json.dump([], f, indent=2)
-                self.logger.info("Created empty manual signals file")
+                self.logger.info("Created empty custom signals file")
             except Exception as e:
-                self.logger.error(f"Failed to create manual signals file: {e}")
+                self.logger.error(f"Failed to create custom signals file: {e}")
 
 class APIConnectionTester:
     """Tests API connections before starting the bot"""
@@ -310,14 +332,14 @@ class APIConnectionTester:
             price = fetch_price(test_symbol)
             
             if price > 0:
-                self.logger.info(f"✅ Twelve Data API test successful! {test_symbol} price: ${price:.2f}")
+                self.logger.info(f"Twelve Data API test successful! {test_symbol} price: ${price:.2f}")
                 return True
             else:
-                self.logger.error(f"❌ Invalid price returned: ${price}")
+                self.logger.error(f"Invalid price returned: ${price}")
                 return False
                 
         except Exception as e:
-            self.logger.error(f"❌ Twelve Data API test failed: {e}")
+            self.logger.error(f"Twelve Data API test failed: {e}")
             self._display_api_troubleshooting()
             return False
     
@@ -339,18 +361,18 @@ class APIConnectionTester:
                 bot_info = data.get('result', {})
                 bot_name = bot_info.get('first_name', 'Unknown')
                 bot_username = bot_info.get('username', 'unknown')
-                self.logger.info(f"✅ Telegram API test successful! Bot: {bot_name} (@{bot_username})")
+                self.logger.info(f"Telegram API test successful! Bot: {bot_name} (@{bot_username})")
                 return True
             else:
-                self.logger.error(f"❌ Telegram API error: {data.get('description', 'Unknown error')}")
+                self.logger.error(f"Telegram API error: {data.get('description', 'Unknown error')}")
                 return False
                 
         except requests.exceptions.RequestException as e:
-            self.logger.error(f"❌ Telegram API connection failed: {e}")
+            self.logger.error(f"Telegram API connection failed: {e}")
             self._display_telegram_troubleshooting()
             return False
         except Exception as e:
-            self.logger.error(f"❌ Telegram API test error: {e}")
+            self.logger.error(f"Telegram API test error: {e}")
             return False
     
     def _display_api_troubleshooting(self):
@@ -517,7 +539,7 @@ class TradePulseApplication:
         
         self.logger.info("🎯 Available Features:")
         self.logger.info("   - Automated signal generation (SMA crossover)")
-        self.logger.info("   - Manual signal creation with R/R calculation")
+        self.logger.info("   - Custom signal creation with step-by-step process")
         self.logger.info("   - Real-time price alerts")
         self.logger.info("   - Daily market summaries")
         self.logger.info("   - News aggregation from multiple sources")
@@ -531,8 +553,8 @@ class TradePulseApplication:
                 "/summary SYMBOL - Get detailed summary",
                 "/news SYMBOL - Get latest news"
             ],
-            "Manual Signals": [
-                "/manual - Create manual trading signal",
+            "Custom Signals": [
+                "/custom_signal - Create custom trading signal",
                 "/history [limit] - View signal history", 
                 "/cancel - Cancel signal creation"
             ],
