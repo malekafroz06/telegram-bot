@@ -438,7 +438,7 @@ class FileManager:
             return False
 
 class TradingBot:
-    """Production-ready trading bot with ultra-fast sticker sending"""
+    """Production-ready trading bot with webhook support"""
     
     def __init__(self, config: Dict[str, Any]):
         self.config = self._validate_config(config)
@@ -511,7 +511,65 @@ class TradingBot:
             
         except Exception as e:
             raise ConfigurationError(f"Failed to initialize Telegram application: {e}")
+    async def handle_update(self, update_data: dict):
+        """
+        Handle incoming webhook updates - CRITICAL for webhook mode
+        """
+        try:
+            # Convert dict to Update object
+            update = Update.de_json(update_data, self.app.bot)
+            
+            if not update:
+                logger.warning("Received invalid update")
+                return
+            
+            # Process the update through the application
+            await self.app.process_update(update)
+            
+        except Exception as e:
+            logger.error(f"Error handling update: {e}")
+            logger.exception("Detailed error:")
     
+    async def initialize_webhook_mode(self):
+        """Initialize bot for webhook mode"""
+        try:
+            # Initialize the application
+            await self.app.initialize()
+            
+            # Warm up stickers
+            await self.message_sender.warm_up_stickers()
+            
+            logger.info("✅ Bot initialized for webhook mode")
+            
+        except Exception as e:
+            logger.error(f"Failed to initialize webhook mode: {e}")
+            raise
+    
+    def set_webhook(self, webhook_url: str):
+        """Set webhook URL"""
+        try:
+            import requests
+            api_url = f"https://api.telegram.org/bot{self.config['TELEGRAM_TOKEN']}/setWebhook"
+            payload = {"url": webhook_url}
+            
+            response = requests.post(api_url, json=payload, timeout=10)
+            
+            if response.status_code == 200:
+                result = response.json()
+                if result.get("ok"):
+                    logger.info(f"✅ Webhook set successfully: {webhook_url}")
+                    return True
+                else:
+                    logger.error(f"❌ Webhook set failed: {result.get('description')}")
+                    return False
+            else:
+                logger.error(f"❌ HTTP {response.status_code}: {response.text}")
+                return False
+                
+        except Exception as e:
+            logger.error(f"❌ Error setting webhook: {e}")
+            return False
+            
     def _register_handlers(self):
         """Register all command and message handlers"""
         handlers = [

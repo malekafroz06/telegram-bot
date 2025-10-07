@@ -26272,3 +26272,37 @@ telegram.error.Conflict: Conflict: terminated by other getUpdates request; make 
 2025-10-07 18:58:40,840 - telegram.ext.Application - INFO - Application started
 2025-10-07 18:58:49,350 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
 2025-10-07 18:58:50,008 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 19:39:48,753 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 19:39:48,753 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 19:39:48,760 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 19:39:48,792 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 19:39:48,792 - __main__ - INFO - 📊 Channel: -1002487950901
+2025-10-07 19:39:48,792 - __main__ - INFO - 📱 Admin users: 1
+2025-10-07 19:39:48,792 - __main__ - INFO - ✅ Bot initialized successfully
+2025-10-07 19:39:48,792 - __main__ - INFO - Starting Telegram bot (long-polling)...
+2025-10-07 19:39:48,884 - bot - INFO - All stickers already warmed up
+2025-10-07 19:39:48,884 - bot - INFO - Bot initialization complete
+2025-10-07 19:39:51,144 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getMe "HTTP/1.1 200 OK"
+2025-10-07 19:39:51,330 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-07 19:39:51,348 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-07 19:39:51,348 - telegram.ext.Application - INFO - Application started
+2025-10-07 19:39:56,150 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 19:39:56,699 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 19:40:05,630 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 19:40:06,605 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 19:40:36,864 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:10:57,979 - __main__ - INFO - 💻 Running in POLLING mode (local)
+2025-10-07 20:10:57,979 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 20:10:57,979 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 20:10:57,979 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 20:10:58,014 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 20:10:58,014 - __main__ - INFO - 📊 Channel: -1002487950901
+2025-10-07 20:10:58,017 - __main__ - INFO - 📱 Admin users: 1
+2025-10-07 20:10:58,017 - __main__ - INFO - ✅ Bot initialized successfully
+2025-10-07 20:10:58,017 - __main__ - INFO - Starting Telegram bot (long-polling)...
+2025-10-07 20:10:58,063 - bot - INFO - All stickers already warmed up
+2025-10-07 20:10:58,063 - bot - INFO - Bot initialization complete
+2025-10-07 20:10:59,020 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getMe "HTTP/1.1 200 OK"
+2025-10-07 20:10:59,157 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-07 20:10:59,160 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-07 20:10:59,160 - telegram.ext.Application - INFO - Application started

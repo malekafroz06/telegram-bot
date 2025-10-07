@@ -4,6 +4,8 @@ import logging
 import signal
 import sys
 import time
+import asyncio
+import threading
 from pathlib import Path
 from datetime import datetime
 import re  # For EmojiFilter
@@ -264,10 +266,9 @@ class TradePulseApplication:
 # Webhook Mode for Render
 # -------------------------------
 def run_webhook():
-    logger = setup_logging()  # Enable comprehensive logging for webhook mode
+    logger = setup_logging()
     from flask import Flask, request
-    import requests  # For setting webhook and sending messages
-
+    
     # Get required environment variables
     TOKEN = os.environ.get("TELEGRAM_TOKEN")
     CHANNEL_ID = os.environ.get("CHANNEL_ID")
@@ -288,68 +289,104 @@ def run_webhook():
         "TWELVE_DATA_API_KEY": TWELVE_DATA_API_KEY
     }
 
-    # Include optional settings if needed
-    config["ADMIN_IDS"] = [int(id.strip()) for id in os.environ.get("ADMIN_IDS", "").split(",") if id.strip()] if os.environ.get("ADMIN_IDS") else []
+    # Include optional settings
+    admin_ids_str = os.environ.get("ADMIN_IDS", "")
+    if admin_ids_str:
+        config["ADMIN_IDS"] = [int(id.strip()) for id in admin_ids_str.split(",") if id.strip()]
+    else:
+        config["ADMIN_IDS"] = []
+    
     config["CHECK_INTERVAL_SECONDS"] = int(os.environ.get("CHECK_INTERVAL_SECONDS", 300))
+    config["MORNING_TIME"] = os.environ.get("MORNING_TIME", "09:00")
+    config["TIMEZONE_OFFSET"] = int(os.environ.get("TIMEZONE_OFFSET", 0))
 
     logger.info("Initializing TradingBot for webhook mode...")
+    
+    # Setup data directory
+    data_manager = DataDirectoryManager()
+    data_manager.setup_data_directory()
+    
     bot = TradingBot(config)
-
+    
+    # Initialize event loop for async operations
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    
+    # Initialize bot for webhook mode
+    try:
+        loop.run_until_complete(bot.initialize_webhook_mode())
+        logger.info("✅ Bot initialized successfully for webhook mode")
+    except Exception as e:
+        logger.error(f"❌ Failed to initialize bot: {e}")
+        raise
+    
     @app.route(f"/{TOKEN}", methods=["POST"])
     def webhook():
-        update = request.get_json(force=True)
+        """Handle incoming webhook updates"""
         try:
-            logger.info(f"Received update: {update}")  # Debug log
-            # Temp inline handling until bot.py has handle_update
-            if 'message' in update:
-                message = update['message']
-                chat_id = message['chat']['id']
-                text = message.get('text', '')
-                if text == '/start':
-                    # Reply via Telegram API
-                    reply_url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-                    reply_payload = {
-                        "chat_id": chat_id,
-                        "text": "Hello! TradePulse Bot started. Use /help for commands."
-                    }
-                    response = requests.post(reply_url, json=reply_payload)
-                    if response.status_code == 200:
-                        logger.info(f"✅ Replied to /start for user {chat_id}")
-                    else:
-                        logger.error(f"❌ Failed to reply: {response.text}")
-                else:
-                    logger.info(f"Unhandled message: {text} from {chat_id}")
-            # TODO: Call bot.handle_update(update) once implemented in bot.py
+            update = request.get_json(force=True)
+            logger.info(f"📨 Received update: {update.get('update_id', 'unknown')}")
+            
+            # Process update asynchronously
+            future = asyncio.run_coroutine_threadsafe(
+                bot.handle_update(update),
+                loop
+            )
+            
+            # Wait briefly for processing (don't block Telegram)
+            try:
+                future.result(timeout=0.5)
+            except:
+                pass
+            
+            return "OK", 200
+            
         except Exception as e:
-            logger.error(f"Error handling update: {e}")
-        return "OK"
+            logger.error(f"❌ Error in webhook handler: {e}")
+            logger.exception("Detailed error:")
+            return "Error", 500
 
     @app.route("/", methods=["GET"])
     def index():
-        return "Trading Bot is running!"
+        return "✅ TradePulse Bot is running!"
+    
+    @app.route("/health", methods=["GET"])
+    def health():
+        return {"status": "healthy", "bot": "TradePulse", "mode": "webhook"}, 200
 
     # Set webhook automatically if running on Render
     RENDER_URL = os.environ.get("RENDER_EXTERNAL_URL")
     if RENDER_URL:
         webhook_url = f"{RENDER_URL}/{TOKEN}"
-        api_url = f"https://api.telegram.org/bot{TOKEN}/setWebhook"
-        payload = {"url": webhook_url}
-        try:
-            response = requests.post(api_url, json=payload)
-            if response.status_code == 200:
-                result = response.json()
-                if result.get("ok"):
-                    logger.info(f"✅ Webhook set successfully: {webhook_url}")
-                else:
-                    logger.error(f"❌ Webhook set failed: {result.get('description', 'Unknown error')}")
-            else:
-                logger.error(f"❌ HTTP {response.status_code} when setting webhook: {response.text}")
-        except Exception as e:
-            logger.error(f"❌ Error setting webhook: {e}")
+        logger.info(f"🔗 Setting webhook to: {webhook_url}")
+        
+        # Use bot's set_webhook method
+        if bot.set_webhook(webhook_url):
+            logger.info("✅ Webhook configured successfully")
+        else:
+            logger.error("❌ Failed to set webhook")
+    else:
+        logger.warning("⚠️ RENDER_EXTERNAL_URL not set, webhook not configured")
 
-    PORT = int(os.environ.get("PORT", 10000))  # Render uses 10000 by default
-    logger.info(f"Starting Flask app on port {PORT}")
-    app.run(host="0.0.0.0", port=PORT, debug=False)
+    PORT = int(os.environ.get("PORT", 10000))
+    logger.info(f"🚀 Starting Flask server on port {PORT}")
+    
+    # Run Flask in a separate thread so event loop can run
+    def run_flask():
+        app.run(host="0.0.0.0", port=PORT, debug=False, use_reloader=False)
+    
+    flask_thread = threading.Thread(target=run_flask, daemon=True)
+    flask_thread.start()
+    
+    logger.info("🎯 Bot is ready to receive updates via webhook")
+    
+    # Keep event loop running
+    try:
+        loop.run_forever()
+    except KeyboardInterrupt:
+        logger.info("⚠️ Shutting down...")
+    finally:
+        loop.close()
 
 
 # -------------------------------
@@ -368,6 +405,10 @@ if __name__ == "__main__":
     )
     
     if is_production:
+        logger = setup_logging()
+        logger.info("🌐 Running in WEBHOOK mode (production)")
         run_webhook()
     else:
+        logger = setup_logging()
+        logger.info("💻 Running in POLLING mode (local)")
         sys.exit(main())
