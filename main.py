@@ -265,13 +265,33 @@ class TradePulseApplication:
 # -------------------------------
 def run_webhook():
     from flask import Flask, request
+    import os
+    import logging
 
+    # Get required environment variables
     TOKEN = os.environ.get("TELEGRAM_TOKEN")
-    if not TOKEN:
-        raise SystemExit("❌ TELEGRAM_TOKEN environment variable not set")
+    CHANNEL_ID = os.environ.get("CHANNEL_ID")
+    TWELVE_DATA_API_KEY = os.environ.get("TWELVE_DATA_API_KEY")
+
+    # Validate
+    missing = [name for name in ["TELEGRAM_TOKEN", "CHANNEL_ID", "TWELVE_DATA_API_KEY"]
+               if not os.environ.get(name)]
+    if missing:
+        raise SystemExit(f"❌ Missing required environment variables: {', '.join(missing)}")
 
     app = Flask(__name__)
-    bot = TradingBot({"TELEGRAM_TOKEN": TOKEN})
+
+    config = {
+        "TELEGRAM_TOKEN": TOKEN,
+        "CHANNEL_ID": CHANNEL_ID,
+        "TWELVE_DATA_API_KEY": TWELVE_DATA_API_KEY
+    }
+
+    # Include optional settings if needed
+    config["ADMIN_IDS"] = os.environ.get("ADMIN_IDS", "").split(",") if os.environ.get("ADMIN_IDS") else []
+    config["CHECK_INTERVAL_SECONDS"] = int(os.environ.get("CHECK_INTERVAL_SECONDS", 300))
+
+    bot = TradingBot(config)
 
     @app.route(f"/{TOKEN}", methods=["POST"])
     def webhook():
@@ -293,6 +313,7 @@ def run_webhook():
 
     PORT = int(os.environ.get("PORT", 8443))
     app.run(host="0.0.0.0", port=PORT)
+
 
 # -------------------------------
 # Entry Point
