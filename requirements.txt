@@ -7,5 +7,5 @@ apscheduler==3.10.4
 tzlocal==5.2
 Flask==3.0.3
 gunicorn==21.2.0
-pyTelegramBotAPI==4.14.0  # Pin; update to 4.29.1 if you need latest features
-twelve-data==1.0.0  # Add this for your API key usage
+pyTelegramBotAPI==4.14.0
+twelvedata==1.2.25  # Changed from twelve-data==1.0.0
