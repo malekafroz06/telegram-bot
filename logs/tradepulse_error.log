@@ -17438,3 +17438,176 @@ telegram.error.NetworkError: httpx.ReadError:
 2025-10-07 10:40:28,004 - bot - ERROR - Failed to send sticker instantly: 
 2025-10-07 10:40:35,044 - bot - ERROR - Failed to send sticker instantly: 
 2025-10-07 10:40:41,652 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 14:54:52,756 - bot - ERROR - Failed to send message: Chat not found
+2025-10-07 14:55:02,464 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 14:55:03,411 - bot - ERROR - Failed to send sticker up: Chat not found
+2025-10-07 14:55:04,700 - bot - ERROR - Failed to upload sticker up: Chat not found
+2025-10-07 14:59:52,688 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 14:59:53,965 - bot - ERROR - Failed to send sticker win: Wrong file identifier/http url specified
+2025-10-07 15:00:58,482 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:01:11,841 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:17:16,157 - bot - ERROR - Error starting bot: Timed out
+2025-10-07 15:17:21,172 - __main__ - ERROR - Bot runtime error: Timed out
+2025-10-07 15:17:21,173 - __main__ - ERROR - Detailed error information:
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\streams\tls.py", line 173, in _call_sslobject_method
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLWantReadError: The operation did not complete (read) (_ssl.c:992)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_tasks.py", line 115, in fail_after
+    yield cancel_scope
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 69, in start_tls
+    ssl_stream = await anyio.streams.tls.TLSStream.wrap(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\streams\tls.py", line 165, in wrap
+    await wrapper._call_sslobject_method(ssl_object.do_handshake)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\streams\tls.py", line 180, in _call_sslobject_method
+    data = await self.transport_stream.receive()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_backends\_asyncio.py", line 1254, in receive
+    await self._protocol.read_event.wait()
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\asyncio\locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError: Cancelled by cancel scope 2a0c4a61290
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 78, in start_tls
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 68, in start_tls
+    with anyio.fail_after(timeout):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_tasks.py", line 118, in fail_after
+    raise TimeoutError
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 60, in map_httpcore_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 353, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 262, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 245, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 92, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 69, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 149, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 66, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 216, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 352, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 77, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\malek\Downloads\telegram_trading_bot_core\main.py", line 498, in _run_bot
+    self.bot.start()
+  File "E:\malek\Downloads\telegram_trading_bot_core\bot.py", line 579, in start
+    self.app.run_polling(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_application.py", line 727, in run_polling
+    return self.__run(
+           ^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_application.py", line 921, in __run
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_application.py", line 910, in __run
+    loop.run_until_complete(self.initialize())
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 650, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_application.py", line 399, in initialize
+    await self.bot.initialize()
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 271, in initialize
+    await super().initialize()
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 591, in initialize
+    await self.get_me()
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 1706, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 736, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 291, in _request_wrapper
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 277, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 233, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+2025-10-07 15:19:04,402 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:19:05,477 - bot - ERROR - Failed to send sticker up: Wrong file identifier/http url specified
+2025-10-07 15:19:12,620 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:19:13,483 - bot - ERROR - Failed to send sticker win: Wrong file identifier/http url specified
+2025-10-07 15:25:32,953 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:25:39,631 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:26:14,418 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:27:55,876 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:28:02,554 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:28:24,789 - bot - ERROR - Failed to send sticker instantly: 

@@ -635,21 +635,26 @@ Type your risk amount:"""
 Choose your direction:"""
 
     def _process_direction(self, user_id: str, direction: str) -> str:
-        """Process direction selection and send sticker INSTANTLY"""
+        """Process direction selection and send text + sticker INSTANTLY"""
         if direction not in ['UP', 'DOWN']:
             return "❌ Please select UP or DOWN direction."
         
         self.pending_signals[user_id]['data']['direction'] = direction
         
-        # Send sticker INSTANTLY - fire and forget
-        self._send_sticker_instantly(direction)
+        # Post "I am going For" text FIRST - fire and forget
+        direction_text = f"🎯 <b>I am going For {direction}</b>"
+        self._post_to_channel_instant(direction_text)
+        
+        # Then send sticker INSTANTLY - fire and forget (slight delay for correct order)
+        import threading
+        threading.Timer(0.3, lambda: self._send_sticker_instantly(direction)).start()
         
         # Move to next step immediately
         self.pending_signals[user_id]['step'] = 4
         
         return f"""✅ Direction: <b>{direction}</b> 🎯
 
-{direction} sticker sent instantly! ⚡
+"{direction}" text and sticker posting instantly! ⚡
 
 📝 <b>Step 5/8:</b> Enter Signal Result
 Choose the result:"""

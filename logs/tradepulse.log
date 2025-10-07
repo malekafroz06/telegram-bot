@@ -25228,3 +25228,763 @@ telegram.error.NetworkError: httpx.ReadError:
 2025-10-07 11:07:31,701 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
 2025-10-07 11:08:02,930 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
 2025-10-07 11:08:34,156 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:03:46,702 - __main__ - INFO - ============================================================
+2025-10-07 14:03:46,704 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 14:03:46,704 - __main__ - INFO - ============================================================
+2025-10-07 14:03:46,706 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 14:03:46,707 - DataDirectoryManager - INFO - Data directory ready: data
+2025-10-07 14:03:46,708 - APIConnectionTester - INFO - Testing Twelve Data API connection...
+2025-10-07 14:03:47,259 - APIConnectionTester - INFO - Twelve Data API test successful! AAPL price: $256.69
+2025-10-07 14:03:47,261 - APIConnectionTester - INFO - Testing Telegram Bot API connection...
+2025-10-07 14:03:49,986 - APIConnectionTester - INFO - Telegram API test successful! Bot: Stoic Assistant (@Stoic_Bro_ai_bot)
+2025-10-07 14:03:49,991 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 14:03:50,047 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 14:03:50,049 - __main__ - INFO - 📊 Configuration Summary:
+2025-10-07 14:03:50,049 - __main__ - INFO -    - API Provider: Twelve Data (800 calls/day limit)
+2025-10-07 14:03:50,049 - __main__ - INFO -    - Morning report: 09:00 (UTC+5)
+2025-10-07 14:03:50,050 - __main__ - INFO -    - Admin users: 1 configured
+2025-10-07 14:03:50,050 - __main__ - INFO -    - Target channel: -1002994456237
+2025-10-07 14:03:50,050 - __main__ - INFO -    - Signal check interval: 300s
+2025-10-07 14:03:50,050 - __main__ - INFO -    - SMA windows: 5/20
+2025-10-07 14:03:50,051 - __main__ - INFO -    - Max symbols: 20
+2025-10-07 14:03:50,051 - __main__ - INFO - 🎯 Available Features:
+2025-10-07 14:03:50,051 - __main__ - INFO -    - Automated signal generation (SMA crossover)
+2025-10-07 14:03:50,051 - __main__ - INFO -    - Custom signal creation with step-by-step process
+2025-10-07 14:03:50,051 - __main__ - INFO -    - Real-time price alerts
+2025-10-07 14:03:50,051 - __main__ - INFO -    - Daily market summaries
+2025-10-07 14:03:50,051 - __main__ - INFO -    - News aggregation from multiple sources
+2025-10-07 14:03:50,051 - __main__ - INFO -    - Signal history tracking
+2025-10-07 14:03:50,051 - __main__ - INFO - 🔧 Available Commands:
+2025-10-07 14:03:50,053 - __main__ - INFO -    Market Data:
+2025-10-07 14:03:50,053 - __main__ - INFO -       - /check SYMBOL - Get trading signal
+2025-10-07 14:03:50,053 - __main__ - INFO -       - /price SYMBOL - Get current price
+2025-10-07 14:03:50,053 - __main__ - INFO -       - /summary SYMBOL - Get detailed summary
+2025-10-07 14:03:50,054 - __main__ - INFO -       - /news SYMBOL - Get latest news
+2025-10-07 14:03:50,054 - __main__ - INFO -    Custom Signals:
+2025-10-07 14:03:50,054 - __main__ - INFO -       - /custom_signal - Create custom trading signal
+2025-10-07 14:03:50,054 - __main__ - INFO -       - /history [limit] - View signal history
+2025-10-07 14:03:50,055 - __main__ - INFO -       - /cancel - Cancel signal creation
+2025-10-07 14:03:50,055 - __main__ - INFO -    Management:
+2025-10-07 14:03:50,055 - __main__ - INFO -       - /help - Show all commands
+2025-10-07 14:03:50,055 - __main__ - INFO -       - /addsymbol SYMBOL - Add to watchlist
+2025-10-07 14:03:50,055 - __main__ - INFO -       - /symbols - View watchlist
+2025-10-07 14:03:50,055 - __main__ - INFO -       - /setalert SYMBOL % - Set price alert
+2025-10-07 14:03:50,058 - __main__ - INFO -       - /morningreport - Send report now
+2025-10-07 14:03:50,058 - __main__ - INFO - ✅ Bot initialization completed successfully
+2025-10-07 14:03:50,060 - __main__ - INFO - 📱 Bot is now running and ready to receive commands
+2025-10-07 14:03:50,061 - __main__ - INFO - 🛑 Press Ctrl+C to stop the bot gracefully
+2025-10-07 14:03:50,061 - __main__ - INFO - Starting Telegram bot...
+2025-10-07 14:03:50,118 - bot - INFO - All stickers already warmed up
+2025-10-07 14:03:50,118 - bot - INFO - Bot initialization complete
+2025-10-07 14:03:50,803 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getMe "HTTP/1.1 200 OK"
+2025-10-07 14:03:50,994 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-07 14:03:50,997 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-07 14:03:50,997 - telegram.ext.Application - INFO - Application started
+2025-10-07 14:04:21,514 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:04:35,405 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:04:37,096 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:05:06,660 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:05:34,787 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:05:36,836 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:17:47,293 - __main__ - INFO - ============================================================
+2025-10-07 14:17:47,295 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 14:17:47,296 - __main__ - INFO - ============================================================
+2025-10-07 14:17:47,296 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 14:17:47,298 - DataDirectoryManager - INFO - Data directory ready: data
+2025-10-07 14:17:47,300 - APIConnectionTester - INFO - Testing Twelve Data API connection...
+2025-10-07 14:17:49,111 - APIConnectionTester - INFO - Twelve Data API test successful! AAPL price: $256.69
+2025-10-07 14:17:49,111 - APIConnectionTester - INFO - Testing Telegram Bot API connection...
+2025-10-07 14:17:51,131 - APIConnectionTester - INFO - Telegram API test successful! Bot: Stoic Assistant (@Stoic_Bro_ai_bot)
+2025-10-07 14:17:51,135 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 14:17:51,261 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 14:17:51,267 - __main__ - INFO - 📊 Configuration Summary:
+2025-10-07 14:17:51,268 - __main__ - INFO -    - API Provider: Twelve Data (800 calls/day limit)
+2025-10-07 14:17:51,268 - __main__ - INFO -    - Morning report: 09:00 (UTC+5)
+2025-10-07 14:17:51,268 - __main__ - INFO -    - Admin users: 1 configured
+2025-10-07 14:17:51,270 - __main__ - INFO -    - Target channel: -1002487950901
+2025-10-07 14:17:51,276 - __main__ - INFO -    - Signal check interval: 300s
+2025-10-07 14:17:51,277 - __main__ - INFO -    - SMA windows: 5/20
+2025-10-07 14:17:51,278 - __main__ - INFO -    - Max symbols: 20
+2025-10-07 14:17:51,278 - __main__ - INFO - 🎯 Available Features:
+2025-10-07 14:17:51,282 - __main__ - INFO -    - Automated signal generation (SMA crossover)
+2025-10-07 14:17:51,283 - __main__ - INFO -    - Custom signal creation with step-by-step process
+2025-10-07 14:17:51,284 - __main__ - INFO -    - Real-time price alerts
+2025-10-07 14:17:51,288 - __main__ - INFO -    - Daily market summaries
+2025-10-07 14:17:51,290 - __main__ - INFO -    - News aggregation from multiple sources
+2025-10-07 14:17:51,291 - __main__ - INFO -    - Signal history tracking
+2025-10-07 14:17:51,292 - __main__ - INFO - 🔧 Available Commands:
+2025-10-07 14:17:51,292 - __main__ - INFO -    Market Data:
+2025-10-07 14:17:51,293 - __main__ - INFO -       - /check SYMBOL - Get trading signal
+2025-10-07 14:17:51,293 - __main__ - INFO -       - /price SYMBOL - Get current price
+2025-10-07 14:17:51,294 - __main__ - INFO -       - /summary SYMBOL - Get detailed summary
+2025-10-07 14:17:51,295 - __main__ - INFO -       - /news SYMBOL - Get latest news
+2025-10-07 14:17:51,295 - __main__ - INFO -    Custom Signals:
+2025-10-07 14:17:51,295 - __main__ - INFO -       - /custom_signal - Create custom trading signal
+2025-10-07 14:17:51,296 - __main__ - INFO -       - /history [limit] - View signal history
+2025-10-07 14:17:51,297 - __main__ - INFO -       - /cancel - Cancel signal creation
+2025-10-07 14:17:51,297 - __main__ - INFO -    Management:
+2025-10-07 14:17:51,297 - __main__ - INFO -       - /help - Show all commands
+2025-10-07 14:17:51,298 - __main__ - INFO -       - /addsymbol SYMBOL - Add to watchlist
+2025-10-07 14:17:51,298 - __main__ - INFO -       - /symbols - View watchlist
+2025-10-07 14:17:51,299 - __main__ - INFO -       - /setalert SYMBOL % - Set price alert
+2025-10-07 14:17:51,301 - __main__ - INFO -       - /morningreport - Send report now
+2025-10-07 14:17:51,302 - __main__ - INFO - ✅ Bot initialization completed successfully
+2025-10-07 14:17:51,304 - __main__ - INFO - 📱 Bot is now running and ready to receive commands
+2025-10-07 14:17:51,304 - __main__ - INFO - 🛑 Press Ctrl+C to stop the bot gracefully
+2025-10-07 14:17:51,304 - __main__ - INFO - Starting Telegram bot...
+2025-10-07 14:17:51,426 - bot - INFO - All stickers already warmed up
+2025-10-07 14:17:51,426 - bot - INFO - Bot initialization complete
+2025-10-07 14:17:54,527 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getMe "HTTP/1.1 200 OK"
+2025-10-07 14:17:54,876 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-07 14:17:54,878 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-07 14:17:54,879 - telegram.ext.Application - INFO - Application started
+2025-10-07 14:18:26,191 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:18:31,675 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:18:33,596 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:19:03,007 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:19:34,358 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:20:05,722 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:20:36,977 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:21:08,372 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:21:39,696 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:22:11,028 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:22:43,842 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:45:56,223 - __main__ - INFO - ============================================================
+2025-10-07 14:45:56,225 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 14:45:56,225 - __main__ - INFO - ============================================================
+2025-10-07 14:45:56,226 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 14:45:56,228 - DataDirectoryManager - INFO - Data directory ready: data
+2025-10-07 14:45:56,230 - APIConnectionTester - INFO - Testing Twelve Data API connection...
+2025-10-07 14:45:56,905 - APIConnectionTester - INFO - Twelve Data API test successful! AAPL price: $256.69
+2025-10-07 14:45:56,905 - APIConnectionTester - INFO - Testing Telegram Bot API connection...
+2025-10-07 14:45:57,725 - APIConnectionTester - INFO - Telegram API test successful! Bot: Stoic Assistant (@Stoic_Bro_ai_bot)
+2025-10-07 14:45:57,732 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 14:45:57,759 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 14:45:57,760 - __main__ - INFO - 📊 Configuration Summary:
+2025-10-07 14:45:57,760 - __main__ - INFO -    - API Provider: Twelve Data (800 calls/day limit)
+2025-10-07 14:45:57,760 - __main__ - INFO -    - Morning report: 09:00 (UTC+5)
+2025-10-07 14:45:57,760 - __main__ - INFO -    - Admin users: 1 configured
+2025-10-07 14:45:57,761 - __main__ - INFO -    - Target channel: -1002487950901
+2025-10-07 14:45:57,761 - __main__ - INFO -    - Signal check interval: 300s
+2025-10-07 14:45:57,761 - __main__ - INFO -    - SMA windows: 5/20
+2025-10-07 14:45:57,761 - __main__ - INFO -    - Max symbols: 20
+2025-10-07 14:45:57,761 - __main__ - INFO - 🎯 Available Features:
+2025-10-07 14:45:57,761 - __main__ - INFO -    - Automated signal generation (SMA crossover)
+2025-10-07 14:45:57,761 - __main__ - INFO -    - Custom signal creation with step-by-step process
+2025-10-07 14:45:57,761 - __main__ - INFO -    - Real-time price alerts
+2025-10-07 14:45:57,761 - __main__ - INFO -    - Daily market summaries
+2025-10-07 14:45:57,761 - __main__ - INFO -    - News aggregation from multiple sources
+2025-10-07 14:45:57,762 - __main__ - INFO -    - Signal history tracking
+2025-10-07 14:45:57,762 - __main__ - INFO - 🔧 Available Commands:
+2025-10-07 14:45:57,762 - __main__ - INFO -    Market Data:
+2025-10-07 14:45:57,762 - __main__ - INFO -       - /check SYMBOL - Get trading signal
+2025-10-07 14:45:57,762 - __main__ - INFO -       - /price SYMBOL - Get current price
+2025-10-07 14:45:57,762 - __main__ - INFO -       - /summary SYMBOL - Get detailed summary
+2025-10-07 14:45:57,762 - __main__ - INFO -       - /news SYMBOL - Get latest news
+2025-10-07 14:45:57,762 - __main__ - INFO -    Custom Signals:
+2025-10-07 14:45:57,762 - __main__ - INFO -       - /custom_signal - Create custom trading signal
+2025-10-07 14:45:57,762 - __main__ - INFO -       - /history [limit] - View signal history
+2025-10-07 14:45:57,763 - __main__ - INFO -       - /cancel - Cancel signal creation
+2025-10-07 14:45:57,763 - __main__ - INFO -    Management:
+2025-10-07 14:45:57,763 - __main__ - INFO -       - /help - Show all commands
+2025-10-07 14:45:57,763 - __main__ - INFO -       - /addsymbol SYMBOL - Add to watchlist
+2025-10-07 14:45:57,763 - __main__ - INFO -       - /symbols - View watchlist
+2025-10-07 14:45:57,763 - __main__ - INFO -       - /setalert SYMBOL % - Set price alert
+2025-10-07 14:45:57,763 - __main__ - INFO -       - /morningreport - Send report now
+2025-10-07 14:45:57,763 - __main__ - INFO - ✅ Bot initialization completed successfully
+2025-10-07 14:45:57,764 - __main__ - INFO - 📱 Bot is now running and ready to receive commands
+2025-10-07 14:45:57,764 - __main__ - INFO - 🛑 Press Ctrl+C to stop the bot gracefully
+2025-10-07 14:45:57,764 - __main__ - INFO - Starting Telegram bot...
+2025-10-07 14:45:57,857 - bot - INFO - All stickers already warmed up
+2025-10-07 14:45:57,859 - bot - INFO - Bot initialization complete
+2025-10-07 14:46:05,140 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getMe "HTTP/1.1 200 OK"
+2025-10-07 14:46:05,451 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-07 14:46:05,452 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-07 14:46:05,452 - telegram.ext.Application - INFO - Application started
+2025-10-07 14:46:20,148 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:46:21,989 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:46:51,402 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:47:22,659 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:47:54,628 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:48:25,898 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:48:57,154 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:49:00,740 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:49:03,117 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:49:31,994 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:50:03,481 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:50:35,456 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:51:06,716 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:51:39,275 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:51:53,763 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:51:55,563 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:52:08,215 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:52:10,074 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:52:39,595 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:53:10,852 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:53:42,104 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:54:13,394 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:54:20,367 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:54:22,311 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:54:25,446 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:54:26,011 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:54:36,452 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:54:37,459 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:54:41,260 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:54:41,922 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:54:49,409 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:54:51,664 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 400 Bad Request"
+2025-10-07 14:54:52,149 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:54:52,755 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 400 Bad Request"
+2025-10-07 14:54:52,756 - bot - ERROR - Failed to send message: Chat not found
+2025-10-07 14:54:59,531 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:55:00,940 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 14:55:02,464 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 14:55:02,901 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 14:55:03,410 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendSticker "HTTP/1.1 400 Bad Request"
+2025-10-07 14:55:03,411 - bot - ERROR - Failed to send sticker up: Chat not found
+2025-10-07 14:55:04,699 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendSticker "HTTP/1.1 400 Bad Request"
+2025-10-07 14:55:04,700 - bot - ERROR - Failed to upload sticker up: Chat not found
+2025-10-07 14:55:30,829 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:56:02,094 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:56:33,456 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:57:04,792 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:57:36,025 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:58:07,378 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:58:38,774 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:59:10,661 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:59:37,915 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:59:50,148 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 14:59:51,172 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 14:59:52,688 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 14:59:53,126 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 14:59:53,716 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 14:59:53,963 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendSticker "HTTP/1.1 400 Bad Request"
+2025-10-07 14:59:53,965 - bot - ERROR - Failed to send sticker win: Wrong file identifier/http url specified
+2025-10-07 14:59:56,114 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 14:59:56,136 - bot - INFO - Sticker cache saved
+2025-10-07 14:59:56,136 - bot - INFO - Uploaded and cached sticker: win
+2025-10-07 15:00:06,920 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:00:08,452 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:00:08,872 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:00:21,659 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:00:22,591 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:00:26,198 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:00:26,742 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:00:31,642 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:00:32,052 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:00:33,101 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:00:55,523 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:00:56,956 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:00:58,482 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:00:58,486 - bot - WARNING - Sticker up not warmed up, attempting upload
+2025-10-07 15:00:58,928 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:01:01,190 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:01:01,194 - bot - INFO - Sticker cache saved
+2025-10-07 15:01:01,195 - bot - INFO - Uploaded and cached sticker: up
+2025-10-07 15:01:08,886 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:01:10,327 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:01:11,841 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:01:12,894 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:01:12,921 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:01:12,937 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:01:40,159 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:02:12,180 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:02:44,324 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:03:15,629 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:03:46,894 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:04:18,231 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:04:49,508 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:05:20,879 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:05:52,259 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:06:23,650 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:06:54,997 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:07:26,267 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:07:57,653 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:08:29,604 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:09:00,874 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:09:32,133 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:10:03,402 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:10:34,663 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:10:57,810 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:11:01,005 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:11:04,072 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:11:04,583 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:11:29,176 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:12:00,440 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:12:31,790 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:13:03,174 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:13:35,583 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:14:06,853 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:14:38,135 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:15:09,994 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:15:41,251 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:16:12,615 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:16:43,893 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:16:52,995 - __main__ - INFO - ============================================================
+2025-10-07 15:16:52,995 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 15:16:52,995 - __main__ - INFO - ============================================================
+2025-10-07 15:16:52,997 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 15:16:52,997 - DataDirectoryManager - INFO - Data directory ready: data
+2025-10-07 15:16:52,998 - APIConnectionTester - INFO - Testing Twelve Data API connection...
+2025-10-07 15:16:53,777 - APIConnectionTester - INFO - Twelve Data API test successful! AAPL price: $256.69
+2025-10-07 15:16:53,778 - APIConnectionTester - INFO - Testing Telegram Bot API connection...
+2025-10-07 15:16:55,851 - APIConnectionTester - INFO - Telegram API test successful! Bot: TradePulse Bot (@EquityEye_bot)
+2025-10-07 15:16:55,853 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 15:16:55,897 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 15:16:55,897 - __main__ - INFO - 📊 Configuration Summary:
+2025-10-07 15:16:55,897 - __main__ - INFO -    - API Provider: Twelve Data (800 calls/day limit)
+2025-10-07 15:16:55,897 - __main__ - INFO -    - Morning report: 09:00 (UTC+5)
+2025-10-07 15:16:55,897 - __main__ - INFO -    - Admin users: 1 configured
+2025-10-07 15:16:55,898 - __main__ - INFO -    - Target channel: -1002994456237
+2025-10-07 15:16:55,898 - __main__ - INFO -    - Signal check interval: 300s
+2025-10-07 15:16:55,898 - __main__ - INFO -    - SMA windows: 5/20
+2025-10-07 15:16:55,898 - __main__ - INFO -    - Max symbols: 20
+2025-10-07 15:16:55,898 - __main__ - INFO - 🎯 Available Features:
+2025-10-07 15:16:55,898 - __main__ - INFO -    - Automated signal generation (SMA crossover)
+2025-10-07 15:16:55,898 - __main__ - INFO -    - Custom signal creation with step-by-step process
+2025-10-07 15:16:55,899 - __main__ - INFO -    - Real-time price alerts
+2025-10-07 15:16:55,899 - __main__ - INFO -    - Daily market summaries
+2025-10-07 15:16:55,899 - __main__ - INFO -    - News aggregation from multiple sources
+2025-10-07 15:16:55,899 - __main__ - INFO -    - Signal history tracking
+2025-10-07 15:16:55,899 - __main__ - INFO - 🔧 Available Commands:
+2025-10-07 15:16:55,899 - __main__ - INFO -    Market Data:
+2025-10-07 15:16:55,899 - __main__ - INFO -       - /check SYMBOL - Get trading signal
+2025-10-07 15:16:55,901 - __main__ - INFO -       - /price SYMBOL - Get current price
+2025-10-07 15:16:55,901 - __main__ - INFO -       - /summary SYMBOL - Get detailed summary
+2025-10-07 15:16:55,901 - __main__ - INFO -       - /news SYMBOL - Get latest news
+2025-10-07 15:16:55,901 - __main__ - INFO -    Custom Signals:
+2025-10-07 15:16:55,901 - __main__ - INFO -       - /custom_signal - Create custom trading signal
+2025-10-07 15:16:55,901 - __main__ - INFO -       - /history [limit] - View signal history
+2025-10-07 15:16:55,901 - __main__ - INFO -       - /cancel - Cancel signal creation
+2025-10-07 15:16:55,901 - __main__ - INFO -    Management:
+2025-10-07 15:16:55,901 - __main__ - INFO -       - /help - Show all commands
+2025-10-07 15:16:55,901 - __main__ - INFO -       - /addsymbol SYMBOL - Add to watchlist
+2025-10-07 15:16:55,902 - __main__ - INFO -       - /symbols - View watchlist
+2025-10-07 15:16:55,902 - __main__ - INFO -       - /setalert SYMBOL % - Set price alert
+2025-10-07 15:16:55,902 - __main__ - INFO -       - /morningreport - Send report now
+2025-10-07 15:16:55,902 - __main__ - INFO - ✅ Bot initialization completed successfully
+2025-10-07 15:16:55,902 - __main__ - INFO - 📱 Bot is now running and ready to receive commands
+2025-10-07 15:16:55,902 - __main__ - INFO - 🛑 Press Ctrl+C to stop the bot gracefully
+2025-10-07 15:16:55,902 - __main__ - INFO - Starting Telegram bot...
+2025-10-07 15:16:55,925 - bot - INFO - All stickers already warmed up
+2025-10-07 15:16:55,925 - bot - INFO - Bot initialization complete
+2025-10-07 15:17:16,157 - bot - ERROR - Error starting bot: Timed out
+2025-10-07 15:17:21,172 - __main__ - ERROR - Bot runtime error: Timed out
+2025-10-07 15:17:21,173 - __main__ - ERROR - Detailed error information:
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\streams\tls.py", line 173, in _call_sslobject_method
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLWantReadError: The operation did not complete (read) (_ssl.c:992)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_tasks.py", line 115, in fail_after
+    yield cancel_scope
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 69, in start_tls
+    ssl_stream = await anyio.streams.tls.TLSStream.wrap(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\streams\tls.py", line 165, in wrap
+    await wrapper._call_sslobject_method(ssl_object.do_handshake)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\streams\tls.py", line 180, in _call_sslobject_method
+    data = await self.transport_stream.receive()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_backends\_asyncio.py", line 1254, in receive
+    await self._protocol.read_event.wait()
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\asyncio\locks.py", line 213, in wait
+    await fut
+asyncio.exceptions.CancelledError: Cancelled by cancel scope 2a0c4a61290
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 78, in start_tls
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 68, in start_tls
+    with anyio.fail_after(timeout):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_tasks.py", line 118, in fail_after
+    raise TimeoutError
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 60, in map_httpcore_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 353, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 262, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 245, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 92, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 69, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 149, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 66, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 216, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 352, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 77, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\malek\Downloads\telegram_trading_bot_core\main.py", line 498, in _run_bot
+    self.bot.start()
+  File "E:\malek\Downloads\telegram_trading_bot_core\bot.py", line 579, in start
+    self.app.run_polling(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_application.py", line 727, in run_polling
+    return self.__run(
+           ^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_application.py", line 921, in __run
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_application.py", line 910, in __run
+    loop.run_until_complete(self.initialize())
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 650, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_application.py", line 399, in initialize
+    await self.bot.initialize()
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 271, in initialize
+    await super().initialize()
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 591, in initialize
+    await self.get_me()
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 1706, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 736, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 291, in _request_wrapper
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 277, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 233, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+2025-10-07 15:17:22,196 - __main__ - INFO - Starting cleanup process...
+2025-10-07 15:17:27,212 - __main__ - INFO - Bot stopped successfully
+2025-10-07 15:17:27,216 - __main__ - INFO - Total uptime: 0:00:34.219345
+2025-10-07 15:17:27,216 - __main__ - INFO - Cleanup completed successfully
+2025-10-07 15:17:43,904 - __main__ - INFO - ============================================================
+2025-10-07 15:17:43,904 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 15:17:43,904 - __main__ - INFO - ============================================================
+2025-10-07 15:17:43,904 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 15:17:43,905 - DataDirectoryManager - INFO - Data directory ready: data
+2025-10-07 15:17:43,907 - APIConnectionTester - INFO - Testing Twelve Data API connection...
+2025-10-07 15:17:45,121 - APIConnectionTester - INFO - Twelve Data API test successful! AAPL price: $256.69
+2025-10-07 15:17:45,122 - APIConnectionTester - INFO - Testing Telegram Bot API connection...
+2025-10-07 15:17:45,837 - APIConnectionTester - INFO - Telegram API test successful! Bot: TradePulse Bot (@EquityEye_bot)
+2025-10-07 15:17:45,839 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 15:17:45,865 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 15:17:45,867 - __main__ - INFO - 📊 Configuration Summary:
+2025-10-07 15:17:45,867 - __main__ - INFO -    - API Provider: Twelve Data (800 calls/day limit)
+2025-10-07 15:17:45,868 - __main__ - INFO -    - Morning report: 09:00 (UTC+5)
+2025-10-07 15:17:45,868 - __main__ - INFO -    - Admin users: 1 configured
+2025-10-07 15:17:45,868 - __main__ - INFO -    - Target channel: -1002994456237
+2025-10-07 15:17:45,868 - __main__ - INFO -    - Signal check interval: 300s
+2025-10-07 15:17:45,868 - __main__ - INFO -    - SMA windows: 5/20
+2025-10-07 15:17:45,868 - __main__ - INFO -    - Max symbols: 20
+2025-10-07 15:17:45,868 - __main__ - INFO - 🎯 Available Features:
+2025-10-07 15:17:45,868 - __main__ - INFO -    - Automated signal generation (SMA crossover)
+2025-10-07 15:17:45,868 - __main__ - INFO -    - Custom signal creation with step-by-step process
+2025-10-07 15:17:45,869 - __main__ - INFO -    - Real-time price alerts
+2025-10-07 15:17:45,869 - __main__ - INFO -    - Daily market summaries
+2025-10-07 15:17:45,869 - __main__ - INFO -    - News aggregation from multiple sources
+2025-10-07 15:17:45,869 - __main__ - INFO -    - Signal history tracking
+2025-10-07 15:17:45,869 - __main__ - INFO - 🔧 Available Commands:
+2025-10-07 15:17:45,869 - __main__ - INFO -    Market Data:
+2025-10-07 15:17:45,869 - __main__ - INFO -       - /check SYMBOL - Get trading signal
+2025-10-07 15:17:45,870 - __main__ - INFO -       - /price SYMBOL - Get current price
+2025-10-07 15:17:45,870 - __main__ - INFO -       - /summary SYMBOL - Get detailed summary
+2025-10-07 15:17:45,870 - __main__ - INFO -       - /news SYMBOL - Get latest news
+2025-10-07 15:17:45,870 - __main__ - INFO -    Custom Signals:
+2025-10-07 15:17:45,870 - __main__ - INFO -       - /custom_signal - Create custom trading signal
+2025-10-07 15:17:45,870 - __main__ - INFO -       - /history [limit] - View signal history
+2025-10-07 15:17:45,870 - __main__ - INFO -       - /cancel - Cancel signal creation
+2025-10-07 15:17:45,870 - __main__ - INFO -    Management:
+2025-10-07 15:17:45,871 - __main__ - INFO -       - /help - Show all commands
+2025-10-07 15:17:45,871 - __main__ - INFO -       - /addsymbol SYMBOL - Add to watchlist
+2025-10-07 15:17:45,871 - __main__ - INFO -       - /symbols - View watchlist
+2025-10-07 15:17:45,871 - __main__ - INFO -       - /setalert SYMBOL % - Set price alert
+2025-10-07 15:17:45,871 - __main__ - INFO -       - /morningreport - Send report now
+2025-10-07 15:17:45,871 - __main__ - INFO - ✅ Bot initialization completed successfully
+2025-10-07 15:17:45,871 - __main__ - INFO - 📱 Bot is now running and ready to receive commands
+2025-10-07 15:17:45,871 - __main__ - INFO - 🛑 Press Ctrl+C to stop the bot gracefully
+2025-10-07 15:17:45,871 - __main__ - INFO - Starting Telegram bot...
+2025-10-07 15:17:45,917 - bot - INFO - All stickers already warmed up
+2025-10-07 15:17:45,917 - bot - INFO - Bot initialization complete
+2025-10-07 15:17:46,866 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getMe "HTTP/1.1 200 OK"
+2025-10-07 15:17:47,176 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-07 15:17:47,178 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-07 15:17:47,178 - telegram.ext.Application - INFO - Application started
+2025-10-07 15:18:21,979 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:18:38,304 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:18:39,229 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:18:46,346 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:18:48,897 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:18:51,370 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:18:54,570 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:18:55,187 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:18:55,623 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:18:57,875 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:18:58,382 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:19:01,240 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:19:02,374 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:19:02,890 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:19:04,402 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:19:04,948 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:19:05,477 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 400 Bad Request"
+2025-10-07 15:19:05,477 - bot - ERROR - Failed to send sticker up: Wrong file identifier/http url specified
+2025-10-07 15:19:07,644 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:19:07,647 - bot - INFO - Sticker cache saved
+2025-10-07 15:19:07,647 - bot - INFO - Uploaded and cached sticker: up
+2025-10-07 15:19:10,722 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:19:11,115 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:19:12,620 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:19:12,969 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:19:13,482 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 400 Bad Request"
+2025-10-07 15:19:13,483 - bot - ERROR - Failed to send sticker win: Wrong file identifier/http url specified
+2025-10-07 15:19:14,721 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:19:15,974 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:19:15,977 - bot - INFO - Sticker cache saved
+2025-10-07 15:19:15,978 - bot - INFO - Uploaded and cached sticker: win
+2025-10-07 15:19:42,791 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:20:14,729 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:20:47,673 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:21:18,969 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:21:53,102 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:22:28,610 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:22:59,850 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:23:31,664 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:24:03,203 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:24:34,518 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:24:42,700 - __main__ - INFO - ============================================================
+2025-10-07 15:24:42,700 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 15:24:42,701 - __main__ - INFO - ============================================================
+2025-10-07 15:24:42,701 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 15:24:42,701 - DataDirectoryManager - INFO - Data directory ready: data
+2025-10-07 15:24:42,703 - APIConnectionTester - INFO - Testing Twelve Data API connection...
+2025-10-07 15:24:43,569 - APIConnectionTester - INFO - Twelve Data API test successful! AAPL price: $256.69
+2025-10-07 15:24:43,569 - APIConnectionTester - INFO - Testing Telegram Bot API connection...
+2025-10-07 15:24:45,323 - APIConnectionTester - INFO - Telegram API test successful! Bot: TradePulse Bot (@EquityEye_bot)
+2025-10-07 15:24:45,326 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 15:24:45,414 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 15:24:45,416 - __main__ - INFO - 📊 Configuration Summary:
+2025-10-07 15:24:45,416 - __main__ - INFO -    - API Provider: Twelve Data (800 calls/day limit)
+2025-10-07 15:24:45,416 - __main__ - INFO -    - Morning report: 09:00 (UTC+5)
+2025-10-07 15:24:45,416 - __main__ - INFO -    - Admin users: 1 configured
+2025-10-07 15:24:45,417 - __main__ - INFO -    - Target channel: -1002994456237
+2025-10-07 15:24:45,417 - __main__ - INFO -    - Signal check interval: 300s
+2025-10-07 15:24:45,417 - __main__ - INFO -    - SMA windows: 5/20
+2025-10-07 15:24:45,417 - __main__ - INFO -    - Max symbols: 20
+2025-10-07 15:24:45,417 - __main__ - INFO - 🎯 Available Features:
+2025-10-07 15:24:45,417 - __main__ - INFO -    - Automated signal generation (SMA crossover)
+2025-10-07 15:24:45,417 - __main__ - INFO -    - Custom signal creation with step-by-step process
+2025-10-07 15:24:45,417 - __main__ - INFO -    - Real-time price alerts
+2025-10-07 15:24:45,417 - __main__ - INFO -    - Daily market summaries
+2025-10-07 15:24:45,417 - __main__ - INFO -    - News aggregation from multiple sources
+2025-10-07 15:24:45,418 - __main__ - INFO -    - Signal history tracking
+2025-10-07 15:24:45,418 - __main__ - INFO - 🔧 Available Commands:
+2025-10-07 15:24:45,418 - __main__ - INFO -    Market Data:
+2025-10-07 15:24:45,418 - __main__ - INFO -       - /check SYMBOL - Get trading signal
+2025-10-07 15:24:45,418 - __main__ - INFO -       - /price SYMBOL - Get current price
+2025-10-07 15:24:45,418 - __main__ - INFO -       - /summary SYMBOL - Get detailed summary
+2025-10-07 15:24:45,418 - __main__ - INFO -       - /news SYMBOL - Get latest news
+2025-10-07 15:24:45,419 - __main__ - INFO -    Custom Signals:
+2025-10-07 15:24:45,419 - __main__ - INFO -       - /custom_signal - Create custom trading signal
+2025-10-07 15:24:45,419 - __main__ - INFO -       - /history [limit] - View signal history
+2025-10-07 15:24:45,419 - __main__ - INFO -       - /cancel - Cancel signal creation
+2025-10-07 15:24:45,419 - __main__ - INFO -    Management:
+2025-10-07 15:24:45,419 - __main__ - INFO -       - /help - Show all commands
+2025-10-07 15:24:45,419 - __main__ - INFO -       - /addsymbol SYMBOL - Add to watchlist
+2025-10-07 15:24:45,419 - __main__ - INFO -       - /symbols - View watchlist
+2025-10-07 15:24:45,419 - __main__ - INFO -       - /setalert SYMBOL % - Set price alert
+2025-10-07 15:24:45,421 - __main__ - INFO -       - /morningreport - Send report now
+2025-10-07 15:24:45,421 - __main__ - INFO - ✅ Bot initialization completed successfully
+2025-10-07 15:24:45,421 - __main__ - INFO - 📱 Bot is now running and ready to receive commands
+2025-10-07 15:24:45,421 - __main__ - INFO - 🛑 Press Ctrl+C to stop the bot gracefully
+2025-10-07 15:24:45,421 - __main__ - INFO - Starting Telegram bot...
+2025-10-07 15:24:45,500 - bot - INFO - All stickers already warmed up
+2025-10-07 15:24:45,501 - bot - INFO - Bot initialization complete
+2025-10-07 15:24:46,347 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getMe "HTTP/1.1 200 OK"
+2025-10-07 15:24:46,654 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-07 15:24:46,655 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-07 15:24:46,656 - telegram.ext.Application - INFO - Application started
+2025-10-07 15:24:55,332 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:24:57,370 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:01,840 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:02,208 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:03,745 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:04,263 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:05,800 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:06,363 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:07,968 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:08,377 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:11,270 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:11,771 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:25:12,286 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:25:12,797 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:13,006 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:25:17,020 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:25,252 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:26,096 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:25:26,586 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:25:31,120 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:31,448 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:25:32,953 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:25:33,379 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:25:34,516 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:25:36,919 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:38,127 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:25:39,631 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:25:40,097 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:25:41,642 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:44,237 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:25:46,907 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:47,310 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:25:47,711 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:25:52,357 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:52,872 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:54,549 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:54,919 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:57,178 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:25:57,588 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:25:59,029 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:26:02,529 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:26:02,941 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:26:03,363 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:26:04,268 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:26:10,964 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:26:12,500 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:26:12,916 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:26:14,418 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:26:14,869 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:26:16,010 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:26:17,154 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:26:23,407 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:26:26,595 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:26:27,004 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:26:40,175 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:26:43,772 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getFile "HTTP/1.1 200 OK"
+2025-10-07 15:26:44,287 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:26:44,798 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendPhoto "HTTP/1.1 200 OK"
+2025-10-07 15:26:49,430 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:26:54,703 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:26:54,789 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:26:55,248 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:26:55,815 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:26:56,323 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:26:57,664 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:27:20,506 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:27:22,485 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:27:28,024 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:27:30,213 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:27:32,680 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:27:33,788 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:27:36,007 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:27:36,466 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:27:38,930 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:27:39,366 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:27:39,958 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:27:44,210 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:27:45,265 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:27:45,717 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:27:46,540 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:27:46,554 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:27:51,165 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:27:51,576 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:27:52,095 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:27:53,956 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:27:54,370 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:27:55,876 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:27:56,318 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:27:58,785 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:28:00,641 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:28:01,049 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:28:02,554 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:28:03,043 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:28:03,749 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:28:03,838 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:28:07,636 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:28:08,044 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:28:08,464 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:28:12,473 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:28:12,985 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:28:15,462 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:28:15,871 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:28:18,235 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:28:18,947 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:28:19,693 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:28:22,563 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:28:22,975 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-07 15:28:23,376 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-07 15:28:23,479 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 15:28:24,789 - bot - ERROR - Failed to send sticker instantly: 
+2025-10-07 15:28:25,342 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-07 15:28:54,024 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:29:25,314 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:29:56,631 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:30:28,024 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 15:30:59,269 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
