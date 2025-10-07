@@ -1,7 +1,7 @@
 python-telegram-bot==20.7
 pandas>=2.2.0
 requests==2.31.0
-feedparser==6.0.10
+feedparser>=6.0.11
 pytz==2024.1
 apscheduler==3.10.4
 tzlocal==5.2
