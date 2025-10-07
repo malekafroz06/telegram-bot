@@ -266,7 +266,7 @@ class TradePulseApplication:
 def run_webhook():
     logger = setup_logging()  # Enable comprehensive logging for webhook mode
     from flask import Flask, request
-    import requests  # For setting webhook
+    import requests  # For setting webhook and sending messages
 
     # Get required environment variables
     TOKEN = os.environ.get("TELEGRAM_TOKEN")
@@ -300,7 +300,26 @@ def run_webhook():
         update = request.get_json(force=True)
         try:
             logger.info(f"Received update: {update}")  # Debug log
-            bot.handle_update(update)
+            # Temp inline handling until bot.py has handle_update
+            if 'message' in update:
+                message = update['message']
+                chat_id = message['chat']['id']
+                text = message.get('text', '')
+                if text == '/start':
+                    # Reply via Telegram API
+                    reply_url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+                    reply_payload = {
+                        "chat_id": chat_id,
+                        "text": "Hello! TradePulse Bot started. Use /help for commands."
+                    }
+                    response = requests.post(reply_url, json=reply_payload)
+                    if response.status_code == 200:
+                        logger.info(f"✅ Replied to /start for user {chat_id}")
+                    else:
+                        logger.error(f"❌ Failed to reply: {response.text}")
+                else:
+                    logger.info(f"Unhandled message: {text} from {chat_id}")
+            # TODO: Call bot.handle_update(update) once implemented in bot.py
         except Exception as e:
             logger.error(f"Error handling update: {e}")
         return "OK"
@@ -328,7 +347,7 @@ def run_webhook():
         except Exception as e:
             logger.error(f"❌ Error setting webhook: {e}")
 
-    PORT = int(os.environ.get("PORT", 8443))
+    PORT = int(os.environ.get("PORT", 10000))  # Render uses 10000 by default
     logger.info(f"Starting Flask app on port {PORT}")
     app.run(host="0.0.0.0", port=PORT, debug=False)
 
