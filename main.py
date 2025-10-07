@@ -264,9 +264,9 @@ class TradePulseApplication:
 # Webhook Mode for Render
 # -------------------------------
 def run_webhook():
+    logger = setup_logging()  # Enable comprehensive logging for webhook mode
     from flask import Flask, request
-    import os
-    import logging
+    import requests  # For setting webhook
 
     # Get required environment variables
     TOKEN = os.environ.get("TELEGRAM_TOKEN")
@@ -277,6 +277,7 @@ def run_webhook():
     missing = [name for name in ["TELEGRAM_TOKEN", "CHANNEL_ID", "TWELVE_DATA_API_KEY"]
                if not os.environ.get(name)]
     if missing:
+        logger.error(f"❌ Missing required environment variables: {', '.join(missing)}")
         raise SystemExit(f"❌ Missing required environment variables: {', '.join(missing)}")
 
     app = Flask(__name__)
@@ -288,18 +289,20 @@ def run_webhook():
     }
 
     # Include optional settings if needed
-    config["ADMIN_IDS"] = os.environ.get("ADMIN_IDS", "").split(",") if os.environ.get("ADMIN_IDS") else []
+    config["ADMIN_IDS"] = [int(id.strip()) for id in os.environ.get("ADMIN_IDS", "").split(",") if id.strip()] if os.environ.get("ADMIN_IDS") else []
     config["CHECK_INTERVAL_SECONDS"] = int(os.environ.get("CHECK_INTERVAL_SECONDS", 300))
 
+    logger.info("Initializing TradingBot for webhook mode...")
     bot = TradingBot(config)
 
     @app.route(f"/{TOKEN}", methods=["POST"])
     def webhook():
         update = request.get_json(force=True)
         try:
+            logger.info(f"Received update: {update}")  # Debug log
             bot.handle_update(update)
         except Exception as e:
-            logging.getLogger(__name__).error(f"Error handling update: {e}")
+            logger.error(f"Error handling update: {e}")
         return "OK"
 
     @app.route("/", methods=["GET"])
@@ -309,10 +312,25 @@ def run_webhook():
     # Set webhook automatically if running on Render
     RENDER_URL = os.environ.get("RENDER_EXTERNAL_URL")
     if RENDER_URL:
-        bot.set_webhook(f"{RENDER_URL}/{TOKEN}")
+        webhook_url = f"{RENDER_URL}/{TOKEN}"
+        api_url = f"https://api.telegram.org/bot{TOKEN}/setWebhook"
+        payload = {"url": webhook_url}
+        try:
+            response = requests.post(api_url, json=payload)
+            if response.status_code == 200:
+                result = response.json()
+                if result.get("ok"):
+                    logger.info(f"✅ Webhook set successfully: {webhook_url}")
+                else:
+                    logger.error(f"❌ Webhook set failed: {result.get('description', 'Unknown error')}")
+            else:
+                logger.error(f"❌ HTTP {response.status_code} when setting webhook: {response.text}")
+        except Exception as e:
+            logger.error(f"❌ Error setting webhook: {e}")
 
     PORT = int(os.environ.get("PORT", 8443))
-    app.run(host="0.0.0.0", port=PORT)
+    logger.info(f"Starting Flask app on port {PORT}")
+    app.run(host="0.0.0.0", port=PORT, debug=False)
 
 
 # -------------------------------
