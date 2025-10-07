@@ -26186,3 +26186,57 @@ telegram.error.Conflict: Conflict: terminated by other getUpdates request; make 
 2025-10-07 16:47:17,358 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
 2025-10-07 16:47:48,578 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
 2025-10-07 16:48:19,729 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 17:10:01,270 - __main__ - INFO - ============================================================
+2025-10-07 17:10:01,271 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 17:10:01,272 - __main__ - INFO - ============================================================
+2025-10-07 17:10:01,273 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 17:10:01,274 - DataDirectoryManager - INFO - Data directory ready: data
+2025-10-07 17:10:01,275 - APIConnectionTester - INFO - Testing Twelve Data API connection...
+2025-10-07 17:10:01,808 - APIConnectionTester - INFO - Twelve Data API test successful! AAPL price: $256.69
+2025-10-07 17:10:01,808 - APIConnectionTester - INFO - Testing Telegram Bot API connection...
+2025-10-07 17:10:02,367 - APIConnectionTester - INFO - Telegram API test successful! Bot: Stoic Assistant (@Stoic_Bro_ai_bot)
+2025-10-07 17:10:02,369 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 17:10:02,399 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 17:10:02,400 - __main__ - INFO - 📊 Configuration Summary:
+2025-10-07 17:10:02,400 - __main__ - INFO -    - API Provider: Twelve Data (800 calls/day limit)
+2025-10-07 17:10:02,400 - __main__ - INFO -    - Morning report: 09:00 (UTC+5)
+2025-10-07 17:10:02,400 - __main__ - INFO -    - Admin users: 1 configured
+2025-10-07 17:10:02,400 - __main__ - INFO -    - Target channel: -1002487950901
+2025-10-07 17:10:02,400 - __main__ - INFO -    - Signal check interval: 300s
+2025-10-07 17:10:02,402 - __main__ - INFO -    - SMA windows: 5/20
+2025-10-07 17:10:02,402 - __main__ - INFO -    - Max symbols: 20
+2025-10-07 17:10:02,402 - __main__ - INFO - 🎯 Available Features:
+2025-10-07 17:10:02,402 - __main__ - INFO -    - Automated signal generation (SMA crossover)
+2025-10-07 17:10:02,402 - __main__ - INFO -    - Custom signal creation with step-by-step process
+2025-10-07 17:10:02,403 - __main__ - INFO -    - Real-time price alerts
+2025-10-07 17:10:02,403 - __main__ - INFO -    - Daily market summaries
+2025-10-07 17:10:02,403 - __main__ - INFO -    - News aggregation from multiple sources
+2025-10-07 17:10:02,403 - __main__ - INFO -    - Signal history tracking
+2025-10-07 17:10:02,403 - __main__ - INFO - 🔧 Available Commands:
+2025-10-07 17:10:02,404 - __main__ - INFO -    Market Data:
+2025-10-07 17:10:02,404 - __main__ - INFO -       - /check SYMBOL - Get trading signal
+2025-10-07 17:10:02,404 - __main__ - INFO -       - /price SYMBOL - Get current price
+2025-10-07 17:10:02,404 - __main__ - INFO -       - /summary SYMBOL - Get detailed summary
+2025-10-07 17:10:02,404 - __main__ - INFO -       - /news SYMBOL - Get latest news
+2025-10-07 17:10:02,404 - __main__ - INFO -    Custom Signals:
+2025-10-07 17:10:02,405 - __main__ - INFO -       - /custom_signal - Create custom trading signal
+2025-10-07 17:10:02,405 - __main__ - INFO -       - /history [limit] - View signal history
+2025-10-07 17:10:02,405 - __main__ - INFO -       - /cancel - Cancel signal creation
+2025-10-07 17:10:02,405 - __main__ - INFO -    Management:
+2025-10-07 17:10:02,405 - __main__ - INFO -       - /help - Show all commands
+2025-10-07 17:10:02,405 - __main__ - INFO -       - /addsymbol SYMBOL - Add to watchlist
+2025-10-07 17:10:02,405 - __main__ - INFO -       - /symbols - View watchlist
+2025-10-07 17:10:02,405 - __main__ - INFO -       - /setalert SYMBOL % - Set price alert
+2025-10-07 17:10:02,405 - __main__ - INFO -       - /morningreport - Send report now
+2025-10-07 17:10:02,406 - __main__ - INFO - ✅ Bot initialization completed successfully
+2025-10-07 17:10:02,406 - __main__ - INFO - 📱 Bot is now running and ready to receive commands
+2025-10-07 17:10:02,406 - __main__ - INFO - 🛑 Press Ctrl+C to stop the bot gracefully
+2025-10-07 17:10:02,406 - __main__ - INFO - Starting Telegram bot...
+2025-10-07 17:10:02,449 - bot - INFO - All stickers already warmed up
+2025-10-07 17:10:02,449 - bot - INFO - Bot initialization complete
+2025-10-07 17:10:04,789 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getMe "HTTP/1.1 200 OK"
+2025-10-07 17:10:05,006 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-07 17:10:05,009 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-07 17:10:05,009 - telegram.ext.Application - INFO - Application started
+2025-10-07 17:10:05,671 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 17:10:07,953 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
