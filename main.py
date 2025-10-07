@@ -11,8 +11,11 @@ import re  # For EmojiFilter
 # Import bot module (will be provided by user)
 try:
     from bot import TradingBot
-except ImportError:
-    print("❌ Error: bot.py not found. Please ensure bot.py is in the same directory.")
+except ImportError as e:
+    print(f"❌ ImportError: {e}")
+    sys.exit(1)
+except Exception as e:
+    print(f"❌ Error: {e}")
     sys.exit(1)
 
 # -------------------------------
