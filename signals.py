@@ -569,20 +569,61 @@ Type the currency pair you want to trade:"""
         return "❌ Invalid step in custom signal process."
 
     def _post_to_channel_instant(self, message: str):
-        """Post message to channel INSTANTLY without blocking - fire and forget"""
-        if self.bot.main_loop and not self.bot.main_loop.is_closed():
-            asyncio.run_coroutine_threadsafe(
-                self.bot.post_message(message),
-                self.bot.main_loop
-            )
+        """Post message to channel INSTANTLY - WEBHOOK COMPATIBLE"""
+        try:
+            # Try to get the current event loop
+            loop = asyncio.get_event_loop()
+            
+            if loop.is_running():
+                # We're in webhook mode - schedule the coroutine
+                asyncio.ensure_future(
+                    self.bot.post_message(message),
+                    loop=loop
+                )
+                logger.info(f"✅ Scheduled message posting (webhook mode)")
+            else:
+                # We're in polling mode - use the thread-safe method
+                if self.bot.main_loop and not self.bot.main_loop.is_closed():
+                    asyncio.run_coroutine_threadsafe(
+                        self.bot.post_message(message),
+                        self.bot.main_loop
+                    )
+                    logger.info(f"✅ Posted message via main loop (polling mode)")
+                else:
+                    logger.error("❌ No event loop available")
+        except Exception as e:
+            logger.error(f"❌ Failed to post message: {e}")
 
     def _send_sticker_instantly(self, direction_or_result: str):
-        """Send sticker instantly using optimized method - fire and forget"""
+        """Send sticker instantly - WEBHOOK COMPATIBLE"""
         sticker_name = self.sticker_names.get(direction_or_result)
         
-        if sticker_name:
-            # Fire and forget - don't wait
-            self.bot.send_sticker_to_channel_instant(sticker_name)
+        if not sticker_name:
+            logger.warning(f"No sticker found for: {direction_or_result}")
+            return
+        
+        try:
+            loop = asyncio.get_event_loop()
+            
+            if loop.is_running():
+                # Webhook mode - schedule the coroutine
+                asyncio.ensure_future(
+                    self.bot.message_sender.send_sticker_ultra_fast(sticker_name),
+                    loop=loop
+                )
+                logger.info(f"✅ Scheduled sticker posting (webhook mode)")
+            else:
+                # Polling mode - use thread-safe method
+                if self.bot.main_loop and not self.bot.main_loop.is_closed():
+                    asyncio.run_coroutine_threadsafe(
+                        self.bot.message_sender.send_sticker_ultra_fast(sticker_name),
+                        self.bot.main_loop
+                    )
+                    logger.info(f"✅ Posted sticker via main loop (polling mode)")
+                else:
+                    logger.error("❌ No event loop available for sticker")
+        except Exception as e:
+            logger.error(f"❌ Failed to send sticker: {e}")
 
     def _process_pair(self, user_id: str, pair: str) -> str:
         """Process pair input with validation"""

@@ -26306,3 +26306,927 @@ telegram.error.Conflict: Conflict: terminated by other getUpdates request; make 
 2025-10-07 20:10:59,157 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/deleteWebhook "HTTP/1.1 200 OK"
 2025-10-07 20:10:59,160 - apscheduler.scheduler - INFO - Scheduler started
 2025-10-07 20:10:59,160 - telegram.ext.Application - INFO - Application started
+2025-10-07 20:46:36,708 - __main__ - INFO - 💻 Running in POLLING mode (local)
+2025-10-07 20:46:36,712 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 20:46:36,712 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 20:46:36,712 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 20:46:36,745 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 20:46:36,745 - __main__ - INFO - 📊 Channel: -1002487950901
+2025-10-07 20:46:36,745 - __main__ - INFO - 📱 Admin users: 1
+2025-10-07 20:46:36,745 - __main__ - INFO - ✅ Bot initialized successfully
+2025-10-07 20:46:36,747 - __main__ - INFO - Starting Telegram bot (long-polling)...
+2025-10-07 20:46:36,788 - bot - INFO - All stickers already warmed up
+2025-10-07 20:46:36,789 - bot - INFO - Bot initialization complete
+2025-10-07 20:46:37,452 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getMe "HTTP/1.1 200 OK"
+2025-10-07 20:46:37,603 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-07 20:46:37,612 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-07 20:46:37,612 - telegram.ext.Application - INFO - Application started
+2025-10-07 20:47:10,335 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:47:41,492 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:48:12,657 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:48:43,809 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:49:14,971 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:49:46,154 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:50:09,718 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:50:12,215 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:50:14,579 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 20:50:43,366 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:51:14,529 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:51:45,693 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:52:17,268 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:52:48,418 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:53:19,639 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:53:50,798 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:54:21,946 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:54:53,126 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:55:24,274 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:55:55,434 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:56:26,606 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:56:28,561 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:56:30,035 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 20:56:59,711 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:57:31,306 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:58:02,474 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:58:34,864 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:59:06,041 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 20:59:37,644 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 21:00:08,805 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 21:17:03,093 - telegram.ext.Updater - ERROR - Error while getting Updates: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-10-07 21:17:03,116 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 114, in connect_tcp
+    stream: anyio.abc.ByteStream = await anyio.connect_tcp(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_sockets.py", line 215, in connect_tcp
+    gai_res = await getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_sockets.py", line 592, in getaddrinfo
+    gai_res = await get_async_backend().getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_backends\_asyncio.py", line 2698, in getaddrinfo
+    return await get_running_loop().getaddrinfo(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 864, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 961, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 60, in map_httpcore_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 353, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 262, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 245, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 92, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 69, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 117, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 112, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 216, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 352, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 77, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 291, in _request_wrapper
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 277, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 240, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-10-07 21:17:04,942 - telegram.ext.Updater - ERROR - Error while getting Updates: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-10-07 21:17:04,946 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 114, in connect_tcp
+    stream: anyio.abc.ByteStream = await anyio.connect_tcp(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_sockets.py", line 215, in connect_tcp
+    gai_res = await getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_sockets.py", line 592, in getaddrinfo
+    gai_res = await get_async_backend().getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_backends\_asyncio.py", line 2698, in getaddrinfo
+    return await get_running_loop().getaddrinfo(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 864, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 961, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 60, in map_httpcore_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 353, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 262, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 245, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 92, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 69, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 117, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 112, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 216, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 352, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 77, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 291, in _request_wrapper
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 277, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 240, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-10-07 21:17:06,463 - telegram.ext.Updater - ERROR - Error while getting Updates: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-10-07 21:17:06,466 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 114, in connect_tcp
+    stream: anyio.abc.ByteStream = await anyio.connect_tcp(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_sockets.py", line 215, in connect_tcp
+    gai_res = await getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_sockets.py", line 592, in getaddrinfo
+    gai_res = await get_async_backend().getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_backends\_asyncio.py", line 2698, in getaddrinfo
+    return await get_running_loop().getaddrinfo(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 864, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 961, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 60, in map_httpcore_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 353, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 262, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 245, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 92, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 69, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 117, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 112, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 216, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 352, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 77, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 291, in _request_wrapper
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 277, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 240, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-10-07 22:48:16,898 - telegram.ext.Updater - ERROR - Error while getting Updates: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-10-07 22:48:16,898 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 10, in map_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 114, in connect_tcp
+    stream: anyio.abc.ByteStream = await anyio.connect_tcp(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_sockets.py", line 215, in connect_tcp
+    gai_res = await getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_core\_sockets.py", line 592, in getaddrinfo
+    gai_res = await get_async_backend().getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\_backends\_asyncio.py", line 2698, in getaddrinfo
+    return await get_running_loop().getaddrinfo(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 864, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 961, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 60, in map_httpcore_exceptions
+    yield
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 353, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 262, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection_pool.py", line 245, in handle_async_request
+    response = await connection.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 92, in handle_async_request
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 69, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_async\connection.py", line 117, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_backends\anyio.py", line 112, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 216, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1530, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1617, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1645, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1682, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_client.py", line 1719, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 352, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\httpx\_transports\default.py", line 77, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 291, in _request_wrapper
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 277, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_httpxrequest.py", line 240, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2025-10-07 22:48:21,461 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 22:48:22,398 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 22:48:22,883 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 22:48:53,030 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 22:49:11,046 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 22:49:12,370 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/sendMessage "HTTP/1.1 200 OK"
+2025-10-07 22:49:42,555 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 22:50:13,938 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 22:50:45,339 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:18:02,302 - __main__ - INFO - 💻 Running in POLLING mode (local)
+2025-10-07 23:18:02,304 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-07 23:18:02,305 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-07 23:18:02,306 - __main__ - INFO - Initializing TradingBot...
+2025-10-07 23:18:02,361 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-07 23:18:02,361 - __main__ - INFO - 📊 Channel: -1002487950901
+2025-10-07 23:18:02,361 - __main__ - INFO - 📱 Admin users: 1
+2025-10-07 23:18:02,361 - __main__ - INFO - ✅ Bot initialized successfully
+2025-10-07 23:18:02,363 - __main__ - INFO - Starting Telegram bot (long-polling)...
+2025-10-07 23:18:02,399 - bot - INFO - All stickers already warmed up
+2025-10-07 23:18:02,399 - bot - INFO - Bot initialization complete
+2025-10-07 23:18:04,922 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getMe "HTTP/1.1 200 OK"
+2025-10-07 23:18:05,835 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-07 23:18:05,836 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-07 23:18:05,836 - telegram.ext.Application - INFO - Application started
+2025-10-07 23:18:37,607 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:19:08,894 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:19:40,129 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:20:11,378 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:20:42,638 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:21:13,886 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:21:45,147 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:22:16,407 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:22:48,173 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:23:19,446 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:23:50,794 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:24:22,565 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:24:53,824 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:25:25,087 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:25:56,367 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:26:27,604 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:26:58,863 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:27:30,117 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:28:01,352 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:28:32,672 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:29:03,920 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:29:35,196 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:30:06,531 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:30:37,834 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:31:09,082 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:31:40,319 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:32:11,598 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:32:42,871 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:33:14,182 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:33:45,459 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:34:16,699 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:34:48,060 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:35:19,271 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:35:50,551 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 200 OK"
+2025-10-07 23:36:02,355 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 409 Conflict"
+2025-10-07 23:36:02,366 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by setWebhook request
+2025-10-07 23:36:02,376 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by setWebhook request
+2025-10-07 23:36:07,240 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 409 Conflict"
+2025-10-07 23:36:07,241 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:07,241 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:09,805 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 409 Conflict"
+2025-10-07 23:36:09,806 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:09,806 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:13,423 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 409 Conflict"
+2025-10-07 23:36:13,424 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:13,424 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:19,573 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 409 Conflict"
+2025-10-07 23:36:19,576 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:19,576 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:28,056 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 409 Conflict"
+2025-10-07 23:36:28,058 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:28,059 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:40,216 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 409 Conflict"
+2025-10-07 23:36:40,217 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:36:40,217 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:37:00,379 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8232241125:AAE3zBp_lcQhVFhcg_1mCiHfx-aiB6fY_BA/getUpdates "HTTP/1.1 409 Conflict"
+2025-10-07 23:37:00,380 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-07 23:37:00,382 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 607, in _network_loop_retry
+    if not await action_cb():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    raise exc
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_updater.py", line 320, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 543, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 381, in decorator
+    result = await func(self, *args, **kwargs)  # skipcq: PYL-E1102
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 3661, in get_updates
+    await self._post(
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 469, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\ext\_extbot.py", line 325, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\_bot.py", line 497, in _do_post
+    return await request.post(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 168, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\malek\AppData\Local\Programs\Python\Python311\Lib\site-packages\telegram\request\_baserequest.py", line 330, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
+2025-10-09 09:39:35,868 - __main__ - INFO - 💻 Running in POLLING mode (local)
+2025-10-09 09:39:35,872 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-09 09:39:35,872 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-09 09:39:35,872 - __main__ - INFO - Initializing TradingBot...
+2025-10-09 09:39:35,927 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-09 09:39:35,927 - __main__ - INFO - 📊 Channel: -1002994456237
+2025-10-09 09:39:35,927 - __main__ - INFO - 📱 Admin users: 1
+2025-10-09 09:39:35,927 - __main__ - INFO - ✅ Bot initialized successfully
+2025-10-09 09:39:35,927 - __main__ - INFO - Starting Telegram bot (long-polling)...
+2025-10-09 09:39:35,991 - bot - INFO - All stickers already warmed up
+2025-10-09 09:39:35,991 - bot - INFO - Bot initialization complete
+2025-10-09 09:39:36,502 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getMe "HTTP/1.1 200 OK"
+2025-10-09 09:39:36,660 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-09 09:39:36,664 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-09 09:39:36,664 - telegram.ext.Application - INFO - Application started
+2025-10-09 09:39:38,596 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 09:39:38,973 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-09 09:39:39,397 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-09 09:39:47,029 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 09:39:47,709 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 09:39:55,622 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 09:39:56,363 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 09:40:00,373 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 09:40:00,751 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 09:40:02,852 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 09:40:03,285 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 09:40:05,518 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 09:40:05,920 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 09:40:06,234 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"

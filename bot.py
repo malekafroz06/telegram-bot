@@ -687,40 +687,61 @@ class TradingBot:
         )
     
     def post_message_from_thread(self, text: str) -> bool:
-        """Post message from another thread safely"""
+        """Post message from another thread safely - WEBHOOK COMPATIBLE"""
         if not self.main_loop or self.main_loop.is_closed():
-            return False
+            # Fallback for webhook mode: create new task in current loop
+            try:
+                loop = asyncio.get_event_loop()
+                if loop.is_running():
+                    # Loop is running (webhook mode) - schedule task
+                    asyncio.ensure_future(self.post_message(text), loop=loop)
+                    return True
+                else:
+                    # No running loop - try to create one
+                    return asyncio.run(self.post_message(text))
+            except Exception as e:
+                logger.error(f"Failed to post message (no loop): {e}")
+                return False
         
         try:
+            # Original method for polling mode
             future = asyncio.run_coroutine_threadsafe(
                 self.post_message(text),
                 self.main_loop
             )
             return future.result(timeout=self.config.get('MESSAGE_TIMEOUT', 8))
-        except Exception:
+        except Exception as e:
+            logger.error(f"Failed to post message from thread: {e}")
             return False
 
-    def post_message_to_channel(self, message: str) -> bool:
-        """Post message to public channel - sync wrapper"""
-        return self.post_message_from_thread(message)
-    
     def send_sticker_to_channel_instant(self, sticker_name: str) -> bool:
-        """Send sticker to channel INSTANTLY - optimized for <500ms delivery"""
+        """Send sticker to channel INSTANTLY - WEBHOOK COMPATIBLE"""
         if not self.main_loop or self.main_loop.is_closed():
-            return False
+            # Fallback for webhook mode
+            try:
+                loop = asyncio.get_event_loop()
+                if loop.is_running():
+                    asyncio.ensure_future(
+                        self.message_sender.send_sticker_ultra_fast(sticker_name),
+                        loop=loop
+                    )
+                    return True
+                else:
+                    return asyncio.run(self.message_sender.send_sticker_ultra_fast(sticker_name))
+            except Exception as e:
+                logger.error(f"Failed to send sticker (no loop): {e}")
+                return False
         
         try:
-            # Ultra-fast non-blocking dispatch
+            # Original method for polling mode
             future = asyncio.run_coroutine_threadsafe(
                 self.message_sender.send_sticker_ultra_fast(sticker_name),
                 self.main_loop
             )
-            # Minimal timeout for instant sends
             return future.result(timeout=1.5)
         except Exception as e:
             logger.error(f"Failed to send sticker instantly: {e}")
             return False
-
     async def _send_photo_async(self, photo, caption: str = None) -> bool:
         """Async photo sending method"""
         channel_id = self.config.get('CHANNEL_ID')
