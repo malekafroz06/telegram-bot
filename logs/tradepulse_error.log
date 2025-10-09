@@ -18430,3 +18430,23 @@ Traceback (most recent call last):
     raise Conflict(message)
 telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is active; use deleteWebhook to delete the webhook first
 2025-10-09 10:07:23,014 - signals - ERROR - ❌ Failed to send sticker: There is no current event loop in thread 'Thread-2'.
+2025-10-09 11:29:25,671 - __main__ - ERROR - Fatal startup error: MessageSender() takes no arguments
+2025-10-09 11:29:25,671 - __main__ - ERROR - Detailed error info:
+Traceback (most recent call last):
+  File "E:\malek\Downloads\telegram_trading_bot_core\main.py", line 221, in run
+    self.bot = TradingBot(self.config)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\malek\Downloads\telegram_trading_bot_core\bot.py", line 465, in __init__
+    self.message_sender = MessageSender(self.app.bot, self.config)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MessageSender() takes no arguments
+2025-10-09 11:29:58,129 - __main__ - ERROR - Fatal startup error: MessageSender() takes no arguments
+2025-10-09 11:29:58,130 - __main__ - ERROR - Detailed error info:
+Traceback (most recent call last):
+  File "E:\malek\Downloads\telegram_trading_bot_core\main.py", line 221, in run
+    self.bot = TradingBot(self.config)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\malek\Downloads\telegram_trading_bot_core\bot.py", line 465, in __init__
+    self.message_sender = MessageSender(self.app.bot, self.config)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MessageSender() takes no arguments

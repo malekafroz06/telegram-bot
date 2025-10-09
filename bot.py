@@ -55,13 +55,15 @@ class MessageSender:
         self.config = config
         self.channel_id = config.get('CHANNEL_ID')
         
-        # Sticker paths for initial upload
+        # Get the directory where bot.py is located
+        base_dir = Path(__file__).parent
+        
         self.sticker_paths = {
-            'up': r"E:\malek\Downloads\telegram_trading_bot_core\up.webp",
-            'down': r"E:\malek\Downloads\telegram_trading_bot_core\down.webp", 
-            'win': r"E:\malek\Downloads\telegram_trading_bot_core\win.webp",
-            'mtg_up': r"E:\malek\Downloads\telegram_trading_bot_core\MTGUp.webp",
-            'mtg_down': r"E:\malek\Downloads\telegram_trading_bot_core\MTGDown.webp"
+            'up': str(base_dir / 'up.webp'),
+            'down': str(base_dir / 'down.webp'),
+            'win': str(base_dir / 'win.webp'),
+            'mtg_up': str(base_dir / 'MTGUp.webp'),
+            'mtg_down': str(base_dir / 'MTGDown.webp')
         }
         
         # Load and warm up stickers
