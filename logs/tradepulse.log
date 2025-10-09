@@ -27230,3 +27230,103 @@ telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is 
 2025-10-09 09:40:05,518 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
 2025-10-09 09:40:05,920 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
 2025-10-09 09:40:06,234 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:06:50,943 - __main__ - INFO - 💻 Running in POLLING mode (local)
+2025-10-09 10:06:50,943 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-09 10:06:50,943 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-09 10:06:50,943 - __main__ - INFO - Initializing TradingBot...
+2025-10-09 10:06:50,992 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-09 10:06:50,992 - __main__ - INFO - 📊 Channel: -1002994456237
+2025-10-09 10:06:50,992 - __main__ - INFO - 📱 Admin users: 1
+2025-10-09 10:06:50,992 - __main__ - INFO - ✅ Bot initialized successfully
+2025-10-09 10:06:50,992 - __main__ - INFO - Starting Telegram bot (long-polling)...
+2025-10-09 10:06:51,046 - bot - INFO - All stickers already warmed up
+2025-10-09 10:06:51,051 - bot - INFO - Bot initialization complete
+2025-10-09 10:06:52,522 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getMe "HTTP/1.1 200 OK"
+2025-10-09 10:06:52,658 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-09 10:06:52,665 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-09 10:06:52,665 - telegram.ext.Application - INFO - Application started
+2025-10-09 10:07:00,675 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:07:01,390 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:07:07,873 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:07:11,985 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:07:13,252 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:07:13,685 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:07:15,457 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:07:15,897 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:07:18,639 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:07:18,639 - signals - INFO - ✅ Scheduled message posting (webhook mode)
+2025-10-09 10:07:19,081 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:07:19,374 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:07:22,292 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:07:22,708 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-09 10:07:22,708 - signals - INFO - ✅ Scheduled message posting (webhook mode)
+2025-10-09 10:07:23,014 - signals - ERROR - ❌ Failed to send sticker: There is no current event loop in thread 'Thread-2'.
+2025-10-09 10:07:23,134 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-09 10:07:23,165 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:07:29,112 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:07:29,792 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-09 10:07:30,225 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-09 10:07:31,912 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:07:32,408 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-09 10:07:32,408 - signals - INFO - ✅ Scheduled sticker posting (webhook mode)
+2025-10-09 10:07:32,838 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-09 10:07:33,778 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-09 10:07:38,832 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:07:40,052 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-09 10:07:40,052 - signals - INFO - ✅ Scheduled message posting (webhook mode)
+2025-10-09 10:07:40,485 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-09 10:07:40,758 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:37:28,772 - __main__ - INFO - 💻 Running in POLLING mode (local)
+2025-10-09 10:37:28,774 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-09 10:37:28,774 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-09 10:37:28,776 - __main__ - INFO - Initializing TradingBot...
+2025-10-09 10:37:28,823 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-09 10:37:28,823 - signals - INFO - ✅ CustomSignalHandler initialized
+2025-10-09 10:37:28,823 - signals - INFO - 📂 Sticker mappings: {'UP': 'up', 'DOWN': 'down', 'WIN': 'win', 'MTGUP': 'mtg_up', 'MTGDOWN': 'mtg_down'}
+2025-10-09 10:37:28,823 - signals - INFO - 🔗 Bot channel_id: -1002994456237
+2025-10-09 10:37:28,823 - __main__ - INFO - 📊 Channel: -1002994456237
+2025-10-09 10:37:28,823 - __main__ - INFO - 📱 Admin users: 1
+2025-10-09 10:37:28,823 - __main__ - INFO - ✅ Bot initialized successfully
+2025-10-09 10:37:28,823 - __main__ - INFO - Starting Telegram bot (long-polling)...
+2025-10-09 10:37:28,874 - bot - INFO - All stickers already warmed up
+2025-10-09 10:37:28,874 - bot - INFO - Bot initialization complete
+2025-10-09 10:37:30,601 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getMe "HTTP/1.1 200 OK"
+2025-10-09 10:37:30,784 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-09 10:37:30,784 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-09 10:37:30,784 - telegram.ext.Application - INFO - Application started
+2025-10-09 10:37:38,020 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:37:38,766 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:37:44,267 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:37:44,973 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:37:48,087 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:37:48,471 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:37:50,212 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:37:50,602 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:37:52,731 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:37:52,734 - signals - INFO - ✅ Scheduled message posting (webhook mode)
+2025-10-09 10:37:53,124 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:37:53,417 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:37:55,630 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:37:56,015 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-09 10:37:56,016 - signals - INFO - ✅ Scheduled message posting (webhook mode)
+2025-10-09 10:37:56,017 - signals - INFO - ✅ Scheduled UP sticker for sending
+2025-10-09 10:37:56,405 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-09 10:37:56,435 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:37:57,415 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-09 10:37:57,415 - bot - INFO - ✅ Sticker sent successfully: up (file_id: CAACAgUAAyEGAASye8at...)
+2025-10-09 10:37:57,429 - signals - INFO - ✅ Sticker sent: up (UP)
+2025-10-09 10:38:04,990 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:38:05,872 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-09 10:38:06,257 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-09 10:38:08,225 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:38:09,019 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-09 10:38:09,019 - signals - INFO - ✅ Scheduled MTGDOWN sticker
+2025-10-09 10:38:09,432 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-09 10:38:10,033 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendSticker "HTTP/1.1 200 OK"
+2025-10-09 10:38:10,034 - bot - INFO - ✅ Sticker sent successfully: mtg_down (file_id: CAACAgUAAyEGAASye8at...)
+2025-10-09 10:38:10,034 - signals - INFO - ✅ Sticker sent: mtg_down (MTGDOWN)
+2025-10-09 10:38:13,791 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:38:14,174 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-10-09 10:38:14,174 - signals - INFO - ✅ Scheduled message posting (webhook mode)
+2025-10-09 10:38:14,569 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
+2025-10-09 10:38:14,598 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"

@@ -468,7 +468,7 @@ def generate_signal(symbol: str, short_window: int = 5, long_window: int = 20) -
         raise ValueError(f'Insufficient data for {symbol}')
 
 class CustomSignalHandler:
-    """ULTRA-OPTIMIZED custom signal handler with instant sticker and message sending"""
+    """ULTRA-OPTIMIZED custom signal handler with instant sticker and message sending - WEBHOOK COMPATIBLE"""
     
     def __init__(self, bot):
         self.bot = bot
@@ -485,6 +485,10 @@ class CustomSignalHandler:
             'MTGUP': 'mtg_up',
             'MTGDOWN': 'mtg_down'
         }
+        
+        logger.info(f"✅ CustomSignalHandler initialized")
+        logger.info(f"📂 Sticker mappings: {self.sticker_names}")
+        logger.info(f"🔗 Bot channel_id: {bot.config.get('CHANNEL_ID')}")
 
     def _ensure_data_directory(self):
         """Ensure data directory exists"""
@@ -563,7 +567,8 @@ Type the currency pair you want to trade:"""
                 else:
                     return "❌ Please choose an action using the buttons above."
                     
-        except Exception:
+        except Exception as e:
+            logger.error(f"Error processing input: {e}")
             return "❌ An error occurred processing your input. Please try again or use /cancel to restart."
         
         return "❌ Invalid step in custom signal process."
@@ -595,11 +600,11 @@ Type the currency pair you want to trade:"""
             logger.error(f"❌ Failed to post message: {e}")
 
     def _send_sticker_instantly(self, direction_or_result: str):
-        """Send sticker instantly - WEBHOOK COMPATIBLE"""
+        """Send sticker instantly - WEBHOOK COMPATIBLE (LEGACY - kept for compatibility)"""
         sticker_name = self.sticker_names.get(direction_or_result)
         
         if not sticker_name:
-            logger.warning(f"No sticker found for: {direction_or_result}")
+            logger.warning(f"No sticker mapping for: {direction_or_result}")
             return
         
         try:
@@ -611,7 +616,7 @@ Type the currency pair you want to trade:"""
                     self.bot.message_sender.send_sticker_ultra_fast(sticker_name),
                     loop=loop
                 )
-                logger.info(f"✅ Scheduled sticker posting (webhook mode)")
+                logger.info(f"✅ Scheduled sticker posting (webhook mode): {sticker_name}")
             else:
                 # Polling mode - use thread-safe method
                 if self.bot.main_loop and not self.bot.main_loop.is_closed():
@@ -619,11 +624,29 @@ Type the currency pair you want to trade:"""
                         self.bot.message_sender.send_sticker_ultra_fast(sticker_name),
                         self.bot.main_loop
                     )
-                    logger.info(f"✅ Posted sticker via main loop (polling mode)")
+                    logger.info(f"✅ Posted sticker via main loop (polling mode): {sticker_name}")
                 else:
                     logger.error("❌ No event loop available for sticker")
         except Exception as e:
             logger.error(f"❌ Failed to send sticker: {e}")
+
+    async def _send_sticker_async(self, direction_or_result: str):
+        """Send sticker asynchronously - WEBHOOK COMPATIBLE"""
+        sticker_name = self.sticker_names.get(direction_or_result)
+        
+        if not sticker_name:
+            logger.warning(f"No sticker mapping for: {direction_or_result}")
+            return
+        
+        try:
+            # Use the bot's message sender to send sticker
+            success = await self.bot.message_sender.send_sticker_ultra_fast(sticker_name)
+            if success:
+                logger.info(f"✅ Sticker sent: {sticker_name} ({direction_or_result})")
+            else:
+                logger.error(f"❌ Failed to send sticker: {sticker_name}")
+        except Exception as e:
+            logger.error(f"❌ Exception sending sticker: {e}")
 
     def _process_pair(self, user_id: str, pair: str) -> str:
         """Process pair input with validation"""
@@ -676,26 +699,49 @@ Type your risk amount:"""
 Choose your direction:"""
 
     def _process_direction(self, user_id: str, direction: str) -> str:
-        """Process direction selection and send text + sticker INSTANTLY"""
+        """Process direction selection and send text + sticker INSTANTLY - WEBHOOK COMPATIBLE"""
         if direction not in ['UP', 'DOWN']:
             return "❌ Please select UP or DOWN direction."
         
         self.pending_signals[user_id]['data']['direction'] = direction
         
-        # Post "I am going For" text FIRST - fire and forget
+        # Post "I am going For" text FIRST
         direction_text = f"🎯 <b>I am going For {direction}</b>"
         self._post_to_channel_instant(direction_text)
         
-        # Then send sticker INSTANTLY - fire and forget (slight delay for correct order)
-        import threading
-        threading.Timer(0.3, lambda: self._send_sticker_instantly(direction)).start()
+        # Send sticker IMMEDIATELY after text (with small delay for ordering)
+        async def send_delayed_sticker():
+            """Send sticker after small delay to ensure proper message order"""
+            await asyncio.sleep(0.5)  # Small delay for message ordering
+            await self._send_sticker_async(direction)
+        
+        # Schedule the delayed sticker send
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                # Webhook mode
+                asyncio.ensure_future(send_delayed_sticker(), loop=loop)
+                logger.info(f"✅ Scheduled {direction} sticker for sending")
+            else:
+                # Polling mode
+                if self.bot.main_loop and not self.bot.main_loop.is_closed():
+                    asyncio.run_coroutine_threadsafe(send_delayed_sticker(), self.bot.main_loop)
+                    logger.info(f"✅ Scheduled {direction} sticker via main loop")
+                else:
+                    # Fallback - try immediate send
+                    logger.warning("No event loop, trying immediate sticker send")
+                    self._send_sticker_instantly(direction)
+        except Exception as e:
+            logger.error(f"Failed to schedule sticker: {e}")
+            # Try immediate send as fallback
+            self._send_sticker_instantly(direction)
         
         # Move to next step immediately
         self.pending_signals[user_id]['step'] = 4
         
         return f"""✅ Direction: <b>{direction}</b> 🎯
 
-"{direction}" text and sticker posting instantly! ⚡
+Text and sticker posting to channel! ⚡
 
 📝 <b>Step 5/8:</b> Enter Signal Result
 Choose the result:"""
@@ -711,7 +757,24 @@ Choose the result:"""
             # Send WIN result message and sticker INSTANTLY - fire and forget
             result_message = f"📊 <b>RESULT: {result}</b> 🎉"
             self._post_to_channel_instant(result_message)
-            self._send_sticker_instantly('WIN')
+            
+            # Schedule WIN sticker with delay
+            async def send_win_sticker():
+                await asyncio.sleep(0.5)
+                await self._send_sticker_async('WIN')
+            
+            try:
+                loop = asyncio.get_event_loop()
+                if loop.is_running():
+                    asyncio.ensure_future(send_win_sticker(), loop=loop)
+                else:
+                    if self.bot.main_loop and not self.bot.main_loop.is_closed():
+                        asyncio.run_coroutine_threadsafe(send_win_sticker(), self.bot.main_loop)
+                    else:
+                        self._send_sticker_instantly('WIN')
+            except Exception as e:
+                logger.error(f"Failed to schedule WIN sticker: {e}")
+                self._send_sticker_instantly('WIN')
             
             # Skip MTG steps
             self.pending_signals[user_id]['step'] = 7
@@ -740,15 +803,31 @@ Choose MTG direction:"""
         
         self.pending_signals[user_id]['data']['mtg_direction'] = mtg_direction
         
-        # Send MTG sticker INSTANTLY - fire and forget
-        self._send_sticker_instantly(mtg_direction)
+        # Send MTG sticker INSTANTLY
+        async def send_mtg_sticker():
+            await asyncio.sleep(0.3)
+            await self._send_sticker_async(mtg_direction)
+        
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                asyncio.ensure_future(send_mtg_sticker(), loop=loop)
+                logger.info(f"✅ Scheduled {mtg_direction} sticker")
+            else:
+                if self.bot.main_loop and not self.bot.main_loop.is_closed():
+                    asyncio.run_coroutine_threadsafe(send_mtg_sticker(), self.bot.main_loop)
+                else:
+                    self._send_sticker_instantly(mtg_direction)
+        except Exception as e:
+            logger.error(f"Failed to schedule MTG sticker: {e}")
+            self._send_sticker_instantly(mtg_direction)
         
         # Move to final result step
         self.pending_signals[user_id]['step'] = 6
         
         return f"""✅ MTG Direction: <b>{mtg_direction}</b> 🎯
 
-MTG {mtg_direction} sticker sent instantly! ⚡
+MTG {mtg_direction} sticker sending instantly! ⚡
 
 📝 <b>Step 7/8:</b> Final Result
 Choose the final result:"""
@@ -765,7 +844,25 @@ Choose the final result:"""
         if final_result == 'WIN':
             result_message = f"📊 <b>FINAL RESULT: {final_result}</b> 🎉"
             self._post_to_channel_instant(result_message)
-            self._send_sticker_instantly('WIN')
+            
+            # Send WIN sticker
+            async def send_final_win():
+                await asyncio.sleep(0.5)
+                await self._send_sticker_async('WIN')
+            
+            try:
+                loop = asyncio.get_event_loop()
+                if loop.is_running():
+                    asyncio.ensure_future(send_final_win(), loop=loop)
+                else:
+                    if self.bot.main_loop and not self.bot.main_loop.is_closed():
+                        asyncio.run_coroutine_threadsafe(send_final_win(), self.bot.main_loop)
+                    else:
+                        self._send_sticker_instantly('WIN')
+            except Exception as e:
+                logger.error(f"Failed to schedule final WIN sticker: {e}")
+                self._send_sticker_instantly('WIN')
+                
             status_message = "Final WIN result and sticker posted instantly! ⚡"
         else:  # LOSS
             result_message = f"📊 <b>FINAL RESULT: {final_result}</b> 💔"
@@ -782,13 +879,15 @@ Choose your next action:"""
     def _process_final_action(self, user_id: str, action: str, screenshot_text: str = None) -> str:
         """Process final action"""
         if action == 'NEW_SIGNAL':
+            # Save current signal before starting new one
+            self._save_custom_signal(self.pending_signals[user_id]['data'])
+            
             # Clean up current signal and start new one
             del self.pending_signals[user_id]
             return self.start_custom_signal(user_id)
         
         elif action == 'SCREENSHOT':
-            # Note: Screenshot will be handled by photo upload handler in bot.py
-            # Just save the completed signal here
+            # Save the completed signal
             self._save_custom_signal(self.pending_signals[user_id]['data'])
             
             return """📸 <b>Ready for Screenshot Upload</b>
@@ -844,8 +943,11 @@ It will be posted to the channel instantly! ⚡"""
                 os.rename(temp_file, history_file)
             else:
                 os.rename(temp_file, history_file)
+            
+            logger.info(f"✅ Custom signal saved to history")
                 
-        except Exception:
+        except Exception as e:
+            logger.error(f"Failed to save custom signal: {e}")
             temp_file = os.path.join(self.data_dir, 'custom_signals.json.tmp')
             if os.path.exists(temp_file):
                 try:
@@ -907,7 +1009,8 @@ It will be posted to the channel instantly! ⚡"""
             
         except json.JSONDecodeError:
             return "❌ Error reading signal history (corrupted file)."
-        except Exception:
+        except Exception as e:
+            logger.error(f"Error getting signal history: {e}")
             return "❌ Error retrieving signal history."
 
     def get_user_current_step(self, user_id: str) -> int:

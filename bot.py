@@ -42,7 +42,6 @@ class MessageSender:
     """Handles message sending with ultra-optimized sticker performance"""
     
     # Online sticker file_ids (public stickers from Telegram)
-    # Replace these with your actual sticker file_ids after uploading once
     ONLINE_STICKERS = {
         'up': 'CAACAgUAAyEGAASye8atAAIBuGjX5C6xsQiwwpF3AoNsnzJSCxePAAMaAAJqd7lW0Asv9Lqx91Y2BA',
         'down': 'CAACAgUAAyEGAASye8atAAIBvGjX5ICGjWmsw8JsGtiU_AaenDKbAAIFGgACane5VpvbrM_e5Ny8NgQ',
@@ -145,28 +144,30 @@ class MessageSender:
             logger.error(f"Failed to save sticker cache: {e}")
 
     async def send_sticker_ultra_fast(self, sticker_name: str) -> bool:
-        """Send sticker instantly using pre-cached file_id (typically <300ms)"""
+        """Send sticker instantly using pre-cached file_id - WEBHOOK COMPATIBLE"""
         if not self.channel_id:
+            logger.error("❌ No channel_id configured for sticker send")
             return False
         
         file_id = self.ONLINE_STICKERS.get(sticker_name)
         
         if not file_id:
-            logger.warning(f"Sticker {sticker_name} not warmed up, attempting upload")
+            logger.warning(f"⚠️ Sticker {sticker_name} not in cache, attempting upload")
             return await self._upload_and_cache_sticker(sticker_name)
         
         try:
-            # Direct send with cached file_id - this is INSTANT
-            await self.bot.send_sticker(
+            # Send using cached file_id
+            message = await self.bot.send_sticker(
                 chat_id=self.channel_id,
                 sticker=file_id,
-                read_timeout=5,
-                write_timeout=5
+                read_timeout=10,
+                write_timeout=10
             )
+            logger.info(f"✅ Sticker sent successfully: {sticker_name} (file_id: {file_id[:20]}...)")
             return True
             
         except Exception as e:
-            logger.error(f"Failed to send sticker {sticker_name}: {e}")
+            logger.error(f"❌ Failed to send cached sticker {sticker_name}: {e}")
             # Invalidate cache and try upload
             self.ONLINE_STICKERS[sticker_name] = None
             return await self._upload_and_cache_sticker(sticker_name)
@@ -511,10 +512,9 @@ class TradingBot:
             
         except Exception as e:
             raise ConfigurationError(f"Failed to initialize Telegram application: {e}")
+    
     async def handle_update(self, update_data: dict):
-        """
-        Handle incoming webhook updates - CRITICAL for webhook mode
-        """
+        """Handle incoming webhook updates - CRITICAL for webhook mode"""
         try:
             # Convert dict to Update object
             update = Update.de_json(update_data, self.app.bot)
@@ -592,6 +592,8 @@ class TradingBot:
             ('testtimer', self.testtimer_cmd),
             ('timerstatus', self.timerstatus_cmd),
             ('warmup_stickers', self.warmup_stickers_cmd),
+            ('debug_stickers', self.debug_stickers_cmd),
+            ('test_sticker', self.test_sticker_cmd),
         ]
         
         for command, handler in handlers:
@@ -695,9 +697,11 @@ class TradingBot:
                 if loop.is_running():
                     # Loop is running (webhook mode) - schedule task
                     asyncio.ensure_future(self.post_message(text), loop=loop)
+                    logger.info("✅ Message scheduled (webhook mode)")
                     return True
                 else:
                     # No running loop - try to create one
+                    logger.warning("No running loop, attempting sync execution")
                     return asyncio.run(self.post_message(text))
             except Exception as e:
                 logger.error(f"Failed to post message (no loop): {e}")
@@ -709,7 +713,9 @@ class TradingBot:
                 self.post_message(text),
                 self.main_loop
             )
-            return future.result(timeout=self.config.get('MESSAGE_TIMEOUT', 8))
+            result = future.result(timeout=self.config.get('MESSAGE_TIMEOUT', 8))
+            logger.info("✅ Message posted (polling mode)")
+            return result
         except Exception as e:
             logger.error(f"Failed to post message from thread: {e}")
             return False
@@ -725,8 +731,10 @@ class TradingBot:
                         self.message_sender.send_sticker_ultra_fast(sticker_name),
                         loop=loop
                     )
+                    logger.info(f"✅ Sticker scheduled (webhook mode): {sticker_name}")
                     return True
                 else:
+                    logger.warning("No running loop for sticker")
                     return asyncio.run(self.message_sender.send_sticker_ultra_fast(sticker_name))
             except Exception as e:
                 logger.error(f"Failed to send sticker (no loop): {e}")
@@ -738,10 +746,13 @@ class TradingBot:
                 self.message_sender.send_sticker_ultra_fast(sticker_name),
                 self.main_loop
             )
-            return future.result(timeout=1.5)
+            result = future.result(timeout=1.5)
+            logger.info(f"✅ Sticker sent (polling mode): {sticker_name}")
+            return result
         except Exception as e:
             logger.error(f"Failed to send sticker instantly: {e}")
             return False
+
     async def _send_photo_async(self, photo, caption: str = None) -> bool:
         """Async photo sending method"""
         channel_id = self.config.get('CHANNEL_ID')
@@ -1060,6 +1071,8 @@ Your AI-powered trading assistant for signals and market analysis.
 
 🔧 <b>Admin Commands:</b>
 • /warmup_stickers - Warm up stickers for instant sending
+• /debug_stickers - Check sticker cache status
+• /test_sticker NAME - Test sticker sending
 
 ❓ Use /help to see this message again."""
 
@@ -1127,6 +1140,93 @@ Your AI-powered trading assistant for signals and market analysis.
         except Exception:
             await update.message.reply_text("❌ Error retrieving signal history.")
 
+    async def debug_stickers_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Debug sticker cache status"""
+        try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+            
+            stickers = self.message_sender.ONLINE_STICKERS
+            response = "🎨 <b>Sticker Cache Status:</b>\n\n"
+            
+            all_cached = True
+            for name, file_id in stickers.items():
+                if file_id:
+                    status = "✅ Cached"
+                    response += f"<b>{name}</b>: {status}\n"
+                    response += f"   <code>{file_id[:30]}...</code>\n\n"
+                else:
+                    status = "❌ Missing"
+                    all_cached = False
+                    response += f"<b>{name}</b>: {status}\n\n"
+            
+            if all_cached:
+                response += "\n✅ All stickers are cached and ready!"
+            else:
+                response += "\n⚠️ Some stickers need warmup. Use /warmup_stickers"
+            
+            response += f"\n\n📡 Channel ID: <code>{self.config.get('CHANNEL_ID')}</code>"
+            
+            await update.message.reply_text(response, parse_mode='HTML')
+            
+        except Exception as e:
+            await update.message.reply_text(f"❌ Error: {e}")
+
+    async def test_sticker_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Test sticker sending to channel"""
+        try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+            
+            if not context.args:
+                await update.message.reply_text(
+                    "📝 <b>Usage:</b> /test_sticker NAME\n\n"
+                    "<b>Available stickers:</b>\n"
+                    "• up\n"
+                    "• down\n"
+                    "• win\n"
+                    "• mtg_up\n"
+                    "• mtg_down\n\n"
+                    "<b>Example:</b> <code>/test_sticker up</code>",
+                    parse_mode='HTML'
+                )
+                return
+            
+            sticker_name = context.args[0].lower()
+            valid_stickers = ['up', 'down', 'win', 'mtg_up', 'mtg_down']
+            
+            if sticker_name not in valid_stickers:
+                await update.message.reply_text(
+                    f"❌ Invalid sticker name: {sticker_name}\n"
+                    f"Available: {', '.join(valid_stickers)}"
+                )
+                return
+            
+            await update.message.reply_text(f"🔄 Sending <b>{sticker_name}</b> sticker to channel...", parse_mode='HTML')
+            
+            # Send sticker to channel
+            success = await self.message_sender.send_sticker_ultra_fast(sticker_name)
+            
+            if success:
+                await update.message.reply_text(
+                    f"✅ <b>{sticker_name}</b> sticker sent successfully to channel!",
+                    parse_mode='HTML'
+                )
+            else:
+                await update.message.reply_text(
+                    f"❌ Failed to send <b>{sticker_name}</b> sticker.\n"
+                    f"Check logs for details.",
+                    parse_mode='HTML'
+                )
+            
+        except Exception as e:
+            logger.exception("Error in test_sticker_cmd:")
+            await update.message.reply_text(f"❌ Error: {e}")
+
     async def warmup_stickers_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Manually trigger sticker warmup"""
         try:
@@ -1136,11 +1236,26 @@ Your AI-powered trading assistant for signals and market analysis.
                 return
             
             await update.message.reply_text("🔄 Warming up stickers for instant sending...")
-            await self.message_sender.warm_up_stickers()
-            await update.message.reply_text("✅ Sticker warmup complete! All stickers ready for instant delivery.")
             
-        except Exception:
-            await update.message.reply_text("❌ Error warming up stickers.")
+            # Warm up stickers
+            await self.message_sender.warm_up_stickers()
+            
+            # Check status
+            stickers = self.message_sender.ONLINE_STICKERS
+            cached_count = sum(1 for file_id in stickers.values() if file_id)
+            total_count = len(stickers)
+            
+            await update.message.reply_text(
+                f"✅ Sticker warmup complete!\n\n"
+                f"📊 Cached: {cached_count}/{total_count} stickers\n"
+                f"⚡ All stickers ready for instant delivery.\n\n"
+                f"Use /debug_stickers to see details.",
+                parse_mode='HTML'
+            )
+            
+        except Exception as e:
+            logger.exception("Error in warmup_stickers_cmd:")
+            await update.message.reply_text(f"❌ Error warming up stickers: {e}")
 
     async def addsymbol_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Add symbol to watchlist"""
@@ -1248,7 +1363,6 @@ Your AI-powered trading assistant for signals and market analysis.
             
             symbol = context.args[0].upper().strip()
             
-            # Notify user that news is being fetched
             await update.message.reply_text(f"🔄 Fetching news for {symbol}...")
             
             news_items = fetch_news(symbol)
@@ -1268,13 +1382,11 @@ Your AI-powered trading assistant for signals and market analysis.
                 response += f"{i}. <a href='{link}'>{title}</a>\n"
                 response += f"   <i>Source: {source}</i>\n\n"
             
-            # Post to channel
             success = await self.post_message(response)
             
             if success:
                 await update.message.reply_text(f"✅ News for {symbol} posted to channel!")
             else:
-                # Fallback: send to user if channel post fails
                 await update.message.reply_text(response, parse_mode='HTML', disable_web_page_preview=True)
                 await update.message.reply_text("⚠️ Could not post to channel, sent here instead.")
         
@@ -1291,7 +1403,6 @@ Your AI-powered trading assistant for signals and market analysis.
             
             symbol = context.args[0].upper().strip()
             
-            # Notify user that summary is being fetched
             await update.message.reply_text(f"🔄 Fetching summary for {symbol}...")
             
             summary = fetch_summary(symbol)
@@ -1309,13 +1420,11 @@ Your AI-powered trading assistant for signals and market analysis.
             response += f"🏢 Market Cap: {summary['market_cap']}\n"
             response += f"📊 P/E Ratio: {summary['pe_ratio']}"
             
-            # Post to channel
             success = await self.post_message(response)
             
             if success:
                 await update.message.reply_text(f"✅ Summary for {symbol} posted to channel!")
             else:
-                # Fallback: send to user if channel post fails
                 await update.message.reply_text(response, parse_mode='HTML')
                 await update.message.reply_text("⚠️ Could not post to channel, sent here instead.")
         
@@ -1332,7 +1441,6 @@ Your AI-powered trading assistant for signals and market analysis.
             
             symbol = context.args[0].upper().strip()
             
-            # Notify user that signal is being generated
             await update.message.reply_text(f"🔄 Generating signal for {symbol}...")
             
             signal_data = generate_signal(symbol)
@@ -1346,13 +1454,11 @@ Your AI-powered trading assistant for signals and market analysis.
             response += f"⏰ Generated: {datetime.now().strftime('%H:%M:%S')}\n"
             response += f"👤 Requested by: {update.effective_user.first_name}"
             
-            # Post to channel
             success = await self.post_message(response)
             
             if success:
                 await update.message.reply_text(f"✅ Signal for {symbol} posted to channel!")
             else:
-                # Fallback: send to user if channel post fails
                 await update.message.reply_text(response, parse_mode='HTML')
                 await update.message.reply_text("⚠️ Could not post to channel, sent here instead.")
         
@@ -1369,7 +1475,6 @@ Your AI-powered trading assistant for signals and market analysis.
             
             symbol = context.args[0].upper().strip()
             
-            # Notify user that price is being fetched
             await update.message.reply_text(f"🔄 Fetching price for {symbol}...")
             
             price = fetch_price(symbol)
@@ -1378,13 +1483,11 @@ Your AI-powered trading assistant for signals and market analysis.
             response += f"Current Price: ${price:.2f}\n"
             response += f"👤 Requested by: {update.effective_user.first_name}"
             
-            # Post to channel
             success = await self.post_message(response)
             
             if success:
                 await update.message.reply_text(f"✅ Price for {symbol} posted to channel!")
             else:
-                # Fallback: send to user if channel post fails
                 await update.message.reply_text(response, parse_mode='HTML')
                 await update.message.reply_text("⚠️ Could not post to channel, sent here instead.")
         
