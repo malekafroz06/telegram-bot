@@ -571,7 +571,8 @@ class TradingBot:
             return False
             
     def _register_handlers(self):
-        """Register all command and message handlers"""
+        """Register all command and message handlers with admin protection"""
+        
         handlers = [
             ('start', self.start_cmd),
             ('help', self.help_cmd),
@@ -1015,7 +1016,23 @@ class TradingBot:
     # Command handlers
     
     async def start_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Enhanced start command"""
+        """Enhanced start command with admin check"""
+        user = update.effective_user
+        
+        # Check if user is admin
+        if not self._is_admin(user.id):
+            await update.message.reply_text(
+                "❌ <b>Access Denied</b>\n\n"
+                "You are not authorized to use this bot.\n"
+                "This bot is restricted to admin users only.\n\n"
+                f"👤 Your Name: {user.first_name}\n"
+                f"🆔 Your User ID: <code>{user.id}</code>\n\n"
+                "📧 Please contact the bot administrator to request access.\n\n"
+                "<i>Note: Provide your User ID to the administrator.</i>",
+                parse_mode='HTML'
+            )
+            return
+        
         welcome_text = """👋 <b>Welcome to TradePulse Bot!</b>
 Your AI-powered trading assistant for signals and market analysis.
 
@@ -1044,6 +1061,11 @@ Your AI-powered trading assistant for signals and market analysis.
 
     async def help_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Show help with all available commands"""
+        user = update.effective_user
+        if not self._is_admin(user.id):
+            await update.message.reply_text("❌ Access denied. Admin privileges required.")
+            return
+            
         help_text = """🤖 <b>TradePulse Bot Commands</b>
 
 📊 <b>Market Data (Posted to Channel):</b>
@@ -1260,6 +1282,11 @@ Your AI-powered trading assistant for signals and market analysis.
     async def addsymbol_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Add symbol to watchlist"""
         try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+                
             if not context.args:
                 await update.message.reply_text("Usage: /addsymbol SYMBOL\nExample: /addsymbol AAPL")
                 return
@@ -1284,6 +1311,11 @@ Your AI-powered trading assistant for signals and market analysis.
     async def removesymbol_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Remove symbol from watchlist"""
         try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+                
             if not context.args:
                 await update.message.reply_text("Usage: /removesymbol SYMBOL\nExample: /removesymbol AAPL")
                 return
@@ -1308,6 +1340,11 @@ Your AI-powered trading assistant for signals and market analysis.
     async def listsymbols_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """List all symbols in watchlist"""
         try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+                
             symbols = self.file_manager.load_json_file('symbols.json', [])
             
             if not symbols:
@@ -1324,6 +1361,11 @@ Your AI-powered trading assistant for signals and market analysis.
     async def setalert_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Set price alert for symbol"""
         try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+                
             if len(context.args) != 2:
                 await update.message.reply_text(
                     "Usage: /setalert SYMBOL PERCENTAGE\n"
@@ -1357,6 +1399,11 @@ Your AI-powered trading assistant for signals and market analysis.
     async def news_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Get news for symbol and post to channel"""
         try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+                
             if not context.args:
                 await update.message.reply_text("Usage: /news SYMBOL\nExample: /news AAPL")
                 return
@@ -1397,6 +1444,11 @@ Your AI-powered trading assistant for signals and market analysis.
     async def summary_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Get summary for symbol and post to channel"""
         try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+                
             if not context.args:
                 await update.message.reply_text("Usage: /summary SYMBOL\nExample: /summary AAPL")
                 return
@@ -1435,6 +1487,11 @@ Your AI-powered trading assistant for signals and market analysis.
     async def check_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Get trading signal for symbol and post to channel"""
         try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+                
             if not context.args:
                 await update.message.reply_text("Usage: /check SYMBOL\nExample: /check AAPL")
                 return
@@ -1465,8 +1522,39 @@ Your AI-powered trading assistant for signals and market analysis.
         except Exception as e:
             error_msg = f"❌ Error generating signal for {symbol if 'symbol' in locals() else 'symbol'}: {str(e)}"
             await update.message.reply_text(error_msg)
-
     async def price_cmd(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Get current price for symbol and post to channel"""
+        try:
+            user = update.effective_user
+            if not self._is_admin(user.id):
+                await update.message.reply_text("❌ Access denied. Admin privileges required.")
+                return
+                
+            if not context.args:
+                await update.message.reply_text("Usage: /price SYMBOL\nExample: /price AAPL")
+                return
+            
+            symbol = context.args[0].upper().strip()
+            
+            await update.message.reply_text(f"🔄 Fetching price for {symbol}...")
+            
+            price = fetch_price(symbol)
+            
+            response = f"💰 <b>{symbol}</b>\n"
+            response += f"Current Price: ${price:.2f}\n"
+            response += f"👤 Requested by: {update.effective_user.first_name}"
+            
+            success = await self.post_message(response)
+            
+            if success:
+                await update.message.reply_text(f"✅ Price for {symbol} posted to channel!")
+            else:
+                await update.message.reply_text(response, parse_mode='HTML')
+                await update.message.reply_text("⚠️ Could not post to channel, sent here instead.")
+        
+        except Exception as e:
+            error_msg = f"❌ Error fetching price for {symbol if 'symbol' in locals() else 'symbol'}: {str(e)}"
+            await update.message.reply_text(error_msg)
         """Get current price for symbol and post to channel"""
         try:
             if not context.args:

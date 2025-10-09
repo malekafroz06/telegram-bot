@@ -27330,3 +27330,23 @@ telegram.error.Conflict: Conflict: can't use getUpdates method while webhook is 
 2025-10-09 10:38:14,174 - signals - INFO - ✅ Scheduled message posting (webhook mode)
 2025-10-09 10:38:14,569 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/editMessageText "HTTP/1.1 200 OK"
 2025-10-09 10:38:14,598 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
+2025-10-09 10:52:01,153 - __main__ - INFO - 💻 Running in POLLING mode (local)
+2025-10-09 10:52:01,153 - __main__ - INFO - 🚀 TradePulse Bot Starting Up
+2025-10-09 10:52:01,153 - ConfigurationManager - INFO - Configuration loaded and validated successfully
+2025-10-09 10:52:01,153 - __main__ - INFO - Initializing TradingBot...
+2025-10-09 10:52:01,181 - bot - INFO - Loaded 5 cached sticker file_ids
+2025-10-09 10:52:01,181 - signals - INFO - ✅ CustomSignalHandler initialized
+2025-10-09 10:52:01,182 - signals - INFO - 📂 Sticker mappings: {'UP': 'up', 'DOWN': 'down', 'WIN': 'win', 'MTGUP': 'mtg_up', 'MTGDOWN': 'mtg_down'}
+2025-10-09 10:52:01,182 - signals - INFO - 🔗 Bot channel_id: -1002994456237
+2025-10-09 10:52:01,182 - __main__ - INFO - 📊 Channel: -1002994456237
+2025-10-09 10:52:01,183 - __main__ - INFO - 📱 Admin users: 1
+2025-10-09 10:52:01,183 - __main__ - INFO - ✅ Bot initialized successfully
+2025-10-09 10:52:01,183 - __main__ - INFO - Starting Telegram bot (long-polling)...
+2025-10-09 10:52:01,217 - bot - INFO - All stickers already warmed up
+2025-10-09 10:52:01,217 - bot - INFO - Bot initialization complete
+2025-10-09 10:52:01,966 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getMe "HTTP/1.1 200 OK"
+2025-10-09 10:52:02,130 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/deleteWebhook "HTTP/1.1 200 OK"
+2025-10-09 10:52:02,132 - apscheduler.scheduler - INFO - Scheduler started
+2025-10-09 10:52:02,132 - telegram.ext.Application - INFO - Application started
+2025-10-09 10:52:16,754 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/getUpdates "HTTP/1.1 200 OK"
+2025-10-09 10:52:17,803 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8298378384:AAHCQRSq1vsU_KFh96m72ym3TgBMyUM4NyQ/sendMessage "HTTP/1.1 200 OK"
